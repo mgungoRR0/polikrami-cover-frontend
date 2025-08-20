@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sol Panel */
+.left-panel {
+    flex: 1;
+    background: linear-gradient(to bottom, #FF9900 5%, transparent 60%),
+        linear-gradient(to top, #FFFFFF 10%, transparent 25%),
+        linear-gradient(to bottom, #FFE5CC 0%, #FFF5E6 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px
+}
+
+.logo-container {
+    position: absolute;
+    top: 150px;
+    left: 330px;
+    z-index: 10;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
+
+.illustration-wrapper {
+    position: relative;
+    z-index: 5;
+}
+
+
+.decorative-shape {
+    position: absolute;
+    width: 500px;  /* Görselin boyutuna göre ayarlayın */
+    height: 500px; /* Görselin boyutuna göre ayarlayın */
+    background-image: url('../assets/images/drawing-image.png'); /* Görsel yolu */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Circle'ın arkasında kalması için */
+    opacity: 1; /* İsterseniz saydamlık ekleyin */
+}
+
+.illustration-circle {
+    /* Mevcut kodunuz aynı kalacak */
+    width: 322px;
+    height: 311px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+    animation: float 6s ease-in-out infinite;
+    position: relative; /* Eklendi */
+    z-index: 1; /* Eklendi */
+}
+
+
+.woman-illustration {
+    width: 322px;
+    height: 311px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.woman-illustration img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Sağ Panel */
+.right-panel {
+    flex: 1;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    position: relative;
+    text-align: center;
+}
+
+.login-container h1 {
+    font-size: 42px;
+    color: #5E5E5E;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: #7F8C8D;
+    margin-bottom: 45px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 18px 24px;
+    font-size: 16px;
+    border: 2px solid #E8E8E8;
+    border-radius: 14px;
+    background: #FAFAFA;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.form-control::placeholder {
+    color: #A0A0A0;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #FF9A00;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 154, 0, 0.1);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #A0A0A0;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: #666;
+}
+
+.toggle-password svg {
+    width: 22px;
+    height: 22px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #5E5E5E;
+    background: #FFD93D;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(255, 217, 61, 0.3);
+}
+
+.submit-btn:hover {
+    background: #FFC107;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.divider {
+    text-align: center;
+    margin: 35px 0;
+    position: relative;
+    color: #A0A0A0;
+    font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 43%;
+    height: 1px;
+    background: #E8E8E8;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.signup-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 15px;
+}
+
+.signup-section span {
+    color: #7F8C8D;
+}
+
+.signup-section a {
+    color: #4A90E2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-section a:hover {
+    color: #357ABD;
+}
+
+.plant-decoration {
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    width: 132px;
+    height: 193px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.plant-decoration img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Animasyonlar */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-container > * {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.login-container > *:nth-child(1) { animation-delay: 0.1s; }
+.login-container > *:nth-child(2) { animation-delay: 0.2s; }
+.login-container > *:nth-child(3) { animation-delay: 0.3s; }
+.login-container > *:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        display: none;
+    }
+    
+    .right-panel {
+        background: linear-gradient(to bottom, #FF9A00 0%, #FFB84D 25%, #FFFFFF 25%);
+        padding-top: 80px;
+    }
+
+    .login-container {
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        margin: 20px;
+        max-width: 100%;
+    }
+
+    .login-container h1 {
+        font-size: 32px;
+    }
+
+    .plant-decoration {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 24px;
+    }
+
+    .login-container h1 {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .form-control {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+
+    .submit-btn {
+        padding: 16px;
+        font-size: 16px;
+    }
+}
+
+/* Sağ panel içeriği uzun olduğunda kendi içinde kaydır */
+.right-panel {
+  max-height: 100vh;         /* görünür ekran yüksekliği kadar */
+  overflow-y: auto;          /* sadece dikey kaydır */
+  -webkit-overflow-scrolling: touch; /* mobilde akıcı scroll */
+}
+
+/* Eğer .container veya body’de overflow:hidden varsa etkisiz bırak */
+html, body, .container {
+  overflow: visible;
+}
+
+.select-wrapper { position: relative; }
+
+.select-wrapper .form-control {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 48px;
+}
+
+.select-caret {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #A0A0A0;
+  width: 20px;
+  height: 20px;
+  transition: color .3s ease;
+}
+
+.select-wrapper:hover .select-caret,
+.select-wrapper .form-control:focus + .select-caret {
+  color: #666;
+}
+
+/* Select'in placeholder gibi görünen ilk seçeneği */
+select.form-control option[disabled][selected] {
+  color: #A0A0A0; /* input placeholder rengi */
+}
+
+/* Kullanıcı seçim yaptığında normal renk gelsin */
+select.form-control {
+  color: #A0A0A0; /* başlangıçta placeholder rengi */
+}
+
+select.form-control:focus,
+select.form-control option {
+  color: #000; /* gerçek değerler siyah (veya senin input yazı rengin) */
+}
+
+/* ========================
+   Şifre sıfırlama akışı ekleri
+   ======================== */
+.subtitle { color:#777; font-size:14px; margin:8px 0 18px; }
+.logo-container { display:flex; align-items:center; gap:10px; }
+.logo-container .page-title { font-weight:600; font-size:14px; opacity:.85; }
+
+/* OTP kutuları */
+.otp-group { display:flex; gap:16px; justify-content:center; margin:10px 0 18px; }
+.otp-input {
+  width:56px; height:56px; text-align:center; font-size:22px;
+  border:1px solid #d7d7d7; border-radius:10px; outline:none;
+}
+.otp-input:focus { box-shadow:0 0 0 3px rgba(255,193,7,.25); border-color:#ffc107; }
+
+/* Parola alanında göz ikonu */
+.input-wrap { position:relative; }
+.toggle-password {
+  position:absolute; right:12px; top:50%;
+  transform:translateY(-50%); cursor:pointer; user-select:none; opacity:.65;
+}
+.toggle-password:hover { opacity:1; }

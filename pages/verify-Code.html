@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kodu Doğrula</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="logo-container">
+                <img class="logo-img" src="../assets/images/polikramiLogo.svg" alt="Polikrami" />
+            </div>
+
+            <div class="illustration-wrapper">
+                <div class="decorative-shape"></div>
+                <div class="illustration-circle">
+                    <img src="../assets/images/girisyap-image.png" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="login-container">
+                <h1>KODU AL</h1>
+                <p class="subtitle">"Lütfen e-postanıza gelen 4 haneli kodu girin."</p>
+
+                <form id="otpForm">
+                    <div class="otp-group" id="otpGroup">
+                        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="1. hane">
+                        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="2. hane">
+                        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="3. hane">
+                        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="4. hane">
+                    </div>
+                    <button type="submit" class="submit-btn">Doğrula ve Devam Et</button>
+                </form>
+            </div>
+
+            <div class="plant-decoration">
+                <img src="../assets/images/branch-image.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/base.js"></script>
+    <script src="../js/verify-code.js"></script>
+
+</body>
+
+</html>
