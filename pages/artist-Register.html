@@ -2,48 +2,49 @@
 <html lang="tr">
 
 <head>
-    <!--Default Meta Kodları-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Default Meta Codes -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--Sekme Başlığı-->
+    <!-- Tab Title -->
     <title>Polikrami - Sanatçı Üye Ol</title>
 
-    <!-- Google Fonts Poppins -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!--Bağlı Olduğu CSS Dosyası-->
+    <!-- CSS Link -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-
 <body>
     <div class="container">
-        <!-- Sol Panel -->
+
+        <!-- Left Panel -->
         <div class="left-panel">
 
-            <!--Logo-->
+            <!-- Logo -->
             <div class="logo-container">
-                <img src="../assets/images/polikramiLogo.svg" alt="Polikrami" class="logo-img">
+                <img class="logo-img" src="../assets/images/polikramiLogo.svg" alt="Polikrami">
             </div>
 
-            <!--Kadın İllüstratör-->
+            <!-- Illustrator -->
             <div class="illustration-wrapper">
                 <div class="decorative-shape"></div>
                 <div class="illustration-circle">
                     <div class="woman-illustration">
-                        <img src="../assets/images/girisyap-image.png" alt="Kitap okuyan kadın">
+                        <img src="../assets/images/girisyap-image.png" alt="Kitap Okuyan Kadın Çizimi">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Sağ Panel -->
+        <!-- Right Panel -->
         <div class="right-panel">
-            <!--Üye Ol Formu-->
+
+            <!-- Sign Up Form -->
             <div class="login-container">
                 <h1>ÜYE OL</h1>
                 <p class="subtitle">"Üyelik bilgilerinizi eksiksiz doldurarak kolayca üye olabilirsiniz."</p>
@@ -61,7 +62,7 @@
                         <input type="email" class="form-control" id="email" placeholder="E-Posta" required>
                     </div>
 
-                    <!-- Uzmanlık Alanı Dropdown -->
+                    <!-- Dropdown Menu -->
                     <div class="form-group select-wrapper">
                         <select class="form-control" id="specialization" required autocomplete="off">
                             <option value="" disabled selected>Uzmanlık Alanınızı Seçiniz</option>
@@ -71,7 +72,7 @@
                             <option value="diger">Diğer</option>
                         </select>
 
-                        <!-- Özel Aşağı Ok İkonu -->
+                        <!-- Dropdown Icon -->
                         <svg class="select-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M6 9l6 6 6-6" />
@@ -80,7 +81,7 @@
 
 
 
-                    <!--Şİfre-->
+                    <!-- Password Section -->
                     <div class="form-group">
                         <div class="password-wrapper">
                             <input type="password" class="form-control" id="password" placeholder="Şifreniz" required>
@@ -99,7 +100,7 @@
                             </button>
                         </div>
                     </div>
-                    <!--Tekrar Şifre-->
+                    <!-- Confirm Password Section -->
                     <div class="form-group">
                         <div class="password-wrapper">
                             <input type="password" class="form-control" id="passwordConfirm"
@@ -132,14 +133,14 @@
 
             </div>
 
-            <!-- Dekoratif Bitki -->
+            <!-- Branch Image -->
             <div class="plant-decoration">
                 <img src="../assets/images/branch-image.png" alt="">
             </div>
         </div>
     </div>
 
-    <!--Bağlı JS Dosyası-->
+    <!-- JS Link -->
     <script src="../js/base.js"></script>
 
 </body>
