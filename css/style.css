@@ -53,21 +53,20 @@ body {
 
 .decorative-shape {
     position: absolute;
-    width: 500px;  /* Görselin boyutuna göre ayarlayın */
-    height: 500px; /* Görselin boyutuna göre ayarlayın */
-    background-image: url('../assets/images/drawing-image.png'); /* Görsel yolu */
+    width: 500px;  
+    height: 500px; 
+    background-image: url('../assets/images/drawing-image.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: -1; /* Circle'ın arkasında kalması için */
-    opacity: 1; /* İsterseniz saydamlık ekleyin */
+    z-index: -1; 
+    opacity: 1; 
 }
 
 .illustration-circle {
-    /* Mevcut kodunuz aynı kalacak */
     width: 322px;
     height: 311px;
     background: white;
@@ -77,8 +76,8 @@ body {
     justify-content: center;
     box-shadow: 0 30px 80px rgba(0,0,0,0.15);
     animation: float 6s ease-in-out infinite;
-    position: relative; /* Eklendi */
-    z-index: 1; /* Eklendi */
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -96,7 +95,6 @@ body {
     object-fit: contain;
 }
 
-/* Sağ Panel */
 .right-panel {
     flex: 1;
     background: #FFFFFF;
