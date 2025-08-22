@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polikrami | Özel Kitap Kapağı Tasarımları</title>
+  <meta name="description"
+    content="Polikrami: Okurların dünyasını zenginleştiren, sanatçılarla buluşturan özel kitap kapağı tasarımları. Galerimizi keşfedin, sanatçılarımızla tanışın.">
+  <meta property="og:title" content="Polikrami | Özel Kitap Kapağı Tasarımları">
+  <meta property="og:description" content="Hayalinizdeki kapağı seçin, hikayeniz parlasın!">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/images/og-image.png">
+  <link rel="icon" href="../assets/images/favicon.ico">
+
+  <!-- Google Fonts - Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/home-page.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav aria-label="Ana gezinme">
+      <div class="logo">
+        <img src="../assets/images/polikrami-logo.svg" alt="Polikrami Logo" style="height:40px;" width="160" height="40"
+          loading="eager" decoding="async">
+      </div>
+      <button class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks"
+        aria-label="Menüyü aç/kapat">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#gallery">Çalışmalarımız</a></li>
+        <li><a href="#team">Sanatçılarımız</a></li>
+        <li><a href="#about">Hakkımızda</a></li>
+        <li class="lang-selector" role="group" aria-label="Dil seçimi">
+          <button type="button" aria-label="Türkçe" data-lang="tr"><img src="images/flag-tr.png" alt=""></button>
+          <button type="button" aria-label="English" data-lang="en"><img src="images/flag-en.png" alt=""></button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="home">
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-container">
+        <div class="hero-content animate-fade-in">
+          <h1 id="hero-title">Hayalinizdeki kapağı <br> seçin, hikayeniz <br> parlasın!</h1>
+          <p>Kitaplar, her okurun zihninde farklı dünyalar yaratır.<br> Cover Polikrami ile hayal gücünüzü sanatçılarla
+            <br> buluşturun.
+          </p>
+        </div>
+      </div>
+      <div class="hero-illustration">
+        <img src="../assets/images/hero-section.png" alt="Kitap okuyan insanlar illüstrasyonu" width="721" height="490"
+          loading="eager" decoding="async">
+      </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-container">
+        <h2 class="section-title" id="gallery-title">
+          <span class="first-part">En Sevilen</span> <span class="second-part">Kapaklar</span>
+        </h2>
+        <p class="section-subtitle">Okurların favorisi olan bu kapaklar, hikayenizi öne çıkarıp en çok görülen
+          listelerinde zirveye taşıyacak güce sahip. En çarpıcı tasarımlarla hikayenizin fark yaratmasını sağlayın.</p>
+
+        <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="Kapak galerisi">
+          <div class="arrow-button" id="prevBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </div>
+
+          <main id="carousel">
+            <div class="item">
+              <img src="../assets/images/our-work-melis3-images.png" alt="Kapak 1">
+            </div>
+            <div class="item">
+              <img src="../assets/images/our-work-melis1-images.png" alt="Kapak 2">
+            </div>
+            <div class="item">
+              <img src="../assets/images/our-work-melis4-images.png" alt="Kapak 3">
+            </div>
+            <div class="item">
+              <img src="../assets/images/our-work-melis2-images.png" alt="Kapak 4">
+            </div>
+            <div class="item">
+              <img src="../assets/images/our-work-melis-images.png" alt="Kapak 5">
+            </div>
+          </main>
+
+          <div class="arrow-button" id="nextBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team" aria-labelledby="team-title">
+      <div class="team-container">
+        <div class="team-header">
+          <h2 id="team-title">Kapaklara Ruh Veren <span class="subtitle">Sanatçılar</span></h2>
+          <p>Cover Polikrami, hayal gücünüzü gerçeğe dönüştüren yetenekli sanatçılarla dolu bir platform! Öne çıkan
+            sanatçılarımızın özgün tasarımlarını keşfedin.</p>
+        </div>
+
+        <div class="team-carousel-wrapper" role="region" aria-roledescription="carousel" aria-label="Sanatçılar">
+          <button class="team-nav-btn prev" type="button" aria-label="Sanatçıları sola kaydır"
+            onclick="scrollTeam(-1)">‹</button>
+          <div class="team-carousel">
+            <div class="team-grid" id="teamGrid">
+              <div class="team-member">
+                <div class="member-avatar">
+                  <img src="../assets/images/melis-aksoy-image.png" alt="Melis Aksoy" width="110" height="110"
+                    loading="lazy" decoding="async">
+                </div>
+                <div class="member-name">MELİS AKSOY</div>
+                <div class="member-role">İllüstratör</div>
+              </div>
+              <div class="team-member">
+                <div class="member-avatar">
+                  <img src="../assets/images/emre-yılmaz-image.png" alt="Emre Yılmaz" width="110" height="110"
+                    loading="lazy" decoding="async">
+                </div>
+                <div class="member-name">EMRE YILMAZ</div>
+                <div class="member-role">Grafik Tasarımcı</div>
+              </div>
+              <div class="team-member">
+                <div class="member-avatar">
+                  <img src="../assets/images/mine-ceylan-image.png" alt="Mine Ceylan" width="110" height="110"
+                    loading="lazy" decoding="async">
+                </div>
+                <div class="member-name">MİNE CEYLAN</div>
+                <div class="member-role">Dijital Sanatçı</div>
+              </div>
+              <div class="team-member">
+                <div class="member-avatar">
+                  <img src="../assets/images/kerem-özer-image.png" alt="Kerem Özer" width="110" height="110"
+                    loading="lazy" decoding="async">
+                </div>
+                <div class="member-name">KEREM ÖZER</div>
+                <div class="member-role">Konsept Tasarımcı</div>
+              </div>
+            </div>
+          </div>
+          <button class="team-nav-btn next" type="button" aria-label="Sanatçıları sağa kaydır"
+            onclick="scrollTeam(1)">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" aria-labelledby="process-title">
+      <div class="process-container">
+        <div class="process-header">
+          <h2 id="process-title">Adım Adım <span class="highlight">Oluşturmaya Başla</span></h2>
+          <p>Hayalinizdeki kapak tasarımına ulaşmanız için süreci sizin için basit ve keyifli hale getirdik. Sadece
+            adımları takip edin ve sanatçılarımızın sihirli dokunuşlarını keşfedin.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-number">01</div>
+            <div class="process-title">Tasarım Keşfi</div>
+            <div class="process-description">Geniş tasarım galerimizden ilham alın ve tarzınıza uygun kapakları keşfedin
+            </div>
+          </div>
+          <div class="process-card">
+            <div class="process-number">02</div>
+            <div class="process-title">Sanatçıyı Belirleyin</div>
+            <div class="process-description">Kitabınızın ruhunu en iyi yansıtacak yetenekli sanatçılarımızdan birini
+              seçin</div>
+          </div>
+          <div class="process-card">
+            <div class="process-number">03</div>
+            <div class="process-title">İletişim/Toplantı</div>
+            <div class="process-description">Sanatçıyla bir araya gelin ve vizyonunuzu paylaşın</div>
+          </div>
+          <div class="process-card">
+            <div class="process-number">04</div>
+            <div class="process-title">Görme Taslak & Konsept Oluşturma</div>
+            <div class="process-description">İlk tasarım eskizlerini inceleyin ve geri bildirimlerinizi paylaşın</div>
+          </div>
+          <div class="process-card">
+            <div class="process-number">05</div>
+            <div class="process-title">Tasarımınızı Seçerek Final</div>
+            <div class="process-description">Son rötuşlarla birlikte kapağınızı onaylayın</div>
+          </div>
+          <div class="process-card">
+            <div class="process-number">06</div>
+            <div class="process-title">Tasarımınızı Teslim Edin</div>
+            <div class="process-description">Yüksek çözünürlükte, baskıya hazır dosyalarınızı alın</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <h2>Başlamaya hazır mısın?</h2>
+        <a href="#contact" class="cta-button">Oluşturmaya Başla</a>
+      </div>
+    </section>
+
+    <!-- Contact (placeholder to satisfy CTA) -->
+    <section id="contact" class="gallery-section" aria-labelledby="contact-title">
+      <div class="section-container">
+        <h2 id="contact-title" class="section-title">İletişim</h2>
+        <p class="section-subtitle">Aşağıdan bize ulaşabilirsiniz. (Demo amaçlı yer tutucu)</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="../assets/images/polikrami-logo.svg" alt="Polikrami Logo" width="160" height="60" loading="lazy"
+            decoding="async">
+        </div>
+        <div class="footer-info">
+          Adres: İstanbul, Türkiye<br>
+          Tel: 0212 123 45 67<br>
+          Mail: info@polikrami.com
+        </div>
+        <div class="social-links" aria-label="Sosyal medya">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Twitter / X">t</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Bilgiler</h3>
+        <ul>
+          <li><a href="#about">Hakkımızda</a></li>
+          <li><a href="#team">Sanatçılar</a></li>
+          <li><a href="#">Kullanım Şartları</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Bağlantılar</h3>
+        <ul>
+          <li><a href="#gallery">Galeri</a></li>
+          <li><a href="#">Fiyat Listesi</a></li>
+          <li><a href="#">SSS</a></li>
+          <li><a href="#contact">İletişim</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Hızlı Erişim</h3>
+        <ul>
+          <li><a href="#">Yeni Tasarımlar</a></li>
+          <li><a href="#gallery">Popüler Kapaklar</a></li>
+          <li><a href="#">Kampanyalar</a></li>
+          <li><a href="#">Destek</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 Polikrami. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="../js/home-page.js"></script>
+</body>
+
+</html>
