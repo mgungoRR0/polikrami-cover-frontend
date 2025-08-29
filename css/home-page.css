@@ -61,7 +61,7 @@ header.scrolled {
 }
 
 nav {
-  max-width: 1200px;
+  max-width: 1445px;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
@@ -681,7 +681,7 @@ div.item:nth-of-type(5) {
 
 .process-grid {
   display: grid;
-  grid-template-columns: repeat(3, 420px);
+  grid-template-columns: repeat(3, 458px);
   gap: 1.5rem;
   justify-content: center;
 }
@@ -761,8 +761,8 @@ div.item:nth-of-type(5) {
 }
 
 .cta-container {
-  width: 1308px;
-  max-width: 1308px;
+  width: 1384px;
+  max-width: 1385px;
   height: 105px;
   background: #659E36;
   display: flex;
