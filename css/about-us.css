@@ -1,16 +1,127 @@
 /* ================================
+   ABOUT US PAGE - FINAL COMPLETE CSS
+   ================================ */
+
+/* ================================
+   ABOUT HERO SECTION - FINAL
+   ================================ */
+
+.about-hero-section {
+    padding: 5rem 0;
+    background: #ffffff;
+    margin-top: 80px;
+}
+
+.about-hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.about-hero-wrapper {
+    display: grid;
+    grid-template-columns: 550px 1fr;
+    gap: 0;
+    align-items: center;
+    position: relative;
+}
+
+/* Sol taraf - Görsel */
+.hero-image-side {
+    position: relative;
+    z-index: 1; /* İçerik kutusundan daha yüksek z-index */
+}
+
+.image-container {
+    position: relative;
+    width: 556px;
+    height: 903px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Arka plan kaldırıldı - logoyu direkt resim üzerinde göster */
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.logo-bottom img {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Sağ taraf - İçerik */
+.hero-content-side {
+    position: relative;
+    padding-left: 0;
+    z-index: 1; /* Görselden daha düşük z-index */
+}
+
+.content-bordered-box {
+    background: white;
+    border: 4px solid #659E36;
+    border-radius: 0; /* Radius kaldırıldı */
+    padding: 3rem;
+    padding-left: 100px; /* Sol taraf için ekstra padding */
+    margin-left: -70px; /* Sola doğru taşma - görselin arkasına geçecek */
+    min-height: 500px;
+    position: relative;
+}
+
+.content-bordered-box h1 {
+    font-size: 2.5rem;
+    color: #FF9A00;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content-bordered-box h3 {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content-bordered-box p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+/* ================================
    WHY US SECTION - Biz Neler Yapıyoruz
    ================================ */
 
 .why-us-section {
-    padding: 5rem 2rem 4rem;
+    padding: 5rem 0 4rem;
     background: #FFFFFF;
-    margin-top: 80px; /* Header için boşluk */
 }
 
 .why-us-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .why-us-content {
@@ -49,8 +160,8 @@
 }
 
 .book-image img {
-    width: 280px;
-    height: auto;
+    width: 500px;
+    height: 500px;
     object-fit: contain;
     filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
 }
@@ -73,20 +184,20 @@
     background: transparent;
 }
 
-/* Zigzag düzeni - Girintili çıkıntılı yerleşim */
+/* ZİGZAG DÜZENİ */
 .feature-item:nth-child(1) {
-    margin-left: 0;
-    margin-right: 100px;
-}
-
-.feature-item:nth-child(2) {
     margin-left: 100px;
     margin-right: 0;
 }
 
-.feature-item:nth-child(3) {
+.feature-item:nth-child(2) {
     margin-left: 0;
     margin-right: 100px;
+}
+
+.feature-item:nth-child(3) {
+    margin-left: 100px;
+    margin-right: 0;
 }
 
 .feature-number {
@@ -124,11 +235,11 @@
 
 .feature-item:nth-child(1):hover,
 .feature-item:nth-child(3):hover {
-    transform: translateX(10px);
+    transform: translateX(-10px);
 }
 
 .feature-item:nth-child(2):hover {
-    transform: translateX(-10px);
+    transform: translateX(10px);
 }
 
 .feature-item:hover .feature-number {
@@ -140,8 +251,8 @@
    ================================ */
 
 .contact-section {
-    padding: 4rem 2rem;
-    background: #FAFAFA;
+    padding: 4rem 0;
+    background: #FFFFFF; /* Arka plan beyaz yapıldı */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,17 +261,18 @@
 
 .contact-container {
     width: 100%;
-    max-width: 1050px;
+    max-width: 1200px; /* Diğer section'larla aynı genişlik */
     margin: 0 auto;
+    padding: 0 2rem; /* Diğer section'larla aynı padding */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .contact-box {
-    width: 1050px;
+    width: 100%;
+    max-width: 100%; /* Full genişlik kullan */
     height: 550px;
-    max-width: 95%;
     background: linear-gradient(135deg, #ff6b35, #f7931e);
     border-radius: 24px;
     padding: 2rem 3rem;
@@ -171,7 +283,6 @@
     box-shadow: 0 25px 70px rgba(255, 107, 53, 0.25);
 }
 
-/* Dekoratif arka plan efektleri */
 .contact-box::before {
     content: '';
     position: absolute;
@@ -267,7 +378,6 @@
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
-/* Textarea özel ayarları */
 .contact-form textarea.form-control {
     resize: none;
     min-height: 80px;
@@ -302,7 +412,32 @@
     transform: translateY(0);
 }
 
-/* Animasyonlar */
+/* ================================
+   ANIMATIONS
+   ================================ */
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -312,6 +447,15 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.hero-image-side {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.hero-content-side {
+    animation: slideInRight 0.8s ease-out 0.2s;
+    animation-fill-mode: both;
 }
 
 .why-us-left {
@@ -335,8 +479,48 @@
     animation-delay: 0.6s;
 }
 
-/* Responsive Design */
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 1200px) {
+    .about-hero-wrapper {
+        grid-template-columns: 500px 1fr;
+    }
+    
+    .image-container {
+        width: 500px;
+        height: 800px;
+    }
+}
+
 @media (max-width: 1024px) {
+    /* About Hero */
+    .about-hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hero-image-side {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .image-container {
+        width: 450px;
+        height: 500px;
+    }
+    
+    .hero-content-side {
+        padding-left: 0;
+    }
+    
+    .content-bordered-box {
+        margin-left: 0;
+        padding: 2.5rem;
+    }
+    
+    /* Why Us */
     .why-us-content {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -349,29 +533,70 @@
     
     .book-image {
         margin: 0 auto;
+        max-width: 500px;
+    }
+    
+    .book-image img {
+        width: 100%;
         max-width: 400px;
+        height: auto;
     }
     
     .why-us-right {
         padding-top: 0;
     }
     
-    /* Tablet'te zigzag düzenini koru ama margin'leri azalt */
     .feature-item:nth-child(1),
     .feature-item:nth-child(3) {
-        margin-left: 0;
-        margin-right: 100px;
+        margin-left: 50px;
+        margin-right: 0;
     }
     
     .feature-item:nth-child(2) {
-        margin-left: 100px;
-        margin-right: 0;
+        margin-left: 0;
+        margin-right: 50px;
     }
 }
 
 @media (max-width: 768px) {
+    /* About Hero */
+    .about-hero-section {
+        padding: 3rem 0;
+        margin-top: 70px;
+    }
+    
+    .about-hero-container,
+    .why-us-container,
+    .contact-container {
+        padding: 0 1.5rem;
+    }
+    
+    .image-container {
+        width: 100%;
+        max-width: 400px;
+        height: 450px;
+    }
+    
+    .logo-bottom img {
+        height: 40px;
+    }
+    
+    .content-bordered-box {
+        padding: 2rem;
+        border-width: 4px; /* Mobile'de border da küçültüldü */
+    }
+    
+    .content-bordered-box h1 {
+        font-size: 2rem;
+    }
+    
+    .content-bordered-box p {
+        font-size: 0.9rem;
+    }
+    
+    /* Why Us */
     .why-us-section {
-        padding: 3rem 1rem;
+        padding: 3rem 0;
     }
     
     .section-title {
@@ -381,6 +606,11 @@
     .section-subtitle {
         font-size: 0.95rem;
         margin-bottom: 2rem;
+    }
+    
+    .book-image img {
+        width: 350px;
+        height: 350px;
     }
     
     .feature-number {
@@ -400,19 +630,20 @@
         padding: 1rem;
     }
     
-    /* Mobilde zigzag düzenini hafiflet */
     .feature-item:nth-child(1),
     .feature-item:nth-child(3) {
-        margin-right: 30px;
+        margin-left: 30px;
+        margin-right: 0;
     }
     
     .feature-item:nth-child(2) {
-        margin-left: 30px;
+        margin-left: 0;
+        margin-right: 30px;
     }
     
-    /* Contact Section Responsive */
+    /* Contact */
     .contact-section {
-        padding: 3rem 1rem;
+        padding: 3rem 0;
     }
     
     .contact-box {
@@ -451,8 +682,53 @@
 }
 
 @media (max-width: 480px) {
+    /* About Hero */
+    .about-hero-section {
+        padding: 2rem 0;
+    }
+    
+    .about-hero-container,
+    .why-us-container,
+    .contact-container {
+        padding: 0 1rem;
+    }
+    
+    .image-container {
+        width: 100%;
+        max-width: 320px;
+        height: 380px;
+    }
+    
+    .logo-bottom {
+        bottom: 20px;
+    }
+    
+    .logo-bottom img {
+        height: 30px;
+    }
+    
+    .content-bordered-box {
+        padding: 1.5rem;
+        border-width: 2px;
+        min-height: auto;
+    }
+    
+    .content-bordered-box h1 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .content-bordered-box h3 {
+        font-size: 1.1rem;
+    }
+    
+    .content-bordered-box p {
+        font-size: 0.85rem;
+    }
+    
+    /* Why Us */
     .why-us-section {
-        padding: 2.5rem 1rem;
+        padding: 2.5rem 0;
     }
     
     .section-title {
@@ -460,14 +736,14 @@
     }
     
     .book-image img {
-        width: 220px;
+        width: 280px;
+        height: 280px;
     }
     
     .why-us-right {
         gap: 1.5rem;
     }
     
-    /* Çok küçük ekranlarda zigzag düzenini kaldır */
     .feature-item {
         flex-direction: column;
         text-align: center;
@@ -487,9 +763,9 @@
         margin-bottom: 0.5rem;
     }
     
-    /* Contact Section Mobile */
+    /* Contact */
     .contact-section {
-        padding: 2rem 1rem;
+        padding: 2rem 0;
     }
     
     .contact-box {
@@ -506,7 +782,10 @@
     }
 }
 
-/* Header active state */
+/* ================================
+   HEADER ACTIVE STATE
+   ================================ */
+
 .nav-links a.active {
     color: #FF9A00;
     font-weight: 600;
