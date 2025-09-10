@@ -1,0 +1,513 @@
+/* ================================
+   WHY US SECTION - Biz Neler Yapıyoruz
+   ================================ */
+
+.why-us-section {
+    padding: 5rem 2rem 4rem;
+    background: #FFFFFF;
+    margin-top: 80px; /* Header için boşluk */
+}
+
+.why-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.why-us-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* Sol taraf */
+.why-us-left {
+    padding-right: 2rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #5E5E5E;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 3rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.book-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-image img {
+    width: 280px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+}
+
+/* Sağ taraf - Özellikler */
+.why-us-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: transparent;
+}
+
+/* Zigzag düzeni - Girintili çıkıntılı yerleşim */
+.feature-item:nth-child(1) {
+    margin-left: 0;
+    margin-right: 100px;
+}
+
+.feature-item:nth-child(2) {
+    margin-left: 100px;
+    margin-right: 0;
+}
+
+.feature-item:nth-child(3) {
+    margin-left: 0;
+    margin-right: 100px;
+}
+
+.feature-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #659E36;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1;
+    min-width: 60px;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.feature-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hover efektleri */
+.feature-item:hover {
+    background: #f8f9fa;
+}
+
+.feature-item:nth-child(1):hover,
+.feature-item:nth-child(3):hover {
+    transform: translateX(10px);
+}
+
+.feature-item:nth-child(2):hover {
+    transform: translateX(-10px);
+}
+
+.feature-item:hover .feature-number {
+    color: #FF9A00;
+}
+
+/* ================================
+   CONTACT SECTION - Bize Ulaşın
+   ================================ */
+
+.contact-section {
+    padding: 4rem 2rem;
+    background: #FAFAFA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 650px;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-box {
+    width: 1050px;
+    height: 550px;
+    max-width: 95%;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    border-radius: 24px;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(255, 107, 53, 0.25);
+}
+
+/* Dekoratif arka plan efektleri */
+.contact-box::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -15%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.contact-box::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    left: -10%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-header p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.95;
+    margin-bottom: 0.25rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+}
+
+.contact-form .form-control {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.contact-form .form-control::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+.contact-form .form-control:focus {
+    background: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Textarea özel ayarları */
+.contact-form textarea.form-control {
+    resize: none;
+    min-height: 80px;
+    max-height: 80px;
+    overflow-y: auto;
+}
+
+.contact-form .submit-btn {
+    width: 180px;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #5E5E5E;
+    background: #FFD93D;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0.5rem auto 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form .submit-btn:hover {
+    background: #FFC107;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form .submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Animasyonlar */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.why-us-left {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.feature-item {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.feature-item:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.feature-item:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.feature-item:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .why-us-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .why-us-left {
+        padding-right: 0;
+        text-align: center;
+    }
+    
+    .book-image {
+        margin: 0 auto;
+        max-width: 400px;
+    }
+    
+    .why-us-right {
+        padding-top: 0;
+    }
+    
+    /* Tablet'te zigzag düzenini koru ama margin'leri azalt */
+    .feature-item:nth-child(1),
+    .feature-item:nth-child(3) {
+        margin-left: 0;
+        margin-right: 100px;
+    }
+    
+    .feature-item:nth-child(2) {
+        margin-left: 100px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-us-section {
+        padding: 3rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+    
+    .feature-number {
+        font-size: 2rem;
+        min-width: 50px;
+    }
+    
+    .feature-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .feature-content p {
+        font-size: 0.9rem;
+    }
+    
+    .feature-item {
+        padding: 1rem;
+    }
+    
+    /* Mobilde zigzag düzenini hafiflet */
+    .feature-item:nth-child(1),
+    .feature-item:nth-child(3) {
+        margin-right: 30px;
+    }
+    
+    .feature-item:nth-child(2) {
+        margin-left: 30px;
+    }
+    
+    /* Contact Section Responsive */
+    .contact-section {
+        padding: 3rem 1rem;
+    }
+    
+    .contact-box {
+        padding: 1.5rem;
+        height: auto;
+        min-height: auto;
+    }
+    
+    .contact-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-header p {
+        font-size: 0.85rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0.875rem;
+    }
+    
+    .contact-form .form-control {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .contact-form textarea.form-control {
+        min-height: 70px;
+        max-height: 70px;
+    }
+    
+    .contact-form .submit-btn {
+        width: 100%;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-us-section {
+        padding: 2.5rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .book-image img {
+        width: 220px;
+    }
+    
+    .why-us-right {
+        gap: 1.5rem;
+    }
+    
+    /* Çok küçük ekranlarda zigzag düzenini kaldır */
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 15px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .feature-item:hover {
+        transform: none;
+        background: #f0f0f0;
+    }
+    
+    .feature-number {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Contact Section Mobile */
+    .contact-section {
+        padding: 2rem 1rem;
+    }
+    
+    .contact-box {
+        padding: 1.25rem;
+        border-radius: 15px;
+    }
+    
+    .contact-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-form .form-control {
+        padding: 0.7rem 0.9rem;
+    }
+}
+
+/* Header active state */
+.nav-links a.active {
+    color: #FF9A00;
+    font-weight: 600;
+}
