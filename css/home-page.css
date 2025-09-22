@@ -1,4 +1,23 @@
-:root {
+@media (max-width: 480px) {
+  .user-section {
+    gap: 0.75rem;
+  }
+  
+  .coin-display {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.85rem;
+  }
+  
+  .profile-avatar {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .profile-dropdown {
+    min-width: 200px;
+    right: -10px;
+  }
+}:root {
   --orange: #ff6b35;
   --orange-600: #e55a2b;
   --green: #6ab04c;
@@ -804,7 +823,7 @@ div.item:nth-of-type(5) {
 }
 
 /* ================================
-   FOOTER SECTION
+   FOOTER SECTION - DÜZELTME
    ================================ */
 
 .footer {
@@ -812,17 +831,16 @@ div.item:nth-of-type(5) {
   padding: 4rem 0 0;
   margin-top: auto;
   position: relative;
-  overflow: visible; /* Taşmanın görünmesi için visible */
   width: 100%;
-  min-height: 400px; /* Minimum yükseklik ekle */
+  min-height: 400px;
 }
 
 .footer-container {
   max-width: 1512px;
   margin: 0 auto;
-  padding: 0 4rem 250px 4rem; /* Alt padding artırıldı */
+  padding: 0 4rem 250px 4rem;
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
 
 .footer-content {
@@ -831,7 +849,7 @@ div.item:nth-of-type(5) {
   gap: 4rem;
   margin-bottom: 3rem;
   position: relative;
-  z-index: 1; /* Görselin altında kalması için düşük z-index */
+  z-index: 10;
 }
 
 /* Logo ve İletişim Kolonu */
@@ -960,57 +978,42 @@ div.item:nth-of-type(5) {
   opacity: 1;
 }
 
-/* Footer Dekorasyon Alanı */
+/* Footer Dekorasyon - TAM GENİŞLİK DÜZENLEME */
 .footer-decoration {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  height: 350px; /* Yükseklik artırıldı */
+  height: 350px;
+  z-index: 1;
   pointer-events: none;
-  z-index: 2;
 }
 
-/* Tek büyük background görsel için */
+.footer-decoration::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/footer-decoration.png');
+  background-size: 100% auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+/* Alternatif: Eğer img elementi kullanmak isterseniz */
 .footer-decoration img {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100vw;
-  min-width: 100vw; /* Minimum genişlik garantisi */
-  height: auto; /* Otomatik yükseklik, oranı koru */
-  min-height: 350px; /* Minimum yükseklik */
-  object-fit: cover;
-  object-position: center bottom; /* Alt ortadan hizala */
-  opacity: 1;
-}
-
-/* Eğer 2 ayrı görsel kullanmak isterseniz bu stilleri kullanın */
-/*
-.footer-decoration .decoration-left {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 50%;
+  width: 100%;
   height: auto;
-  max-height: 200px;
+  max-height: 100%;
   object-fit: contain;
-  object-position: bottom left;
+  object-position: center bottom;
 }
-
-.footer-decoration .decoration-right {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 50%;
-  height: auto;
-  max-height: 200px;
-  object-fit: contain;
-  object-position: bottom right;
-}
-*/
 
 /* Responsive Footer */
 @media (max-width: 1024px) {
@@ -1029,18 +1032,17 @@ div.item:nth-of-type(5) {
   
   .footer-decoration {
     height: 200px;
-    bottom: 0;
   }
   
+  .footer-decoration::before,
   .footer-decoration img {
-    height: 100%;
+    background-size: 100% auto;
   }
 }
 
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 0 0;
-    overflow: visible;
   }
   
   .footer-container {
@@ -1076,12 +1078,11 @@ div.item:nth-of-type(5) {
   
   .footer-decoration {
     height: 150px;
-    bottom: 0;
   }
   
+  .footer-decoration::before,
   .footer-decoration img {
-    height: 100%;
-    opacity: 1;
+    background-size: 100% auto;
   }
 }
 
@@ -1106,11 +1107,11 @@ div.item:nth-of-type(5) {
   
   .footer-decoration {
     height: 100px;
-    bottom: 0;
   }
   
+  .footer-decoration::before,
   .footer-decoration img {
-    height: 100%;
+    background-size: 100% auto;
   }
 }
 
@@ -1125,6 +1126,216 @@ div.item:nth-of-type(5) {
   font-size: 1.5rem;
   cursor: pointer;
   color: #333;
+}
+
+/* ================================
+   HEADER PROFILE & COIN SECTION
+   ================================ */
+
+/* User Section Container */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: 2rem;
+  position: relative;
+}
+
+/* Coin Display */
+.coin-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #FFF3E0;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #F57C00;
+  font-size: 1rem;
+}
+
+.coin-icon {
+  width: 24px;
+  height: 24px;
+  background: #FFB300;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Profile Avatar */
+.profile-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+  border-color: #ff6b35;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 15px);
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  min-width: 250px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.profile-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Arrow */
+.profile-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  transform: rotate(45deg);
+  box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Dropdown Header */
+.dropdown-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: center;
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFF 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.dropdown-header h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #333;
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+}
+
+.dropdown-header p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Dropdown Menu Items */
+.dropdown-menu {
+  padding: 0.5rem;
+  list-style: none;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #f8f8f8;
+  color: #ff6b35;
+  transform: translateX(5px);
+}
+
+.dropdown-menu .highlighted {
+  background: #FFF3E0;
+  color: #F57C00;
+  font-weight: 600;
+}
+
+.dropdown-menu .highlighted:hover {
+  background: #FFE0B2;
+}
+
+/* Menu Icons */
+.dropdown-menu .menu-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.dropdown-menu .menu-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  transition: all 0.2s ease;
+}
+
+.dropdown-menu a:hover .menu-icon {
+  opacity: 1;
+}
+
+.dropdown-menu a:hover .menu-icon svg {
+  stroke-width: 2.5;
+}
+
+/* Dropdown Footer */
+.dropdown-footer {
+  padding: 0.5rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.dropdown-footer a {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  color: #999;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-footer a:hover {
+  background: #f8f8f8;
+  color: #ff6b35;
 }
 
 /* ================================
@@ -1150,6 +1361,40 @@ div.item:nth-of-type(5) {
 
   .nav-links.active {
     display: flex;
+  }
+  
+  .user-section {
+    margin-left: 0;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+  
+  .coin-display {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .coin-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+  
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .profile-dropdown {
+    right: -20px;
+    min-width: 220px;
+  }
+  
+  .dropdown-menu a {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
   }
 
   .hero-content h1 {
