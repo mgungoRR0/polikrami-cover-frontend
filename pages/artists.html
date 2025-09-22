@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakkımızda | Polikrami</title>
+    <title>Sanatçılarımız | Polikrami</title>
     <meta name="description"
-        content="Polikrami: Okurların dünyasını zenginleştiren, sanatçılarla buluşturan özel kitap kapağı tasarımları.">
+        content="Polikrami: Yetenekli sanatçılarımızla tanışın. Kitap kapaklarınıza hayat veren sanatçılarımızı keşfedin.">
 
     <!-- Google Fonts - Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/home-page.css">
-    <link rel="stylesheet" href="../css/about-us.css">
+    <link rel="stylesheet" href="../css/artists.css">
 </head>
 
 <body>
@@ -28,9 +28,9 @@
             <button class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="navLinks">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="home-page.html">Ana Sayfa</a></li>
-                <li><a href="#gallery">Çalışmalarımız</a></li>
-                <li><a href="artists.html">Sanatçılarımız</a></li>
-                <li><a href="about-us.html" class="active">Hakkımızda</a></li>
+                <li><a href="portfolio.html">Çalışmalarımız</a></li>
+                <li><a href="artists.html" class="active">Sanatçılarımız</a></li>
+                <li><a href="about-us.html">Hakkımızda</a></li>
                 <li class="lang-selector" role="group" aria-label="Dil seçimi">
                     <button type="button" aria-label="Türkçe" data-lang="tr"><img src="images/flag-tr.png"
                             alt=""></button>
@@ -41,158 +41,160 @@
         </nav>
     </header>
 
-    <main id="about">
-        <!-- Hakkımızda Hero Section -->
-        <section class="about-hero-section">
-            <div class="about-hero-container">
-                <div class="about-hero-wrapper">
-                    <!-- Sol taraf - Görsel -->
-                    <div class="hero-image-side">
-                        <div class="image-container">
-                            <img src="../assets/images/about-polikrami-image.png" alt="Bulutlar ve Polikrami">
-                        </div>
-                    </div>
-
-                    <!-- Sağ taraf - İçerik (Yeşil Border) -->
-                    <div class="hero-content-side">
-                        <div class="content-bordered-box">
-                            <h1>Hakkımızda</h1>
-
-                            <p>
-                                Polikrami markası Yatgak Bilişim Teknolojileri Ticaret ve Sanayi Limited Şirketinin, ek
-                                iş kollarından birisidir. Polikrami.com 13/11/2017 tarihinde sanatçı ve sanatçı
-                                adaylarına hizmet edilmek için storti verilmiş bir e-ticaret mağazasıdır.
-                            </p>
-
-                            <h3>Kuruluş Amacı:</h3>
-
-                            <p>
-                                Polikrami markasının yegane hedefi "Sanatçıları" ve "Sanatçı Adaylarını" bir araya
-                                getirip sizlere gün geçtikçe daha iyi hizmet ve servisi ilke edinmek, siz değerli
-                                müşterilerimize/müşteri adaylarımızın ihtiyaçlarını karşılamaktır. Yeri ve zamanı
-                                geldiğinde üretim bandında da yerini alarak sanatçıların ihtiyaçlarını direk ilk ağızdan
-                                dinleyerek üretime geçmeyi hedeflemektedir.
-                            </p>
-
-                            <p>
-                                İlaveten, Polikrami markası tesadüf eseri kurulan bir sanat malzemeleri sağlayıcısıdır.
-                                Tesadüf konusuna istinaden ek detay olarak, bir platformda karşılaştığımız Prismacolor
-                                markası ile başlayan hikayemiz, 2017'den beri yüzlerce memnun müşteriye dönüştü. 2021
-                                yılında Türkiye'nin yerli üreticisi Bigpoint ile çalışmaya başlayarak daha uygun
-                                koşullarda kaliteli ürünler sunmaya başladık.
-                            </p>
-
-                            <p>
-                                Polikrami.com Yatgak Bilişim Teknolojileri tüzel kişiliğine destek olarak kişiler
-                                (şirket içi çalışan veya dışarıdan destek veren) tarafından kurulmuştur.
-                            </p>
-                        </div>
-                    </div>
+    <main id="artists">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-container">
+                <div class="hero-content animate-fade-in">
+                    <h1 id="hero-title"><span class="highlight-green">Sanatçılarımız,</span> <br>hayallerinizi
+                        sanata<br> dönüştürüyor!</h1>
+                    <p>
+                        Kitap kapaklarınıza hayat veren yetenekli sanatçılarla tanışın. Tarzınıza en uygun ismi seçin ve
+                        hayalinizdeki tasarımı gerçeğe dönüştürün!
+                    </p>
                 </div>
+            </div>
+            <div class="hero-illustration">
+                <img src="../assets/images/artists-hero-section.png" alt="Sanatçılar illüstrasyonu" width="721"
+                    height="490">
             </div>
         </section>
 
-        <!-- Biz Neler Yapıyoruz Section -->
-        <section class="why-us-section">
-            <div class="why-us-container">
-                <div class="why-us-content">
-                    <!-- Sol taraf - Görsel -->
-                    <div class="why-us-left">
-                        <h2 class="section-title">Biz Neler Yapıyoruz?</h2>
-                        <p class="section-subtitle">
-                            Hayal gücünüzü sanatla buluşturuyoruz! Okuduğunuz kitapların kapaklarını, yetenekli
-                            sanatçılarımızın özgün dokunuşlarıyla yeniden tasarlıyoruz.
-                        </p>
-                        <div class="book-image">
-                            <img src="../assets/images/about-example-image.png" alt="Hissizlik Kitap">
+        <!-- Artists Section -->
+        <section class="artists-section">
+            <div class="artists-container">
+                <h2 class="section-title">Sanatçılarımız</h2>
+
+                <div class="artists-grid">
+                    <!-- Artist Card 1 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="../assets/images/kerem-özer-image.png" alt="Kerem Özer">
+                        </div>
+                        <h3 class="artist-name">Kerem Özer</h3>
+                        <p class="artist-title">Uzmanlık Alanları</p>
+                        <ul class="artist-skills">
+                            <li>İllüstratif</li>
+                            <li>Soyut</li>
+                            <li>Gerçekçi</li>
+                        </ul>
+
+                        <div class="artist-education">
+                            <h4>Eğitim</h4>
+                            <p>Mimar Sinan Güzel Sanatlar - Grafik Tasarım</p>
+                        </div>
+
+                        <div class="artist-note">
+                            <h4>Hakkında Kısa Not</h4>
+                            <p>Tasarımda sadelikten yanayım.Dayanaları yanıstan sade tasarımlar üretmek en büyük
+                                önceliğim.</p>
+                        </div>
+
+                        <div class="artist-rating">
+                            <h4>Müşteri Değerlendirmeleri</h4>
+                            <div class="rating-stars">
+                                <span>★★★★★</span>
+                                <span class="rating-number">4.9</span>
+                            </div>
+                        </div>
+
+                        <div class="artist-testimonial">
+                            <h4>Ayşe T.</h4>
+                            <p>"Harika bir deneyimdi.Çizime tam duygu yansıtıldı."</p>
+                        </div>
+
+                        <div class="artist-portfolio">
+                            <h4>Ali K.</h4>
+                            <p>"Zamanında teslim,çok tatlı bir stil.Yine tercih ederim."</p>
                         </div>
                     </div>
 
-                    <!-- Sağ taraf - Özellikler -->
-                    <div class="why-us-right">
-                        <div class="feature-item">
-                            <div class="feature-number">01</div>
-                            <div class="feature-content">
-                                <h3>Hikayemiz</h3>
-                                <p>Neden Bu Platformu Kurduk?<br>
-                                    "Her kitabın arkasında benzersiz bir hikaye ve okurun gözünde bambaşka bir tasvir
-                                    vardır. Bu hayallerin sanatla dönüşmesi için yola çıktık."</p>
+                    <!-- Artist Card 2 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="../assets/images/mine-ceylan-image.png" alt="Mine Ceylan">
+                        </div>
+                        <h3 class="artist-name">Mine Ceylan</h3>
+                        <p class="artist-title">Uzmanlık Alanları</p>
+                        <ul class="artist-skills">
+                            <li>İllüstratif</li>
+                            <li>Soyut</li>
+                            <li>Gerçekçi</li>
+                        </ul>
+
+                        <div class="artist-education">
+                            <h4>Eğitim</h4>
+                            <p>Mimar Sinan Güzel Sanatlar - Grafik Tasarım</p>
+                        </div>
+
+                        <div class="artist-note">
+                            <h4>Hakkında Kısa Not</h4>
+                            <p>Tasarımda sadelikten yanayım.Dayanaları yanıstan sade tasarımlar üretmek en büyük
+                                önceliğim.</p>
+                        </div>
+
+                        <div class="artist-rating">
+                            <h4>Müşteri Değerlendirmeleri</h4>
+                            <div class="rating-stars">
+                                <span>★★★★★</span>
+                                <span class="rating-number">4.8</span>
                             </div>
                         </div>
 
-                        <div class="feature-item">
-                            <div class="feature-number">02</div>
-                            <div class="feature-content">
-                                <h3>Amacımız - Değerlerimiz</h3>
-                                <p>Okurların hayallerine saygı duyuyoruz. Sanatçılara yaratıcılıklarını özgürce
-                                    sergileme fırsatı sunuyoruz.<br>
-                                    Her tasarımın, kişiye özel ve özgün olmasını önemsiyoruz.</p>
+                        <div class="artist-testimonial">
+                            <h4>Ayşe T.</h4>
+                            <p>"Harika bir deneyimdi.Çizime tam duygu yansıtıldı."</p>
+                        </div>
+
+                        <div class="artist-portfolio">
+                            <h4>Ali K.</h4>
+                            <p>"Zamanında teslim,çok tatlı bir stil.Yine tercih ederim."</p>
+                        </div>
+                    </div>
+
+                    <!-- Artist Card 3 -->
+                    <div class="artist-card">
+                        <div class="artist-image">
+                            <img src="../assets/images/emre-yılmaz-image.png" alt="Emre Yılmaz">
+                        </div>
+                        <h3 class="artist-name">Emre Yılmaz</h3>
+                        <p class="artist-title">Uzmanlık Alanları</p>
+                        <ul class="artist-skills">
+                            <li>İllüstratif</li>
+                            <li>Soyut</li>
+                            <li>Gerçekçi</li>
+                        </ul>
+
+                        <div class="artist-education">
+                            <h4>Eğitim</h4>
+                            <p>Mimar Sinan Güzel Sanatlar - Grafik Tasarım</p>
+                        </div>
+
+                        <div class="artist-note">
+                            <h4>Hakkında Kısa Not</h4>
+                            <p>Tasarımda sadelikten yanayım.Dayanaları yanıstan sade tasarımlar üretmek en büyük
+                                önceliğim.</p>
+                        </div>
+
+                        <div class="artist-rating">
+                            <h4>Müşteri Değerlendirmeleri</h4>
+                            <div class="rating-stars">
+                                <span>★★★★★</span>
+                                <span class="rating-number">4.9</span>
                             </div>
                         </div>
 
-                        <div class="feature-item">
-                            <div class="feature-number">03</div>
-                            <div class="feature-content">
-                                <h3>Neden Bizi Seçmelisiniz?</h3>
-                                <p>Özgün Tasarımlar: Kitaplarınıza özel, hayal gücünüzden doğan kapaklar.<br>
-                                    Profesyonel Sanatçılar: Alanında yetenekli ve yaratıcı sanatçılarla çalışma imkanı.
-                                </p>
-                            </div>
+                        <div class="artist-testimonial">
+                            <h4>Ayşe T.</h4>
+                            <p>"Harika bir deneyimdi.Çizime tam duygu yansıtıldı."</p>
+                        </div>
+
+                        <div class="artist-portfolio">
+                            <h4>Ali K.</h4>
+                            <p>"Zamanında teslim,çok tatlı bir stil.Yine tercih ederim."</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Bize Ulaşın Section -->
-        <section class="contact-section">
-            <div class="contact-container">
-                <div class="contact-box">
-                    <div class="contact-header">
-                        <h2>Bize Ulaşın</h2>
-                        <p>Her türlü sorunuz ve iş birliği talepleriniz için bizimle iletişime geçmekten çekinmeyin.</p>
-                        <p>Hayallerinizi birlikte gerçeğe dönüştürelim!</p>
-                    </div>
-
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Ad"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="lastName" name="lastName" class="form-control"
-                                    placeholder="Soyad" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="tel" id="phone" name="phone" class="form-control"
-                                    placeholder="Telefon Numarası" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" id="email" name="email" class="form-control" placeholder="E-Posta"
-                                    required>
-                            </div>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <textarea id="message" name="message" class="form-control" rows="3" placeholder="Mesajınız"
-                                required></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Gönder</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="cta-container">
-                <h2>Başlamaya hazır mısın?</h2>
-                <a href="#" class="cta-button">Oluşturmaya Başla</a>
             </div>
         </section>
     </main>
@@ -296,7 +298,7 @@
 
     <script src="../js/base.js"></script>
     <script src="../js/navigation.js"></script>
-    <script src="../js/about-us.js"></script>
+    <script src="../js/artists.js"></script>
 </body>
 
 </html>

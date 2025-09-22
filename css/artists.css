@@ -1,0 +1,274 @@
+/* ================================
+   ARTISTS PAGE CSS
+   ================================ */
+
+/* Header Active State */
+.nav-links a.active {
+    color: #FF9A00;
+    font-weight: 600;
+}
+
+/* Hero Section - Yeşil vurgu */
+.highlight-green {
+    color: #659E36;
+}
+
+/* ================================
+   ARTISTS SECTION
+   ================================ */
+
+.artists-section {
+    padding: 5rem 2rem;
+    background: #FFFFFF;
+}
+
+.artists-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FF9A00;
+    margin-bottom: 3rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+}
+
+.artist-card {
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Artist Image */
+.artist-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #F5F5F5;
+}
+
+.artist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Artist Name and Title */
+.artist-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.artist-title {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Artist Skills */
+.artist-skills {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.artist-skills li {
+    background: #F5F5F5;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #666;
+    font-family: 'Poppins', sans-serif;
+}
+
+.artist-skills li::before {
+    content: "• ";
+    color: #659E36;
+    font-weight: bold;
+}
+
+/* Artist Education */
+.artist-education {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.artist-education h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.artist-education p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Artist Note */
+.artist-note {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.artist-note h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.artist-note p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Artist Rating */
+.artist-rating {
+    margin-bottom: 1.5rem;
+}
+
+.artist-rating h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rating-stars span:first-child {
+    color: #FFD700;
+    font-size: 1.2rem;
+}
+
+.rating-number {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Artist Testimonials */
+.artist-testimonial,
+.artist-portfolio {
+    margin-bottom: 1rem;
+    background: #F8F9FA;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.artist-testimonial h4,
+.artist-portfolio h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.artist-testimonial p,
+.artist-portfolio p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    font-style: italic;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .artists-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .artists-section {
+        padding: 3rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .artists-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .artist-card {
+        padding: 1.5rem;
+    }
+    
+    .artist-image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .artist-name {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .artists-section {
+        padding: 2rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .artist-skills {
+        flex-wrap: wrap;
+    }
+    
+    .artist-skills li {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.6rem;
+    }
+}
