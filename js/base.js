@@ -1,5 +1,5 @@
 // ==========================================
-// Polikrami Frontend System - v2.1 Fixed
+// Polikrami Frontend System - v2.2 FIXED
 // ==========================================
 
 (function() {
@@ -13,14 +13,13 @@
     const $$ = (selector, parent = document) => parent.querySelectorAll(selector);
     
     // ==========================================
-    // Password Toggle System - FULLY FIXED
+    // Password Toggle System
     // ==========================================
     
     const setupPasswordToggle = () => {
         const toggleButtons = $$('.toggle-password');
         
         toggleButtons.forEach(button => {
-            // Duplicate event listener kontrolü
             if (button.dataset.initialized === 'true') return;
             button.dataset.initialized = 'true';
             
@@ -28,14 +27,10 @@
                 e.preventDefault();
                 e.stopPropagation();
                 
-                // Input'u bulmak için birden fazla yol dene
                 let input = null;
-                
-                // Yöntem 1: Aynı parent içinde ara
                 const parent = this.parentElement;
                 input = parent.querySelector('input[type="password"], input[type="text"]');
                 
-                // Yöntem 2: Eğer parent password-wrapper ise
                 if (!input) {
                     const wrapper = this.closest('.password-wrapper');
                     if (wrapper) {
@@ -43,7 +38,6 @@
                     }
                 }
                 
-                // Yöntem 3: Form group içinde ara
                 if (!input) {
                     const formGroup = this.closest('.form-group');
                     if (formGroup) {
@@ -56,21 +50,17 @@
                     return;
                 }
                 
-                // Toggle password visibility
                 const isPassword = input.type === 'password';
                 input.type = isPassword ? 'text' : 'password';
                 
-                // Toggle icons
                 const eyeOpen = this.querySelector('.eye-open');
                 const eyeClosed = this.querySelector('.eye-closed');
                 
                 if (eyeOpen && eyeClosed) {
                     if (isPassword) {
-                        // Şifre gösteriliyor
                         eyeOpen.style.display = 'none';
                         eyeClosed.style.display = 'block';
                     } else {
-                        // Şifre gizleniyor
                         eyeOpen.style.display = 'block';
                         eyeClosed.style.display = 'none';
                     }
@@ -108,7 +98,6 @@
                 }
             });
             
-            // Initial state
             if (input.value && input.value.trim() !== '') {
                 input.classList.add('filled');
             }
@@ -135,8 +124,6 @@
             };
             
             select.addEventListener('change', updateSelectStyle);
-            
-            // Initial state
             updateSelectStyle();
         });
     };
@@ -156,17 +143,13 @@
             input.dataset.enhanced = 'true';
             
             input.addEventListener('input', function(e) {
-                // Sadece rakam kabul et
                 this.value = this.value.replace(/[^0-9]/g, '').slice(0, 1);
-                
-                // Değer girildiyse sonraki input'a geç
                 if (this.value && idx < otpInputs.length - 1) {
                     otpInputs[idx + 1].focus();
                 }
             });
             
             input.addEventListener('keydown', function(e) {
-                // Backspace
                 if (e.key === 'Backspace') {
                     if (!this.value && idx > 0) {
                         e.preventDefault();
@@ -175,7 +158,6 @@
                     }
                 }
                 
-                // Arrow keys
                 if (e.key === 'ArrowLeft' && idx > 0) {
                     e.preventDefault();
                     otpInputs[idx - 1].focus();
@@ -187,7 +169,6 @@
             });
         });
         
-        // Paste event - grup üzerinde dinle
         if (otpGroup) {
             otpGroup.addEventListener('paste', function(e) {
                 e.preventDefault();
@@ -200,7 +181,6 @@
                     }
                 });
                 
-                // Son dolu veya sonraki boş input'a focus
                 const lastIndex = Math.min(numbers.length, otpInputs.length - 1);
                 if (otpInputs[lastIndex]) {
                     otpInputs[lastIndex].focus();
@@ -221,7 +201,6 @@
     };
     
     window.validatePassword = (password) => {
-        // En az 6 karakter olsun basit kontrol için
         return password && password.length >= 6;
     };
     
@@ -230,7 +209,6 @@
     // ==========================================
     
     window.showMessage = (message, type = 'info') => {
-        // Mevcut mesajları temizle
         $$('.polikrami-message').forEach(el => el.remove());
         
         const messageEl = document.createElement('div');
@@ -261,7 +239,6 @@
         
         document.body.appendChild(messageEl);
         
-        // 3 saniye sonra kaldır
         setTimeout(() => {
             messageEl.style.animation = 'slideOutRight 0.3s ease';
             setTimeout(() => messageEl.remove(), 300);
@@ -279,28 +256,15 @@
         style.id = 'polikrami-custom-styles';
         style.textContent = `
             @keyframes slideInRight {
-                from {
-                    opacity: 0;
-                    transform: translateX(100%);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
+                from { opacity: 0; transform: translateX(100%); }
+                to { opacity: 1; transform: translateX(0); }
             }
             
             @keyframes slideOutRight {
-                from {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-                to {
-                    opacity: 0;
-                    transform: translateX(100%);
-                }
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(100%); }
             }
             
-            /* Form control focus styles */
             .form-control.focused,
             .form-group.focused .form-control {
                 border-color: #FF9A00 !important;
@@ -311,7 +275,6 @@
                 background-color: #fff !important;
             }
             
-            /* Password toggle button styles */
             .toggle-password {
                 transition: opacity 0.2s ease;
                 cursor: pointer;
@@ -324,13 +287,10 @@
                 justify-content: center;
             }
             
-            .toggle-password:hover {
-                opacity: 1;
-            }
-            
+            .toggle-password:hover,
             .toggle-password:focus {
-                outline: none;
                 opacity: 1;
+                outline: none;
             }
             
             .toggle-password svg {
@@ -339,7 +299,6 @@
                 pointer-events: none;
             }
             
-            /* OTP input styles */
             .otp-input {
                 transition: all 0.3s ease;
             }
@@ -350,7 +309,6 @@
                 transform: scale(1.05);
             }
             
-            /* Select dropdown styles */
             select.form-control {
                 cursor: pointer;
                 transition: all 0.3s ease;
@@ -361,7 +319,6 @@
                 box-shadow: 0 0 0 3px rgba(255, 154, 0, 0.1) !important;
             }
             
-            /* Password wrapper positioning fix */
             .password-wrapper {
                 position: relative;
             }
@@ -377,25 +334,114 @@
             .password-wrapper input {
                 padding-right: 50px;
             }
-            
-            /* Form group with password wrapper */
-            .form-group.password-wrapper {
-                position: relative;
-            }
-            
-            .form-group.password-wrapper .toggle-password {
-                position: absolute;
-                right: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 10;
-            }
-            
-            .form-group.password-wrapper input {
-                padding-right: 50px;
-            }
         `;
         document.head.appendChild(style);
+    };
+    
+    // ==========================================
+    // Password Strength Indicator System
+    // ==========================================
+    
+    const strengthIndicatorHTML = `
+        <div class="password-strength-container">
+            <div class="strength-item" data-rule="length">
+                <div class="strength-check">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <span class="strength-text">En az 8 karakter</span>
+            </div>
+            <div class="strength-item" data-rule="complexity">
+                <div class="strength-check">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <span class="strength-text">Bir büyük harf, bir rakam, özel karakter</span>
+            </div>
+        </div>
+    `;
+
+    const validatePasswordLength = (password) => {
+        return password.length >= 8;
+    };
+
+    const validatePasswordComplexity = (password) => {
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+        return hasUpperCase && hasNumber && hasSpecialChar;
+    };
+
+    const updateStrengthIndicator = (container, password) => {
+        const lengthItem = container.querySelector('[data-rule="length"]');
+        const complexityItem = container.querySelector('[data-rule="complexity"]');
+
+        if (validatePasswordLength(password)) {
+            lengthItem.classList.add('valid');
+        } else {
+            lengthItem.classList.remove('valid');
+        }
+
+        if (validatePasswordComplexity(password)) {
+            complexityItem.classList.add('valid');
+        } else {
+            complexityItem.classList.remove('valid');
+        }
+    };
+
+    const initPasswordStrength = (passwordInput) => {
+        if (!passwordInput) return;
+        
+        const formGroup = passwordInput.closest('.form-group');
+        if (!formGroup || formGroup.querySelector('.password-strength-container')) {
+            return;
+        }
+
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = strengthIndicatorHTML;
+        const indicator = tempDiv.firstElementChild;
+        
+        formGroup.appendChild(indicator);
+
+        passwordInput.addEventListener('input', function() {
+            updateStrengthIndicator(indicator, this.value);
+        });
+
+        if (passwordInput.value) {
+            updateStrengthIndicator(indicator, passwordInput.value);
+        }
+        
+        console.log('✅ Password strength added to:', passwordInput.id);
+    };
+
+    const initAllPasswordFields = () => {
+        // SADECE kayıt ve reset sayfalarında çalışsın
+        const isSignupPage = $('#signupForm') !== null;
+        const isResetPage = $('#resetForm') !== null;
+        
+        // Eğer login, forgot-password veya verify-code sayfasındaysak ÇIKIŞ YAP
+        if (!isSignupPage && !isResetPage) {
+            console.log('⏭️ Password strength skipped: Not a signup/reset page');
+            return;
+        }
+        
+        // Signup sayfalarında #password'ü bul
+        if (isSignupPage) {
+            const passwordInput = $('#password');
+            if (passwordInput) {
+                initPasswordStrength(passwordInput);
+            }
+        }
+        
+        // Reset sayfasında #newPassword'ü bul
+        if (isResetPage) {
+            const newPasswordInput = $('#newPassword');
+            if (newPasswordInput) {
+                initPasswordStrength(newPasswordInput);
+            }
+        }
     };
     
     // ==========================================
@@ -403,14 +449,14 @@
     // ==========================================
     
     const init = () => {
-        // Temel özellikleri kur
         addCustomStyles();
         setupPasswordToggle();
         enhanceInputs();
         enhanceSelects();
         enhanceOTPInputs();
+        initAllPasswordFields(); 
+        validateTermsCheckbox();
         
-        // Debug bilgisi
         const stats = {
             toggleButtons: $$('.toggle-password').length,
             formControls: $$('.form-control').length,
@@ -418,17 +464,91 @@
             selects: $$('select.form-control').length
         };
         
-        console.log('✅ Polikrami Frontend System v2.1 Initialized');
+        console.log('✅ Polikrami Frontend System v2.2 Initialized');
         console.log('📊 Components:', stats);
     };
     
-    // DOM hazır olduğunda başlat
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
+    // ==========================================
+// Terms Checkbox Validation
+// ==========================================
+
+const validateTermsCheckbox = () => {
+    const signupForms = document.querySelectorAll('#signupForm');
     
+    signupForms.forEach(form => {
+        if (!form) return;
+        
+        form.addEventListener('submit', function(e) {
+            const termsCheckbox = form.querySelector('#termsAccept');
+            const termsContainer = form.querySelector('#termsAccept')?.closest('.terms-checkbox');
+            
+            const revenueCheckbox = form.querySelector('#revenueShareAccept');
+            const revenueContainer = form.querySelector('#revenueShareAccept')?.closest('.terms-checkbox');
+            
+            let hasError = false;
+            
+            if (termsCheckbox && !termsCheckbox.checked) {
+                e.preventDefault();
+                hasError = true;
+                
+                if (termsContainer) {
+                    termsContainer.classList.add('error');
+                    setTimeout(() => termsContainer.classList.remove('error'), 3000);
+                }
+                
+                if (typeof showMessage === 'function') {
+                    showMessage('Lütfen kullanım şartlarını ve gizlilik sözleşmesini kabul edin.', 'warning');
+                }
+                
+                termsCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            if (revenueCheckbox && !revenueCheckbox.checked) {
+                e.preventDefault();
+                hasError = true;
+                
+                if (revenueContainer) {
+                    revenueContainer.classList.add('error');
+                    setTimeout(() => revenueContainer.classList.remove('error'), 3000);
+                }
+                
+                if (typeof showMessage === 'function') {
+                    showMessage('Lütfen gelir paylaşımı sözleşmesini kabul edin.', 'warning');
+                }
+                
+                revenueCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            if (hasError) return false;
+            
+            if (termsContainer) termsContainer.classList.remove('error');
+            if (revenueContainer) revenueContainer.classList.remove('error');
+        });
+        
+        const termsCheckbox = form.querySelector('#termsAccept');
+        const termsContainer = form.querySelector('#termsAccept')?.closest('.terms-checkbox');
+        
+        if (termsCheckbox && termsContainer) {
+            termsCheckbox.addEventListener('change', function() {
+                if (this.checked) termsContainer.classList.remove('error');
+            });
+        }
+        
+        const revenueCheckbox = form.querySelector('#revenueShareAccept');
+        const revenueContainer = form.querySelector('#revenueShareAccept')?.closest('.terms-checkbox');
+        
+        if (revenueCheckbox && revenueContainer) {
+            revenueCheckbox.addEventListener('change', function() {
+                if (this.checked) revenueContainer.classList.remove('error');
+            });
+        }
+    });
+};
     // Global export
     window.polikrami = {
         $,

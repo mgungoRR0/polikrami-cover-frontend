@@ -46,8 +46,8 @@
 
             <!-- Sign Up Form -->
             <div class="login-container">
-                <h1>ÜYE OL</h1>
-                <p class="subtitle">Üyelik bilgilerinizi eksiksiz doldurarak kolayca üye olabilirsiniz.</p>
+                <h1>HESAP OLUŞTURUN</h1>
+                <p class="subtitle">Bilgilerinizi eksiksiz doldurarak kolayca hesap oluşturabilirsiniz.</p>
 
                 <form id="signupForm">
                     <div class="form-group">
@@ -119,16 +119,45 @@
                             </button>
                         </div>
                     </div>
+                    <div class="form-group terms-group">
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="termsAccept" class="checkbox-input" required>
+                            <label for="termsAccept" class="terms-label">
+                                <a href="/pages/terms-of-service.html" target="_blank" class="terms-link">Kullanım
+                                    Şartlarını</a>
+                                ve
+                                <a href="/pages/privacy-policy.html" target="_blank" class="terms-link">Gizlilik
+                                    Sözleşmesini</a>
+                                kabul ediyorum.
+                            </label>
+                        </div>
+                    </div>
 
-                    <button type="submit" class="submit-btn">Üye Ol</button>
+                    <!-- ★ Gelir Paylaşımı Sözleşmesi Checkbox ★ -->
+                    <div class="form-group terms-group">
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="revenueShareAccept" class="checkbox-input" required>
+                            <label for="revenueShareAccept" class="terms-label">
+                                <a href="/pages/revenue-share-agreement.html" target="_blank" class="terms-link">Gelir
+                                    Paylaşımı </a>sözleşmesini kabul ediyorum.
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Hesap Oluşturun</button>
                 </form>
 
-                <div class="divider">ya da</div>
+                <div class="signup-section">
+                    <span>Bir hesabınız var mı?</span>
+                    <a href="../pages/user-login.html">Giriş Yapın</a>
+                </div>
+
+                <div class="divider"></div>
 
                 <div class="signup-section">
-                    <span>Zaten Üye misiniz?</span>
-                    <a href="../pages/user-login.html">Giriş Yap</a>
+                    <a href="/pages/user-Register.html">Sanatçı Değilim</a>
                 </div>
+
 
             </div>
 
