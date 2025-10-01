@@ -46,15 +46,15 @@
             <!-- Sign In Form -->
             <div class="login-container">
                 <h1>GİRİŞ YAP</h1>
-                <p class="subtitle">"Lütfen e-posta ve şifrenizi giriniz."</p>
+                <p class="subtitle">Lütfen e-posta ve şifrenizi giriniz</p>
                 <form id="loginForm">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="E-Posta" required>
+                        <input type="email" class="form-control" id="email" placeholder="E-Postanız" required>
                     </div>
 
                     <div class="form-group">
                         <div class="password-wrapper">
-                            <input type="password" class="form-control" id="password" placeholder="Şifre" required>
+                            <input type="password" class="form-control" id="password" placeholder="Şifreniz" required>
                             <button type="button" class="toggle-password" id="togglePassword">
                                 <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
@@ -71,8 +71,12 @@
                         </div>
                     </div>
 
-                    <div class="signup-section">
-                        <a href="forgot-password.html">Şifremi Unuttum</a>
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="rememberMe" class="checkbox-input">
+                            <label for="rememberMe" class="checkbox-label">Oturumu Açık Tut</label>
+                        </div>
+                        <a href="forgot-password.html" class="forgot-password">Şifremi Unuttum</a>
                     </div>
 
                     <button type="submit" class="submit-btn">Giriş Yap</button>
@@ -81,8 +85,8 @@
                 <div class="divider">ya da</div>
 
                 <div class="signup-section">
-                    <span>Bir Hesabın Yok mu?</span>
-                    <a href="user-register.html">Üye Ol</a>
+                    <span>Hesabınız Yok mu?</span>
+                    <a href="user-register.html">Hesap Oluşturun</a>
                 </div>
             </div>
 

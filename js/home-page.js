@@ -276,3 +276,47 @@ document.addEventListener('DOMContentLoaded', function() {
     // Team scroll resize listener
     window.addEventListener('resize', applyTeamTransform);
 });
+
+// Language Selector Toggle
+const languageBtn = document.getElementById('languageBtn');
+const languageDropdown = document.getElementById('languageDropdown');
+const langOptions = document.querySelectorAll('.lang-option');
+
+if (languageBtn && languageDropdown) {
+  languageBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !isExpanded);
+    languageDropdown.classList.toggle('active');
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!languageDropdown.contains(e.target) && !languageBtn.contains(e.target)) {
+      languageBtn.setAttribute('aria-expanded', 'false');
+      languageDropdown.classList.remove('active');
+    }
+  });
+
+  // Language selection
+  langOptions.forEach(option => {
+    option.addEventListener('click', function(e) {
+      e.preventDefault();
+      const selectedLang = this.getAttribute('data-lang').toUpperCase();
+      
+      // Update active state
+      langOptions.forEach(opt => opt.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Update button text
+      document.querySelector('.lang-text').textContent = selectedLang;
+      
+      // Close dropdown
+      languageBtn.setAttribute('aria-expanded', 'false');
+      languageDropdown.classList.remove('active');
+      
+      // Here you can add your language change logic
+      console.log('Selected language:', selectedLang);
+    });
+  });
+}

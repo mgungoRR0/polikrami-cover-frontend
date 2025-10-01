@@ -208,30 +208,74 @@ body {
     height: clamp(18px, 2vw, 22px);
 }
 
+/* Form Options - Remember Me & Forgot Password */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: clamp(8px, 1vw, 12px) 0 clamp(16px, 2vw, 20px);
+    gap: 12px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #FF9900;
+    border-radius: 4px;
+}
+
+.checkbox-label {
+    font-size: clamp(15.5px, 1.3vw, 14px);
+    color: #5e5e5e99;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.checkbox-label:hover {
+    color: #FF9900;
+}
+
+.forgot-password {
+    font-size: clamp(16.5px, 1.3vw, 14px);
+    color: #5e5e5e99;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.forgot-password:hover {
+    color: #FF9900;
+}
+
 .submit-btn {
     width: 100%;
     padding: clamp(14px, 1.5vw, 18px);
     font-size: clamp(14px, 1.5vw, 16px);
     font-weight: 600;
-    color: #5E5E5E;
-    background: #FFD93D;
+    color: #FFFFFF;
+    background: #FF9900;
     border: none;
     border-radius: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: clamp(20px, 3vw, 30px);
+    margin-top: clamp(10px, 2vw, 15px);
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(255, 217, 61, 0.3);
 }
 
 .submit-btn:hover {
-    background: #FFC107;
+    background: #E68A00;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
-}
-
-.submit-btn:active {
-    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
 }
 
 .divider {
@@ -265,7 +309,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    font-size: clamp(13px, 1.5vw, 15px);
+    font-size: clamp(16px, 1.5vw, 15px);
 }
 
 .signup-section span {
@@ -273,14 +317,14 @@ body {
 }
 
 .signup-section a {
-    color: #4A90E2;
-    text-decoration: none;
-    font-weight: 600;
+    color: #5e5e5e;
+    text-decoration: underline;
+    font-weight: 800;
     transition: color 0.3s ease;
 }
 
 .signup-section a:hover {
-    color: #357ABD;
+    color: #FF9900;
 }
 
 /* Plant decoration with responsive sizing */
@@ -362,6 +406,12 @@ body {
     .plant-decoration {
         display: none;
     }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
 }
 
 /* Mobile Responsive */
@@ -378,6 +428,11 @@ body {
     .submit-btn {
         padding: 16px;
         font-size: 16px;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -431,8 +486,8 @@ select.form-control option {
 
 /* Password reset flow additions */
 .subtitle { 
-    color:#777; 
-    font-size: clamp(12px, 1.5vw, 14px); 
+    color:#5E5E5E; 
+    font-size: clamp(19px, 1.5vw, 14px); 
     margin: 8px 0 18px; 
 }
 
