@@ -34,7 +34,7 @@
             <div class="illustration-wrapper">
                 <div class="decorative-shape"></div>
                 <div class="illustration-circle">
-                    <img src="../assets/images/girisyap-image.png" alt="" />
+                    <img src="../assets/images/forgot-my-password-image.png" alt="" />
                 </div>
             </div>
         </div>
@@ -44,8 +44,8 @@
 
             <!-- Verif Code -->
             <div class="login-container">
-                <h1>KODU AL</h1>
-                <p class="subtitle">Lütfen e-postanıza gelen 4 haneli kodu girin.</p>
+                <h1>KODU GİRİNİZ</h1>
+                <p class="subtitle">Lütfen e-posta adresinize gönderilen 4 haneli kodu giriniz.</p>
 
                 <form id="otpForm">
                     <div class="otp-group" id="otpGroup">
@@ -54,7 +54,14 @@
                         <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="3. hane">
                         <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="4. hane">
                     </div>
-                    <button type="submit" class="submit-btn">Doğrula ve Devam Et</button>
+                    <button type="submit" class="submit-btn">Doğrula</button>
+
+                    <div class="resend-section">
+                        <p class="resend-text">Kod almadınız mı? <button type="button" class="resend-link"
+                                id="resendBtn" disabled>Yeniden Gönder</button></p>
+                        <p class="timer-text" id="timerText">01:30</p>
+                    </div>
+
                 </form>
             </div>
 

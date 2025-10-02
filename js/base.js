@@ -809,29 +809,43 @@
     };
 
     const initPasswordStrength = (passwordInput) => {
-        if (!passwordInput) return;
-        
-        const formGroup = passwordInput.closest('.form-group');
-        if (!formGroup || formGroup.querySelector('.password-strength-container')) {
-            return;
-        }
+    if (!passwordInput) return;
+    
+    const formGroup = passwordInput.closest('.form-group');
+    if (!formGroup || formGroup.querySelector('.password-strength-container')) {
+        return;
+    }
 
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = strengthIndicatorHTML;
-        const indicator = tempDiv.firstElementChild;
-        
-        formGroup.appendChild(indicator);
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = strengthIndicatorHTML;
+    const indicator = tempDiv.firstElementChild;
+    
+    // Başlangıçta gizli
+    indicator.style.display = 'none';
+    
+    formGroup.appendChild(indicator);
 
-        passwordInput.addEventListener('input', function() {
-            updateStrengthIndicator(indicator, this.value);
-        });
+    // Focus olunca göster
+    passwordInput.addEventListener('focus', function() {
+        indicator.style.display = 'block';
+    });
 
-        if (passwordInput.value) {
-            updateStrengthIndicator(indicator, passwordInput.value);
-        }
-        
-        console.log('✅ Password strength eklendi:', passwordInput.id);
-    };
+    // Blur olunca gizle
+    passwordInput.addEventListener('blur', function() {
+        indicator.style.display = 'none';
+    });
+
+    // Input değişince güncelle
+    passwordInput.addEventListener('input', function() {
+        updateStrengthIndicator(indicator, this.value);
+    });
+
+    if (passwordInput.value) {
+        updateStrengthIndicator(indicator, passwordInput.value);
+    }
+    
+    console.log('✅ Password strength eklendi:', passwordInput.id);
+};
 
     const initAllPasswordFields = () => {
         const isSignupPage = $('#signupForm') !== null;

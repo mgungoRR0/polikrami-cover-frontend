@@ -92,7 +92,7 @@ body {
     animation: float 6s ease-in-out infinite;
     position: relative;
     z-index: 1;
-    background-image: url(../assets/images/artist-register.png);
+    
 }
 
 .woman-illustration {
@@ -813,5 +813,60 @@ select.form-control option {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Countdown Timer & Resend Button */
+.resend-section {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.resend-text {
+    font-size: 14px;
+    color: #7F8C8D;
+    margin-bottom: 12px;
+}
+
+.resend-link {
+    background: none;
+    border: none;
+    color: #FF9900;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.resend-link:hover:not(:disabled) {
+    color: #E68A00;
+}
+
+.resend-link:disabled {
+    color: #CCCCCC;
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+.timer-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FF9900;
+    margin-top: 8px;
+}
+
+.timer-text.expired {
+    color: #f44336;
+}
+
+@media (max-width: 480px) {
+    .resend-text {
+        font-size: 13px;
+    }
+    
+    .timer-text {
+        font-size: 15px;
     }
 }
