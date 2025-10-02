@@ -30,13 +30,29 @@
                 <li><a href="portfolio.html">Çalışmalarımız</a></li>
                 <li><a href="artists.html">Sanatçılarımız</a></li>
                 <li><a href="about-us.html">Hakkımızda</a></li>
-                <li class="lang-selector" role="group" aria-label="Dil seçimi">
-                    <button type="button" aria-label="Türkçe" data-lang="tr">
-                        <img src="../assets/images/turkish-flag.svg" alt="TR" width="28" height="20">
+
+                <!-- Language Selector - Hakkımızda ile User Section arasına taşındı -->
+                <li class="language-selector">
+                    <button class="language-btn" id="languageBtn" aria-label="Dil seçimi" aria-expanded="false">
+                        <img src="../assets/icons/world.svg" alt="" class="world-icon" width="32" height="32">
+                        <span class="lang-text">Türkçe</span>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
                     </button>
-                    <button type="button" aria-label="Deutsch" data-lang="de">
-                        <img src="../assets/images/german-flag.svg" alt="DE" width="28" height="20">
-                    </button>
+
+                    <div class="language-dropdown" id="languageDropdown">
+                        <a href="#" class="lang-option active" data-lang="tr">
+                            <span>Türkçe</span>
+                        </a>
+                        <a href="#" class="lang-option" data-lang="en">
+                            <span>English</span>
+                        </a>
+                        <a href="#" class="lang-option" data-lang="de">
+                            <span>Deutsch</span>
+                        </a>
+                    </div>
                 </li>
 
                 <!-- User Section -->

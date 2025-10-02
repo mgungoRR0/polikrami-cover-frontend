@@ -51,7 +51,6 @@
                 languageBtn.setAttribute('aria-expanded', 'false');
                 languageDropdown.classList.remove('active');
                 
-                localStorage.setItem('selectedLanguage', selectedLang);
                 console.log('Seçilen dil:', selectedLang);
             });
         });
@@ -342,6 +341,193 @@
     };
     
     // ==========================================
+    // Email Verification Modal
+    // ==========================================
+    
+    const initEmailModal = () => {
+        const emailModal = $('#emailModal');
+        if (!emailModal) return;
+        
+        const modalClose = emailModal.querySelector('.modal-close');
+        const modalBox = emailModal.querySelector('.modal-box');
+        
+        // Çarpı butonuna tıklama
+        if (modalClose) {
+            modalClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeEmailModal();
+            });
+        }
+        
+        // Overlay'e tıklama (modal dışına)
+        emailModal.addEventListener('click', function(e) {
+            if (e.target === emailModal) {
+                closeEmailModal();
+            }
+        });
+        
+        // Modal box içine tıklama - kapanmasın
+        if (modalBox) {
+            modalBox.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+        
+        console.log('✅ Email modal başlatıldı');
+    };
+    
+    // Modal açma fonksiyonu (global)
+    window.showEmailModal = (email) => {
+        const emailModal = $('#emailModal');
+        if (!emailModal) {
+            console.error('Email modal bulunamadı');
+            return;
+        }
+        
+        const userEmailElement = $('#userEmail');
+        if (userEmailElement && email) {
+            userEmailElement.textContent = email;
+        }
+        
+        emailModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        console.log('Modal açıldı:', email);
+    };
+    
+    // Modal kapatma fonksiyonu (global)
+    window.closeEmailModal = () => {
+    const emailModal = $('#emailModal');
+    if (!emailModal) return;
+    
+    emailModal.classList.remove('active');
+    document.body.style.overflow = '';
+    
+    // Form'u sıfırla
+    const signupForm = $('#signupForm');
+    if (signupForm) {
+        signupForm.reset();
+        
+        // Select'lerin rengini sıfırla
+        const selects = signupForm.querySelectorAll('select.form-control');
+        selects.forEach(select => {
+            select.style.color = '#A0A0A0';
+            select.classList.remove('filled');
+        });
+        
+        // Input'ların class'larını temizle
+        const inputs = signupForm.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.classList.remove('filled', 'focused');
+        });
+        
+        // Password strength indicator'ı sıfırla
+        const strengthItems = signupForm.querySelectorAll('.strength-item');
+        strengthItems.forEach(item => item.classList.remove('valid'));
+    }
+    
+    console.log('Modal kapatıldı ve form sıfırlandı');
+};
+    
+    // ESC tuşu ile modal kapatma (global listener)
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const emailModal = $('#emailModal');
+            if (emailModal && emailModal.classList.contains('active')) {
+                closeEmailModal();
+            }
+        }
+    });
+    
+    // ==========================================
+    // Form Submission Handler
+    // ==========================================
+    
+    const initFormSubmission = () => {
+        const signupForm = $('#signupForm');
+        if (!signupForm) return;
+        
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Email kontrolü
+            const emailInput = $('#email');
+            if (!emailInput || !emailInput.value) {
+                showMessage('Lütfen e-posta adresinizi girin', 'error');
+                emailInput?.focus();
+                return;
+            }
+            
+            // Email formatı kontrolü
+            if (!validateEmail(emailInput.value)) {
+                showMessage('Geçerli bir e-posta adresi girin', 'error');
+                emailInput.focus();
+                return;
+            }
+            
+            // Şifre kontrolü
+            const passwordInput = $('#password');
+            const passwordConfirmInput = $('#passwordConfirm');
+            
+            if (passwordInput && passwordConfirmInput) {
+                if (!passwordInput.value) {
+                    showMessage('Lütfen şifrenizi girin', 'error');
+                    passwordInput.focus();
+                    return;
+                }
+                
+                if (!passwordConfirmInput.value) {
+                    showMessage('Lütfen şifrenizi tekrar girin', 'error');
+                    passwordConfirmInput.focus();
+                    return;
+                }
+                
+                if (passwordInput.value !== passwordConfirmInput.value) {
+                    showMessage('Şifreler eşleşmiyor', 'error');
+                    passwordConfirmInput.focus();
+                    return;
+                }
+                
+                const validation = validatePasswordStrength(passwordInput.value);
+                if (!validation.isValid) {
+                    showMessage('Şifreniz güvenlik gereksinimlerini karşılamıyor', 'error');
+                    passwordInput.focus();
+                    return;
+                }
+            }
+            
+            // Terms checkbox kontrolü
+            const termsCheckbox = $('#termsAccept');
+            if (termsCheckbox && !termsCheckbox.checked) {
+                showMessage('Lütfen kullanım şartlarını kabul edin', 'warning');
+                termsCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            
+            // Revenue share checkbox kontrolü (sadece artist sayfasında)
+            const revenueCheckbox = $('#revenueShareAccept');
+            if (revenueCheckbox && !revenueCheckbox.checked) {
+                showMessage('Lütfen gelir paylaşımı sözleşmesini kabul edin', 'warning');
+                revenueCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            
+            // Tüm validasyonlar geçti - Modal'ı göster
+            showEmailModal(emailInput.value);
+            
+            // Burada backend'e istek atılabilir
+            console.log('Form başarıyla gönderildi:', {
+                email: emailInput.value,
+                firstName: $('#firstName')?.value,
+                lastName: $('#lastName')?.value
+            });
+        });
+        
+        console.log('✅ Form submission handler başlatıldı');
+    };
+    
+    // ==========================================
     // Custom Styles
     // ==========================================
     
@@ -359,6 +545,22 @@
             @keyframes slideOutRight {
                 from { opacity: 1; transform: translateX(0); }
                 to { opacity: 0; transform: translateX(100%); }
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
             
             .form-control.focused,
@@ -429,6 +631,134 @@
             
             .password-wrapper input {
                 padding-right: 50px;
+            }
+            
+            /* Modal Styles */
+            .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+}
+}
+            
+            .modal-overlay.active {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .modal-box {
+                background: #FFFFFF;
+                border-radius: 24px;
+                padding: 48px 40px;
+                max-width: 520px;
+                width: 90%;
+                position: relative;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                animation: slideUp 0.4s ease;
+                text-align: center;
+            }
+            
+            .modal-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 32px;
+                height: 32px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.2s ease;
+            }
+            
+            .modal-close:hover {
+                transform: rotate(90deg);
+            }
+            
+            .modal-close svg {
+                width: 24px;
+                height: 24px;
+                stroke: #999;
+                stroke-width: 2;
+            }
+            
+            .modal-title {
+                font-size: 28px;
+                font-weight: 700;
+                color: #FF9900;
+                margin-bottom: 24px;
+                line-height: 1.3;
+            }
+            
+            .modal-icon {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .modal-icon svg {
+                width: 100%;
+                height: 100%;
+                stroke: #4CAF50;
+                stroke-width: 2;
+                fill: none;
+            }
+            
+            .modal-text {
+                font-size: 16px;
+                color: #666;
+                line-height: 1.6;
+                margin-bottom: 8px;
+            }
+            
+            .modal-text strong {
+                color: #333;
+                font-weight: 600;
+            }
+            
+            .modal-subtext {
+                font-size: 14px;
+                color: #999;
+                line-height: 1.5;
+                margin-top: 16px;
+            }
+            
+            @media (max-width: 600px) {
+                .modal-box {
+                    padding: 36px 24px;
+                }
+                
+                .modal-title {
+                    font-size: 24px;
+                }
+                
+                .modal-icon {
+                    width: 64px;
+                    height: 64px;
+                }
+                
+                .modal-text {
+                    font-size: 15px;
+                }
+                
+                .modal-subtext {
+                    font-size: 13px;
+                }
             }
         `;
         document.head.appendChild(style);
@@ -536,47 +866,6 @@
         signupForms.forEach(form => {
             if (!form) return;
             
-            form.addEventListener('submit', function(e) {
-                const termsCheckbox = form.querySelector('#termsAccept');
-                const termsContainer = termsCheckbox?.closest('.terms-checkbox');
-                
-                const revenueCheckbox = form.querySelector('#revenueShareAccept');
-                const revenueContainer = revenueCheckbox?.closest('.terms-checkbox');
-                
-                let hasError = false;
-                
-                if (termsCheckbox && !termsCheckbox.checked) {
-                    e.preventDefault();
-                    hasError = true;
-                    
-                    if (termsContainer) {
-                        termsContainer.classList.add('error');
-                        setTimeout(() => termsContainer.classList.remove('error'), 3000);
-                    }
-                    
-                    showMessage('Lütfen kullanım şartlarını ve gizlilik sözleşmesini kabul edin.', 'warning');
-                    termsCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                
-                if (revenueCheckbox && !revenueCheckbox.checked) {
-                    e.preventDefault();
-                    hasError = true;
-                    
-                    if (revenueContainer) {
-                        revenueContainer.classList.add('error');
-                        setTimeout(() => revenueContainer.classList.remove('error'), 3000);
-                    }
-                    
-                    showMessage('Lütfen gelir paylaşımı sözleşmesini kabul edin.', 'warning');
-                    revenueCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                
-                if (hasError) return false;
-                
-                if (termsContainer) termsContainer.classList.remove('error');
-                if (revenueContainer) revenueContainer.classList.remove('error');
-            });
-            
             const termsCheckbox = form.querySelector('#termsAccept');
             if (termsCheckbox) {
                 termsCheckbox.addEventListener('change', function() {
@@ -609,6 +898,8 @@
         enhanceOTPInputs();
         initAllPasswordFields(); 
         validateTermsCheckbox();
+        initEmailModal();
+        initFormSubmission();
         
         console.log('✅ Polikrami Frontend System v3.0 Başlatıldı');
     };
@@ -619,6 +910,7 @@
         init();
     }
     
+    
     window.polikrami = {
         $,
         $$,
@@ -626,6 +918,8 @@
         validateEmail,
         validatePassword,
         validatePasswordStrength,
+        showEmailModal,
+        closeEmailModal,
         init
     };
     
