@@ -1,19 +1,100 @@
 // ==========================================
-// Polikrami Frontend System - v2.2 FIXED
+// Polikrami Frontend System - v3.0
+// Tüm sayfalarda ortak kullanılan fonksiyonlar
 // ==========================================
 
 (function() {
     'use strict';
 
-    // ==========================================
-    // Utility Functions
-    // ==========================================
-    
     const $ = (selector, parent = document) => parent.querySelector(selector);
     const $$ = (selector, parent = document) => parent.querySelectorAll(selector);
     
     // ==========================================
-    // Password Toggle System
+    // Language Switcher (Dil Değiştirici)
+    // ==========================================
+    
+    const initLanguageSwitcher = () => {
+        const languageBtn = $('#languageBtn');
+        const languageDropdown = $('#languageDropdown');
+        const langOptions = $$('.lang-option');
+
+        if (!languageBtn || !languageDropdown) return;
+
+        languageBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            languageDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!languageDropdown.contains(e.target) && !languageBtn.contains(e.target)) {
+                languageBtn.setAttribute('aria-expanded', 'false');
+                languageDropdown.classList.remove('active');
+            }
+        });
+
+        langOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedLang = this.getAttribute('data-lang').toUpperCase();
+                
+                langOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                const langText = $('.lang-text');
+                if (langText) {
+                    const langNames = { TR: 'Türkçe', EN: 'English', DE: 'Deutsch' };
+                    langText.textContent = langNames[selectedLang] || selectedLang;
+                }
+                
+                languageBtn.setAttribute('aria-expanded', 'false');
+                languageDropdown.classList.remove('active');
+                
+                localStorage.setItem('selectedLanguage', selectedLang);
+                console.log('Seçilen dil:', selectedLang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('selectedLanguage');
+        if (savedLang) {
+            const savedOption = $(`.lang-option[data-lang="${savedLang.toLowerCase()}"]`);
+            if (savedOption) savedOption.click();
+        }
+
+        console.log('✅ Dil değiştirici başlatıldı');
+    };
+
+    // ==========================================
+    // Profile Dropdown
+    // ==========================================
+    
+    const initProfileDropdown = () => {
+        const profileAvatar = $('#profileAvatar');
+        const profileDropdown = $('#profileDropdown');
+
+        if (!profileAvatar || !profileDropdown) return;
+
+        profileAvatar.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!profileDropdown.contains(e.target) && !profileAvatar.contains(e.target)) {
+                profileDropdown.classList.remove('active');
+            }
+        });
+
+        profileDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        console.log('✅ Profile dropdown başlatıldı');
+    };
+
+    // ==========================================
+    // Password Toggle (Şifre Göster/Gizle)
     // ==========================================
     
     const setupPasswordToggle = () => {
@@ -46,7 +127,7 @@
                 }
                 
                 if (!input) {
-                    console.error('Password input not found for button:', this);
+                    console.error('Şifre input bulunamadı:', this);
                     return;
                 }
                 
@@ -68,7 +149,7 @@
             });
         });
         
-        console.log(`✅ Password toggle initialized: ${toggleButtons.length} button(s)`);
+        console.log(`✅ Password toggle başlatıldı: ${toggleButtons.length} buton`);
     };
     
     // ==========================================
@@ -105,7 +186,7 @@
     };
     
     // ==========================================
-    // Select Dropdown Enhancement
+    // Select Enhancement
     // ==========================================
     
     const enhanceSelects = () => {
@@ -188,11 +269,11 @@
             });
         }
         
-        console.log('✅ OTP inputs enhanced');
+        console.log('✅ OTP inputlar başlatıldı');
     };
     
     // ==========================================
-    // Form Validation Helpers
+    // Validation Functions (Global)
     // ==========================================
     
     window.validateEmail = (email) => {
@@ -201,7 +282,22 @@
     };
     
     window.validatePassword = (password) => {
-        return password && password.length >= 6;
+        return password && password.length >= 8;
+    };
+    
+    window.validatePasswordStrength = (password) => {
+        const hasLength = password.length >= 8;
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+        
+        return {
+            isValid: hasLength && hasUpperCase && hasNumber && hasSpecialChar,
+            checks: {
+                length: hasLength,
+                complexity: hasUpperCase && hasNumber && hasSpecialChar
+            }
+        };
     };
     
     // ==========================================
@@ -339,7 +435,7 @@
     };
     
     // ==========================================
-    // Password Strength Indicator System
+    // Password Strength Indicator
     // ==========================================
     
     const strengthIndicatorHTML = `
@@ -363,28 +459,19 @@
         </div>
     `;
 
-    const validatePasswordLength = (password) => {
-        return password.length >= 8;
-    };
-
-    const validatePasswordComplexity = (password) => {
-        const hasUpperCase = /[A-Z]/.test(password);
-        const hasNumber = /[0-9]/.test(password);
-        const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
-        return hasUpperCase && hasNumber && hasSpecialChar;
-    };
-
     const updateStrengthIndicator = (container, password) => {
         const lengthItem = container.querySelector('[data-rule="length"]');
         const complexityItem = container.querySelector('[data-rule="complexity"]');
+        
+        const validation = validatePasswordStrength(password);
 
-        if (validatePasswordLength(password)) {
+        if (validation.checks.length) {
             lengthItem.classList.add('valid');
         } else {
             lengthItem.classList.remove('valid');
         }
 
-        if (validatePasswordComplexity(password)) {
+        if (validation.checks.complexity) {
             complexityItem.classList.add('valid');
         } else {
             complexityItem.classList.remove('valid');
@@ -413,21 +500,17 @@
             updateStrengthIndicator(indicator, passwordInput.value);
         }
         
-        console.log('✅ Password strength added to:', passwordInput.id);
+        console.log('✅ Password strength eklendi:', passwordInput.id);
     };
 
     const initAllPasswordFields = () => {
-        // SADECE kayıt ve reset sayfalarında çalışsın
         const isSignupPage = $('#signupForm') !== null;
         const isResetPage = $('#resetForm') !== null;
         
-        // Eğer login, forgot-password veya verify-code sayfasındaysak ÇIKIŞ YAP
         if (!isSignupPage && !isResetPage) {
-            console.log('⏭️ Password strength skipped: Not a signup/reset page');
             return;
         }
         
-        // Signup sayfalarında #password'ü bul
         if (isSignupPage) {
             const passwordInput = $('#password');
             if (passwordInput) {
@@ -435,7 +518,6 @@
             }
         }
         
-        // Reset sayfasında #newPassword'ü bul
         if (isResetPage) {
             const newPasswordInput = $('#newPassword');
             if (newPasswordInput) {
@@ -445,11 +527,82 @@
     };
     
     // ==========================================
-    // Initialize Everything
+    // Terms Checkbox Validation
+    // ==========================================
+
+    const validateTermsCheckbox = () => {
+        const signupForms = $$('#signupForm');
+        
+        signupForms.forEach(form => {
+            if (!form) return;
+            
+            form.addEventListener('submit', function(e) {
+                const termsCheckbox = form.querySelector('#termsAccept');
+                const termsContainer = termsCheckbox?.closest('.terms-checkbox');
+                
+                const revenueCheckbox = form.querySelector('#revenueShareAccept');
+                const revenueContainer = revenueCheckbox?.closest('.terms-checkbox');
+                
+                let hasError = false;
+                
+                if (termsCheckbox && !termsCheckbox.checked) {
+                    e.preventDefault();
+                    hasError = true;
+                    
+                    if (termsContainer) {
+                        termsContainer.classList.add('error');
+                        setTimeout(() => termsContainer.classList.remove('error'), 3000);
+                    }
+                    
+                    showMessage('Lütfen kullanım şartlarını ve gizlilik sözleşmesini kabul edin.', 'warning');
+                    termsCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                if (revenueCheckbox && !revenueCheckbox.checked) {
+                    e.preventDefault();
+                    hasError = true;
+                    
+                    if (revenueContainer) {
+                        revenueContainer.classList.add('error');
+                        setTimeout(() => revenueContainer.classList.remove('error'), 3000);
+                    }
+                    
+                    showMessage('Lütfen gelir paylaşımı sözleşmesini kabul edin.', 'warning');
+                    revenueCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                if (hasError) return false;
+                
+                if (termsContainer) termsContainer.classList.remove('error');
+                if (revenueContainer) revenueContainer.classList.remove('error');
+            });
+            
+            const termsCheckbox = form.querySelector('#termsAccept');
+            if (termsCheckbox) {
+                termsCheckbox.addEventListener('change', function() {
+                    const container = this.closest('.terms-checkbox');
+                    if (this.checked && container) container.classList.remove('error');
+                });
+            }
+            
+            const revenueCheckbox = form.querySelector('#revenueShareAccept');
+            if (revenueCheckbox) {
+                revenueCheckbox.addEventListener('change', function() {
+                    const container = this.closest('.terms-checkbox');
+                    if (this.checked && container) container.classList.remove('error');
+                });
+            }
+        });
+    };
+    
+    // ==========================================
+    // Initialize
     // ==========================================
     
     const init = () => {
         addCustomStyles();
+        initLanguageSwitcher();
+        initProfileDropdown();
         setupPasswordToggle();
         enhanceInputs();
         enhanceSelects();
@@ -457,15 +610,7 @@
         initAllPasswordFields(); 
         validateTermsCheckbox();
         
-        const stats = {
-            toggleButtons: $$('.toggle-password').length,
-            formControls: $$('.form-control').length,
-            otpInputs: $$('.otp-input').length,
-            selects: $$('select.form-control').length
-        };
-        
-        console.log('✅ Polikrami Frontend System v2.2 Initialized');
-        console.log('📊 Components:', stats);
+        console.log('✅ Polikrami Frontend System v3.0 Başlatıldı');
     };
     
     if (document.readyState === 'loading') {
@@ -473,89 +618,14 @@
     } else {
         init();
     }
-    // ==========================================
-// Terms Checkbox Validation
-// ==========================================
-
-const validateTermsCheckbox = () => {
-    const signupForms = document.querySelectorAll('#signupForm');
     
-    signupForms.forEach(form => {
-        if (!form) return;
-        
-        form.addEventListener('submit', function(e) {
-            const termsCheckbox = form.querySelector('#termsAccept');
-            const termsContainer = form.querySelector('#termsAccept')?.closest('.terms-checkbox');
-            
-            const revenueCheckbox = form.querySelector('#revenueShareAccept');
-            const revenueContainer = form.querySelector('#revenueShareAccept')?.closest('.terms-checkbox');
-            
-            let hasError = false;
-            
-            if (termsCheckbox && !termsCheckbox.checked) {
-                e.preventDefault();
-                hasError = true;
-                
-                if (termsContainer) {
-                    termsContainer.classList.add('error');
-                    setTimeout(() => termsContainer.classList.remove('error'), 3000);
-                }
-                
-                if (typeof showMessage === 'function') {
-                    showMessage('Lütfen kullanım şartlarını ve gizlilik sözleşmesini kabul edin.', 'warning');
-                }
-                
-                termsCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            
-            if (revenueCheckbox && !revenueCheckbox.checked) {
-                e.preventDefault();
-                hasError = true;
-                
-                if (revenueContainer) {
-                    revenueContainer.classList.add('error');
-                    setTimeout(() => revenueContainer.classList.remove('error'), 3000);
-                }
-                
-                if (typeof showMessage === 'function') {
-                    showMessage('Lütfen gelir paylaşımı sözleşmesini kabul edin.', 'warning');
-                }
-                
-                revenueCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            
-            if (hasError) return false;
-            
-            if (termsContainer) termsContainer.classList.remove('error');
-            if (revenueContainer) revenueContainer.classList.remove('error');
-        });
-        
-        const termsCheckbox = form.querySelector('#termsAccept');
-        const termsContainer = form.querySelector('#termsAccept')?.closest('.terms-checkbox');
-        
-        if (termsCheckbox && termsContainer) {
-            termsCheckbox.addEventListener('change', function() {
-                if (this.checked) termsContainer.classList.remove('error');
-            });
-        }
-        
-        const revenueCheckbox = form.querySelector('#revenueShareAccept');
-        const revenueContainer = form.querySelector('#revenueShareAccept')?.closest('.terms-checkbox');
-        
-        if (revenueCheckbox && revenueContainer) {
-            revenueCheckbox.addEventListener('change', function() {
-                if (this.checked) revenueContainer.classList.remove('error');
-            });
-        }
-    });
-};
-    // Global export
     window.polikrami = {
         $,
         $$,
         showMessage,
         validateEmail,
         validatePassword,
+        validatePasswordStrength,
         init
     };
     

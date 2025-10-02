@@ -403,31 +403,6 @@
     <script src="../js/navigation.js"></script>
     <script src="../js/about-us.js"></script>
 
-    <!-- Profile Dropdown JavaScript -->
-    <script>
-        // Profile Dropdown Toggle
-        const profileAvatar = document.getElementById('profileAvatar');
-        const profileDropdown = document.getElementById('profileDropdown');
-
-        if (profileAvatar && profileDropdown) {
-            profileAvatar.addEventListener('click', function (e) {
-                e.stopPropagation();
-                profileDropdown.classList.toggle('active');
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!profileDropdown.contains(e.target) && !profileAvatar.contains(e.target)) {
-                    profileDropdown.classList.remove('active');
-                }
-            });
-
-            // Prevent dropdown from closing when clicking inside
-            profileDropdown.addEventListener('click', function (e) {
-                e.stopPropagation();
-            });
-        }
-    </script>
 </body>
 
 </html>

@@ -1,25 +1,44 @@
-(function () {
-  const form = document.getElementById('forgotForm');
-  if (!form) return;
+// ==========================================
+// FORGOT PASSWORD - Email Gönderme
+// ==========================================
 
-  const show = (typeof showMessage === 'function') ? showMessage : (m) => alert(m);
-  const isEmail = (typeof validateEmail === 'function')
-    ? validateEmail
-    : (e) => /\S+@\S+\.\S+/.test(e);
+(function() {
+    'use strict';
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email')?.value.trim();
+    const form = document.getElementById('forgotForm');
+    if (!form) return;
 
-    if (!email) { show('Lütfen e-posta adresinizi girin.'); return; }
-    if (!isEmail(email)) { show('Geçerli bir e-posta adresi girin.'); return; }
+    const showMessage = window.polikrami?.showMessage || ((m) => alert(m));
+    const validateEmail = window.polikrami?.validateEmail || ((e) => /\S+@\S+\.\S+/.test(e));
 
-    // Tamamen frontend: beklenen OTP'yi local olarak saklıyoruz (DEMO)
-    sessionStorage.setItem('reset_email', email);
-    sessionStorage.setItem('expected_otp', '1234'); // Demo: sabit 1234
-    show('Doğrulama kodu e-postanıza gönderildi (demo).');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const emailInput = document.getElementById('email');
+        const email = emailInput?.value.trim();
 
-    // Kod girme sayfasına git
-    window.location.href = 'verify-Code.html';
-  });
+        if (!email) {
+            showMessage('Lütfen e-posta adresinizi girin.', 'warning');
+            emailInput?.focus();
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            showMessage('Geçerli bir e-posta adresi girin.', 'error');
+            emailInput?.focus();
+            return;
+        }
+
+        sessionStorage.setItem('reset_email', email);
+        sessionStorage.setItem('expected_otp', '1234');
+        
+        showMessage('Doğrulama kodu e-postanıza gönderildi! Yönlendiriliyorsunuz...', 'success');
+
+        setTimeout(() => {
+            window.location.href = 'verify-Code.html';
+        }, 1500);
+    });
+
+    console.log('✅ Forgot password formu başlatıldı');
+
 })();

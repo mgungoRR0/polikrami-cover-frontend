@@ -41,7 +41,7 @@
         <li class="language-selector">
           <button class="language-btn" id="languageBtn" aria-label="Dil seçimi" aria-expanded="false">
             <img src="../assets/icons/world.svg" alt="" class="world-icon" width="32" height="32">
-            <span class="lang-text">TR</span>
+            <span class="lang-text">Türkçe</span>
             <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
             </svg>
@@ -435,31 +435,6 @@
   <script src="../js/navigation.js"></script>
   <script src="../js/home-page.js"></script>
 
-  <!-- Profile Dropdown JavaScript -->
-  <script>
-    // Profile Dropdown Toggle
-    const profileAvatar = document.getElementById('profileAvatar');
-    const profileDropdown = document.getElementById('profileDropdown');
-
-    if (profileAvatar && profileDropdown) {
-      profileAvatar.addEventListener('click', function (e) {
-        e.stopPropagation();
-        profileDropdown.classList.toggle('active');
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function (e) {
-        if (!profileDropdown.contains(e.target) && !profileAvatar.contains(e.target)) {
-          profileDropdown.classList.remove('active');
-        }
-      });
-
-      // Prevent dropdown from closing when clicking inside
-      profileDropdown.addEventListener('click', function (e) {
-        e.stopPropagation();
-      });
-    }
-  </script>
 </body>
 
 </html>

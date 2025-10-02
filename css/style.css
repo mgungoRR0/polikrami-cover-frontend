@@ -92,6 +92,7 @@ body {
     animation: float 6s ease-in-out infinite;
     position: relative;
     z-index: 1;
+    background-image: url(../assets/images/artist-register.png);
 }
 
 .woman-illustration {
@@ -270,6 +271,7 @@ body {
     transition: all 0.3s ease;
     margin-top: clamp(10px, 2vw, 15px);
     letter-spacing: 0.5px;
+    margin-bottom: 35px;
 }
 
 .submit-btn:hover {
@@ -278,6 +280,7 @@ body {
     box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
 }
 
+/* Divider - Temel stil */
 .divider {
     text-align: center;
     margin: clamp(20px, 3vw, 35px) 0;
@@ -291,7 +294,7 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    width: 50%;
+    width: calc(50% - 30px);
     height: 2px;
     background: #E8E8E8;
 }
@@ -302,6 +305,21 @@ body {
 
 .divider::after {
     right: 0;
+}
+
+/* Sadece metin içeren divider için */
+.divider:not(:empty)::before,
+.divider:not(:empty)::after {
+    width: calc(50% - 30px);
+}
+
+/* Boş divider (sadece çizgi) */
+.divider:empty::before {
+    width: 100%;
+}
+
+.divider:empty::after {
+    display: none;
 }
 
 .signup-section {
