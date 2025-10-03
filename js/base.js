@@ -897,7 +897,47 @@
             }
         });
     };
+    // ==========================================
+// Bottom Language Selector
+// ==========================================
+
+const syncBottomLanguageSelector = () => {
+    const languageOptions = $$('.language-option');
+    if (languageOptions.length === 0) return;
     
+    const savedLang = (localStorage.getItem('selectedLanguage') || 'TR').toLowerCase();
+    
+    languageOptions.forEach(option => {
+        const lang = option.getAttribute('data-lang');
+        if (lang === savedLang) {
+            option.classList.add('active');
+        } else {
+            option.classList.remove('active');
+        }
+    });
+    
+    languageOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const selectedLang = this.getAttribute('data-lang').toUpperCase();
+            
+            languageOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            localStorage.setItem('selectedLanguage', selectedLang);
+            
+            const langText = $('.lang-text');
+            if (langText) {
+                const langNames = { TR: 'Türkçe', EN: 'English', DE: 'Deutsch' };
+                langText.textContent = langNames[selectedLang] || selectedLang;
+            }
+            
+            console.log('Dil değiştirildi:', selectedLang);
+        });
+    });
+    
+    console.log('✅ Alt dil seçici başlatıldı');
+};
+
     // ==========================================
     // Initialize
     // ==========================================
@@ -914,6 +954,7 @@
         validateTermsCheckbox();
         initEmailModal();
         initFormSubmission();
+        syncBottomLanguageSelector();
         
         console.log('✅ Polikrami Frontend System v3.0 Başlatıldı');
     };
