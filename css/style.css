@@ -92,7 +92,7 @@ body {
     animation: float 6s ease-in-out infinite;
     position: relative;
     z-index: 1;
-    
+    overflow: hidden;
 }
 
 .woman-illustration {
