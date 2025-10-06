@@ -370,96 +370,111 @@
             aria-roledescription="carousel"
             aria-label="Sanatçılar"
           >
+            <!-- Sol Ok Butonu -->
             <button
-              class="team-nav-btn prev"
+              class="minimal-nav-btn minimal-prev"
               type="button"
-              aria-label="Sanatçıları sola kaydır"
+              aria-label="Önceki"
               onclick="scrollTeam(-1)"
             >
-              ‹
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
             </button>
+
+            <!-- Sağ Ok Butonu -->
+            <button
+              class="minimal-nav-btn minimal-next"
+              type="button"
+              aria-label="Sonraki"
+              onclick="scrollTeam(1)"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+
             <div class="team-carousel">
               <div class="team-grid" id="teamGrid">
-                <div class="team-member">
-                  <div class="member-avatar">
+                <div class="team-member-card">
+                  <div class="member-avatar-circle">
                     <img
                       src="../assets/images/melis-aksoy-image.png"
                       alt="Melis Aksoy"
-                      width="110"
-                      height="110"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
-                  <div class="member-name">MELİS AKSOY</div>
-                  <div class="member-role">İllüstratör</div>
+                  <h3 class="member-name-text">MELİS AKSOY</h3>
+                  <p class="member-role-text">Dijital Tasarımcı</p>
+                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
-                <div class="team-member">
-                  <div class="member-avatar">
+
+                <div class="team-member-card">
+                  <div class="member-avatar-circle">
                     <img
                       src="../assets/images/emre-yılmaz-image.png"
                       alt="Emre Yılmaz"
-                      width="110"
-                      height="110"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
-                  <div class="member-name">EMRE YILMAZ</div>
-                  <div class="member-role">Grafik Tasarımcı</div>
+                  <h3 class="member-name-text">EMRE YILMAZ</h3>
+                  <p class="member-role-text">Boyut Tasarımcısı</p>
+                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
-                <div class="team-member">
-                  <div class="member-avatar">
+
+                <div class="team-member-card">
+                  <div class="member-avatar-circle">
                     <img
                       src="../assets/images/mine-ceylan-image.png"
                       alt="Mine Ceylan"
-                      width="110"
-                      height="110"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
-                  <div class="member-name">MİNE CEYLAN</div>
-                  <div class="member-role">Dijital Sanatçı</div>
+                  <h3 class="member-name-text">MELİS AKSOY</h3>
+                  <p class="member-role-text">İllüstratör Tasarımcısı</p>
+                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
-                <div class="team-member">
-                  <div class="member-avatar">
+
+                <div class="team-member-card">
+                  <div class="member-avatar-circle">
                     <img
                       src="../assets/images/kerem-özer-image.png"
                       alt="Kerem Özer"
-                      width="110"
-                      height="110"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
-                  <div class="member-name">KEREM ÖZER</div>
-                  <div class="member-role">Konsept Tasarımcı</div>
+                  <h3 class="member-name-text">KEREM ÖZER</h3>
+                  <p class="member-role-text">Boyut Tasarımcısı</p>
+                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
-                <div class="team-member">
-                  <div class="member-avatar">
+
+                <div class="team-member-card">
+                  <div class="member-avatar-circle">
                     <img
-                      src="../assets/images/kerem-özer-image.png"
-                      alt="Kerem Özer"
-                      width="110"
-                      height="110"
-                      loading="lazy"
-                      decoding="async"
+                      src="../assets/images/melis-aksoy-image.png"
+                      alt="Ayşe Demir"
                     />
                   </div>
-                  <div class="member-name">KEREM ÖZER</div>
-                  <div class="member-role">Konsept Tasarımcı</div>
+                  <h3 class="member-name-text">AYŞE DEMİR</h3>
+                  <p class="member-role-text">Dijital İllüstratör</p>
+                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
               </div>
             </div>
-            <button
-              class="team-nav-btn next"
-              type="button"
-              aria-label="Sanatçıları sağa kaydır"
-              onclick="scrollTeam(1)"
-            >
-              ›
-            </button>
           </div>
         </div>
       </section>

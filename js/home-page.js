@@ -47,8 +47,8 @@
       id: 1,
       image: "../signal-2025-09-09-114423.jpeg",
       alt: "Kapak 1",
-      designer: "Ahmet Yılmaz",
-      title: "Minimalist Dashboard",
+      designer: "Melis Aksyon",
+      title: "Güneşin Doğuşu",
       likes: 1247,
     },
     {
@@ -200,15 +200,14 @@
   // ==========================================
   // TEAM CAROUSEL
   // ==========================================
-
   let currentTeamIndex = 0;
 
   function computeTeamMaxIndex() {
-    const teamMembers = document.querySelectorAll(".team-member");
+    const teamMembers = document.querySelectorAll(".team-member-card");
     const teamCarousel = document.querySelector(".team-carousel");
-    if (!teamCarousel) return { memberWidth: 208, maxIndex: 0 };
+    if (!teamCarousel) return { memberWidth: 256, maxIndex: 0 };
 
-    const memberWidth = 208;
+    const memberWidth = 256;
     const containerWidth = teamCarousel.offsetWidth;
     const visibleMembers = Math.max(
       1,
