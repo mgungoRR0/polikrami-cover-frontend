@@ -479,6 +479,134 @@
         </div>
       </section>
 
+      <!-- Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="testimonials-container">
+          <button
+            class="testimonial-nav-arrow testimonial-prev"
+            onclick="changeTestimonial(-1)"
+            aria-label="Önceki yorum"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="testimonial-wrapper">
+            <div class="testimonial-card-single active" data-index="0">
+              <p class="testimonial-quote">
+                Çocukluğumdan beri hayal ettiğim bir şeyde. Tüm kitaplarım
+                kendime özel yapmak için sabırsızlanıyorum. Emeği geçen herkese
+                teşekkür ederim.
+              </p>
+              <div class="testimonial-rating">
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="testimonial-name">• Uğur Kıran</span>
+              </div>
+            </div>
+
+            <div class="testimonial-card-single" data-index="1">
+              <p class="testimonial-quote">
+                Harika bir platform! Tasarımcılarla iletişim çok kolaydı ve
+                sonuç beklediğimden çok daha iyi oldu. Kitaplarıma değer kattı.
+              </p>
+              <div class="testimonial-rating">
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="testimonial-name">• Zeynep Aydın</span>
+              </div>
+            </div>
+
+            <div class="testimonial-card-single" data-index="2">
+              <p class="testimonial-quote">
+                Profesyonel bir hizmet aldım. Sanatçılar çok yetenekli ve
+                isteklerime özen gösterdiler. Kesinlikle tavsiye ediyorum.
+              </p>
+              <div class="testimonial-rating">
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="testimonial-name">• Ahmet Yılmaz</span>
+              </div>
+            </div>
+
+            <div class="testimonial-card-single" data-index="3">
+              <p class="testimonial-quote">
+                Kitap koleksiyonumu kişiselleştirmek için harika bir fırsat. Hem
+                kaliteli hem de uygun fiyatlı. Çok memnun kaldım.
+              </p>
+              <div class="testimonial-rating">
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="testimonial-name">• Elif Demir</span>
+              </div>
+            </div>
+
+            <div class="testimonial-card-single" data-index="4">
+              <p class="testimonial-quote">
+                Hediye olarak kullandım ve arkadaşım çok beğendi. Özgün ve
+                anlamlı bir hediye seçeneği. Teşekkürler Polikrami!
+              </p>
+              <div class="testimonial-rating">
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="rating-star">★</span>
+                <span class="testimonial-name">• Mehmet Özkan</span>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="testimonial-nav-arrow testimonial-next"
+            onclick="changeTestimonial(1)"
+            aria-label="Sonraki yorum"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="testimonial-pagination" id="testimonialPagination">
+            <span
+              class="pagination-dot active"
+              onclick="goToTestimonial(0)"
+            ></span>
+            <span class="pagination-dot" onclick="goToTestimonial(1)"></span>
+            <span class="pagination-dot" onclick="goToTestimonial(2)"></span>
+            <span class="pagination-dot" onclick="goToTestimonial(3)"></span>
+            <span class="pagination-dot" onclick="goToTestimonial(4)"></span>
+          </div>
+        </div>
+      </section>
+
       <!-- Process Section -->
       <section class="process-section" aria-labelledby="process-title">
         <div class="process-container">
@@ -555,88 +683,86 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-content">
-          <!-- Logo ve İletişim Bilgileri -->
-          <div class="footer-column footer-brand">
-            <div class="footer-logo">
-              <img
-                src="../assets/images/polikrami-logo.svg"
-                alt="Polikrami"
-                width="200"
-                height="50"
-              />
+
+    <footer class="footer-new">
+      <div class="footer-main">
+        <div class="footer-content-grid">
+          <!-- Sol Kolon - Logo ve İletişim -->
+          <div class="footer-brand-col">
+            <img
+              src="../assets/images/polikrami-logo.svg"
+              alt="Polikrami"
+              class="footer-logo"
+            />
+            <div class="footer-work-hours">
+              <p class="work-title">Çalışma Saatleri:</p>
+              <p class="work-time">Pazartesi-Cumartesi 09:00-19:00</p>
             </div>
-            <div class="footer-contact">
-              <p><strong>Atatürk Mah. 121. SK. No:4</strong></p>
-              <p><strong>Nehir APT. Kat: 2 Daire: 5</strong></p>
-              <p><strong>Merkez Tunceli</strong></p>
-              <div class="working-hours">
-                <p>Çalışma Saatleri :</p>
-                <p>Pazartesi - Cumartesi 09:00 - 19:00</p>
-              </div>
-              <div class="social-links">
-                <a href="#" aria-label="Telefon">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                    ></path>
-                  </svg>
-                </a>
-                <a href="#" aria-label="Email">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                    ></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </a>
-                <a href="#" aria-label="WhatsApp">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
-                    />
-                  </svg>
-                </a>
-                <a href="#" aria-label="Instagram">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"
-                    />
-                  </svg>
-                </a>
-              </div>
+            <div class="footer-address">
+              <p>Atatürk Mah. 121. Sk. No:4</p>
+              <p>Nehir APT. Kat:2 Daire:5</p>
+              <p>Merkez/Tunceli</p>
+            </div>
+            <div class="footer-social-icons">
+              <a href="tel:+90" aria-label="Telefon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+              </a>
+              <a href="mailto:info@polikrami.com" aria-label="Email">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+              <a href="#" aria-label="WhatsApp">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
 
-          <!-- Bilgiler -->
-          <div class="footer-column">
-            <h3>Bilgiler</h3>
+          <!-- Polikrami Cover -->
+          <div class="footer-links-col">
+            <h3>Polikrami Cover</h3>
             <ul>
               <li><a href="#">Kargo Bilgileri</a></li>
               <li><a href="#">Gizlilik İlkesi</a></li>
@@ -649,34 +775,37 @@
           </div>
 
           <!-- Bağlantılar -->
-          <div class="footer-column">
+          <div class="footer-links-col">
             <h3>Bağlantılar</h3>
             <ul>
               <li><a href="#">Hesabım</a></li>
               <li><a href="#">Siparişlerim</a></li>
               <li><a href="#">İstek Listem</a></li>
+              <li><a href="#">Site Haritası</a></li>
               <li><a href="#">E-Bülten</a></li>
               <li><a href="#">İade</a></li>
+              <li><a href="#">Sanatçı Kullanım Rehberi</a></li>
             </ul>
           </div>
 
           <!-- Hızlı Erişim -->
-          <div class="footer-column">
+          <div class="footer-links-col">
             <h3>Hızlı Erişim</h3>
             <ul>
               <li><a href="#">Ana Sayfa</a></li>
               <li><a href="#">Çalışmalarımız</a></li>
               <li><a href="#">Sanatçılarımız</a></li>
-              <li><a href="about-us.html">Hakkımızda</a></li>
+              <li><a href="#">Hakkımızda</a></li>
               <li><a href="#">Oluşturmaya Başla</a></li>
+              <li><a href="#">Sipariş Takibi</a></li>
             </ul>
           </div>
         </div>
+      </div>
 
-        <!-- Alt kısım dekoratif görsel -->
-        <div class="footer-decoration">
-          <img src="../assets/images/footer-tamamı.svg" alt="" loading="lazy" />
-        </div>
+      <!-- Alt Dekoratif Görsel -->
+      <div class="footer-decoration-bottom">
+        <img src="../assets/images/footer-tamamı.svg" alt="" />
       </div>
     </footer>
 

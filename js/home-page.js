@@ -3,7 +3,7 @@
 // ==========================================
 
 (function () {
-  "use strict";
+  ("use strict");
 
   const initMobileMenu = () => {
     const mobileBtn = document.querySelector(".mobile-menu-btn");
@@ -235,6 +235,71 @@
   };
 
   // ==========================================
+  // TESTIMONIALS CAROUSEL
+  // ==========================================
+
+  let currentTestimonialIndex = 0;
+  const totalTestimonials = 5; // Toplam yorum sayısı
+
+  function updateTestimonialDisplay() {
+    const cards = document.querySelectorAll(".testimonial-card-single");
+    const dots = document.querySelectorAll(
+      ".testimonial-pagination .pagination-dot"
+    );
+
+    cards.forEach((card, index) => {
+      if (index === currentTestimonialIndex) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      if (index === currentTestimonialIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  }
+
+  window.changeTestimonial = function (direction) {
+    currentTestimonialIndex += direction;
+
+    if (currentTestimonialIndex < 0) {
+      currentTestimonialIndex = totalTestimonials - 1;
+    } else if (currentTestimonialIndex >= totalTestimonials) {
+      currentTestimonialIndex = 0;
+    }
+
+    updateTestimonialDisplay();
+  };
+
+  window.goToTestimonial = function (index) {
+    currentTestimonialIndex = index;
+    updateTestimonialDisplay();
+  };
+
+  // Otomatik kayma (isteğe bağlı)
+  let testimonialAutoPlay = setInterval(() => {
+    changeTestimonial(1);
+  }, 5000); // 5 saniyede bir
+
+  // Kullanıcı manuel değiştirdiğinde otomatik kaymayı durdur
+  document
+    .querySelectorAll(".testimonial-nav-arrow, .pagination-dot")
+    .forEach((element) => {
+      element.addEventListener("click", () => {
+        clearInterval(testimonialAutoPlay);
+        // 10 saniye sonra tekrar başlat
+        testimonialAutoPlay = setInterval(() => {
+          changeTestimonial(1);
+        }, 5000);
+      });
+    });
+
+  // ==========================================
   // DİĞER FONKSİYONLAR
   // ==========================================
 
@@ -301,7 +366,7 @@
     initSmoothScroll();
     initScrollReveal();
     initLazyLoading();
-
+    updateTestimonialDisplay();
     window.addEventListener("resize", applyTeamTransform);
 
     console.log("✅ Home page başlatıldı");
