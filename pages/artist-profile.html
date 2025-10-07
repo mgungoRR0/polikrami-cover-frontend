@@ -3,21 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Polikrami | Özel Kitap Kapağı Tasarımları</title>
+    <title>Mine Ceylan | Polikrami Sanatçı Profili</title>
     <meta
       name="description"
-      content="Polikrami: Okurların dünyasını zenginleştiren, sanatçılarla buluşturan özel kitap kapağı tasarımları. Galerimizi keşfedin, sanatçılarımızla tanışın."
+      content="Mine Ceylan - Dijital sanat ve illüstrasyon alanında deneyimli tasarımcı. Çalışmalarını keşfedin."
     />
     <meta
       property="og:title"
-      content="Polikrami | Özel Kitap Kapağı Tasarımları"
+      content="Mine Ceylan | Polikrami Sanatçı Profili"
     />
     <meta
       property="og:description"
-      content="Hayalinizdeki kapağı seçin, hikayeniz parlasın!"
+      content="Özel kitap kapağı tasarımları ile dikkat çeken sanatçı Mine Ceylan'ın portfolyosunu keşfedin."
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="../assets/images/og-image.png" />
+    <meta property="og:type" content="profile" />
+    <meta
+      property="og:image"
+      content="../assets/images/mine-ceylan-image.png"
+    />
     <link rel="icon" href="../assets/images/favicon.ico" />
 
     <!-- Google Fonts - Poppins -->
@@ -27,12 +30,16 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Ana sayfa CSS (ortak stiller) -->
     <link rel="stylesheet" href="../css/home-page.css" />
+    <!-- Sanatçı sayfasına özel CSS -->
+    <link rel="stylesheet" href="../css/artist-profile.css" />
     <link rel="stylesheet" href="../css/components/carousel-button.css" />
   </head>
 
   <body>
-    <!-- Header -->
+    <!-- Header - Ana sayfadan aynı -->
     <header>
       <nav aria-label="Ana gezinme">
         <div class="logo">
@@ -106,14 +113,8 @@
             </div>
           </li>
 
-          <!-- User Section -->
+          <!-- User Section - Coin display YOK -->
           <li class="user-section">
-            <!-- Coin Display -->
-            <div class="coin-display">
-              <span class="coin-amount">50</span>
-              <div class="coin-icon">₵</div>
-            </div>
-
             <!-- Profile Avatar -->
             <div class="profile-avatar" id="profileAvatar">
               <img src="../assets/images/emre-yılmaz-image.png" alt="Profil" />
@@ -266,221 +267,136 @@
       </nav>
     </header>
 
-    <main id="home">
-      <!-- Hero Section -->
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-container">
-          <div class="hero-content animate-fade-in">
-            <h1 id="hero-title">Hayalindeki Kitap Kapağını Gerçeğe Dönüştür</h1>
-            <p>
-              Hayalinizdeki kapağı anlatın, birlikte tasarlayalım. Size ve
-              sevdiklerinize özel bir kitabınız olsun.
-            </p>
-          </div>
-        </div>
-        <div class="hero-illustration">
-          <img
-            src="../assets/images/hero-section.png"
-            alt="Kitap okuyan insanlar illüstrasyonu"
-            width="721"
-            height="490"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
-      </section>
-
-      <!-- Gallery Section - YENİ 3D CAROUSEL -->
-      <section
-        class="gallery-section"
-        id="gallery"
-        aria-labelledby="gallery-title"
-      >
-        <div class="section-container">
-          <h2 class="section-title" id="gallery-title">
-            <span class="first-part">En Sevilen</span>
-            <span class="second-part">Kapaklar</span>
-          </h2>
-          <p class="section-subtitle">
-            Okurların favorisi olan bu kapaklar, hikayelerin ruhunu en iyi
-            yansıtan tasarımlar arasında! Siz de en beğenilen kapaklardan ilham
-            alın ve kendi benzersiz tasarımınızı oluşturun.
-          </p>
-
-          <div class="carousel-container-3d">
-            <div class="carousel-wrapper-3d" id="carouselWrapper3D">
-              <!-- JavaScript ile doldurulacak -->
+    <main id="artist-profile">
+      <!-- Artist Hero Section -->
+      <section class="artist-hero" aria-labelledby="artist-name">
+        <div class="artist-hero-container">
+          <div class="artist-hero-content">
+            <h1 id="artist-name" class="artist-name">Mine Ceylan</h1>
+            <div class="artist-bio">
+              <p>
+                Mine Ceylan, dijital sanat ve illüstrasyon alanında deneyimli
+                bir tasarımcıdır. Özellikle kitap kapağı tasarımlarıyla dikkat
+                çeker ve eserlerinde hayal gücü ile estetiği birleştirmeyi
+                amaçlar. Çocuk kitaplarından fantastik romanlara, minimalist
+                tarzlardan modern çizgilere kadar geniş bir yelpazede üretim
+                yapar. Sanat anlayışında özgünlük ve duyguyu ön planda tutar;
+                her kapakta eserin ruhunu yansıtmayı hedefler.
+              </p>
             </div>
-
-            <button
-              class="nav-button-3d prev"
-              id="prevBtn3D"
-              aria-label="Önceki kapak"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-
-            <button
-              class="nav-button-3d next"
-              id="nextBtn3D"
-              aria-label="Sonraki kapak"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
+          </div>
+          <div class="artist-hero-image">
+            <div class="artist-profile-circle">
+              <img
+                src="../assets/images/mine-ceylan-image.png"
+                alt="Mine Ceylan"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Team Section -->
-      <section class="team-section" id="team" aria-labelledby="team-title">
-        <div class="team-container">
-          <div class="team-header">
-            <h2 id="team-title">
-              Kapaklara Ruh Veren <span class="subtitle">Sanatçılar</span>
-            </h2>
-            <p>
-              Cover Polikrami, hayal gücünüzü gerçeğe dönüştüren yetenekli
-              sanatçılarla dolu bir platform! Öne çıkan sanatçılarımızın özgün
-              tasarımlarını keşfedin.
+      <!-- Artist Info Section -->
+      <section class="artist-info">
+        <div class="artist-info-container">
+          <div class="info-card">
+            <h3 class="info-title">Uzmanlık Alanları</h3>
+            <ul class="info-list">
+              <li>Soyut</li>
+              <li>İllüstratif</li>
+              <li>Gerçekçi</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3 class="info-title">Hakkında Kısa Not</h3>
+            <p class="info-text">
+              Tasarımda sadelikten yanayım.Duygyu yansıtan sade tasarımlar
+              üretmek en büyük önceliğim.
             </p>
           </div>
 
-          <div
-            class="team-carousel-wrapper"
-            role="region"
-            aria-roledescription="carousel"
-            aria-label="Sanatçılar"
-          >
-            <!-- Sol Ok Butonu -->
-            <button
-              class="minimal-nav-btn minimal-prev"
-              type="button"
-              aria-label="Önceki"
-              onclick="scrollTeam(-1)"
-            >
+          <div class="info-card">
+            <h3 class="info-title">Eğitim</h3>
+            <p class="info-text">Mimar Sinan Güzel Sanatlar- Grafik Tasarım</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Artist Works Section -->
+      <section class="artist-works" aria-labelledby="works-title">
+        <div class="artist-works-container">
+          <h2 id="works-title" class="works-title">Çalışmaları</h2>
+
+          <div class="works-carousel-wrapper">
+            <!-- Sol Ok -->
+            <button class="works-nav-btn works-prev" aria-label="Önceki">
               <svg
-                width="20"
-                height="20"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                stroke-width="2"
               >
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </button>
 
-            <!-- Sağ Ok Butonu -->
-            <button
-              class="minimal-nav-btn minimal-next"
-              type="button"
-              aria-label="Sonraki"
-              onclick="scrollTeam(1)"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-
-            <div class="team-carousel">
-              <div class="team-grid" id="teamGrid">
-                <div class="team-member-card">
-                  <div class="member-avatar-circle">
-                    <img
-                      src="../assets/images/melis-aksoy-image.png"
-                      alt="Melis Aksoy"
-                    />
+            <!-- Carousel Container -->
+            <div class="carousel-container">
+              <div class="carousel-track">
+                <div class="work-slide">
+                  <div class="work-image">
+                    <img src="../signal-2025-09-09-114423.jpeg" alt="" />
                   </div>
-                  <h3 class="member-name-text">MELİS AKSOY</h3>
-                  <p class="member-role-text">Dijital Tasarımcı</p>
-                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
-
-                <div class="team-member-card">
-                  <div class="member-avatar-circle">
-                    <img
-                      src="../assets/images/emre-yılmaz-image.png"
-                      alt="Emre Yılmaz"
-                    />
+                <div class="work-slide">
+                  <div class="work-image">
+                    <img src="../signal-2025-09-09-114423.jpeg" alt="" />
                   </div>
-                  <h3 class="member-name-text">EMRE YILMAZ</h3>
-                  <p class="member-role-text">Boyut Tasarımcısı</p>
-                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
-
-                <div class="team-member-card">
-                  <div class="member-avatar-circle">
-                    <img
-                      src="../assets/images/mine-ceylan-image.png"
-                      alt="Mine Ceylan"
-                    />
+                <div class="work-slide">
+                  <div class="work-image">
+                    <img src="../signal-2025-09-09-114423.jpeg" alt="" />
                   </div>
-                  <h3 class="member-name-text">MELİS AKSOY</h3>
-                  <p class="member-role-text">İllüstratör Tasarımcısı</p>
-                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
-
-                <div class="team-member-card">
-                  <div class="member-avatar-circle">
-                    <img
-                      src="../assets/images/kerem-özer-image.png"
-                      alt="Kerem Özer"
-                    />
+                <div class="work-slide">
+                  <div class="work-image">
+                    <img src="../signal-2025-09-09-114423.jpeg" alt="" />
                   </div>
-                  <h3 class="member-name-text">KEREM ÖZER</h3>
-                  <p class="member-role-text">Boyut Tasarımcısı</p>
-                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
                 </div>
-
-                <div class="team-member-card">
-                  <div class="member-avatar-circle">
-                    <img
-                      src="../assets/images/melis-aksoy-image.png"
-                      alt="Ayşe Demir"
-                    />
+                <div class="work-slide">
+                  <div class="work-image">
+                    <img src="../signal-2025-09-09-114423.jpeg" alt="" />
                   </div>
-                  <h3 class="member-name-text">AYŞE DEMİR</h3>
-                  <p class="member-role-text">Dijital İllüstratör</p>
-                  <a href="#" class="profile-link-btn">Profili Görüntüle</a>
+                </div>
+                <div class="work-slide">
+                  <div class="work-image">
+                    <img src="../signal-2025-09-09-114423.jpeg" alt="" />
+                  </div>
                 </div>
               </div>
             </div>
+
+            <!-- Sağ Ok -->
+            <button class="works-nav-btn works-next" aria-label="Sonraki">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
       </section>
 
-      <!-- Testimonials Section -->
+      <!-- Testimonials Section - Ana sayfadaki ile aynı -->
       <section class="testimonials-section">
         <div class="testimonials-container">
           <button
@@ -607,88 +523,12 @@
           </div>
         </div>
       </section>
-
-      <!-- Process Section -->
-      <section class="process-section" aria-labelledby="process-title">
-        <div class="process-container">
-          <div class="process-header">
-            <h2 id="process-title">
-              Adım Adım <span class="highlight">Oluşturmaya Başla</span>
-            </h2>
-            <p>
-              Hayalinizdeki kapak tasarımına ulaşmanız için süreci sizin için
-              basit ve keyifli hale getirdik. Sadece adımları takip edin ve
-              sanatçılarımızın sihirli dokunuşlarını keşfedin.
-            </p>
-          </div>
-
-          <div class="process-grid">
-            <div class="process-card">
-              <div class="process-number">01</div>
-              <div class="process-title">Kategori Seçin</div>
-              <div class="process-description">
-                İlk adım olarak, tarzınızı belirleyin! Minimalist, karakalem,
-                illüstratif veya soyut…
-              </div>
-            </div>
-            <div class="process-card">
-              <div class="process-number">02</div>
-              <div class="process-title">Sanatçınızı Belirleyin</div>
-              <div class="process-description">
-                Tarzınıza en uygun sanatçıyı seçerek hayalinizdeki tasarıma bir
-                adım daha yaklaşın.
-              </div>
-            </div>
-            <div class="process-card">
-              <div class="process-number">03</div>
-              <div class="process-title">Detayları Paylaşın</div>
-              <div class="process-description">
-                Renkler, kompozisyon, özel istekler… Anlatın, sanatçınız sizin
-                için en iyisini oluştursun!
-              </div>
-            </div>
-            <div class="process-card">
-              <div class="process-number">04</div>
-              <div class="process-title">Ödeme Yapın & Siparişi Onaylayın</div>
-              <div class="process-description">
-                Seçtiğiniz tasarım ve sanatçıya göre ödemenizi tamamlayın ve
-                siparişinizi onaylayın.
-              </div>
-            </div>
-            <div class="process-card">
-              <div class="process-number">05</div>
-              <div class="process-title">Tasarımınız Hazırlanıyor</div>
-              <div class="process-description">
-                Sanatçımız sizin için en iyi tasarımı oluşturuyor!
-              </div>
-            </div>
-            <div class="process-card">
-              <div class="process-number">06</div>
-              <div class="process-title">Tasarımınızı Teslim Alın</div>
-              <div class="process-description">
-                İşte hayalinizdeki tasarım hazır! Kargonuzdan teslim
-                alabilirsiniz.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Section -->
-      <section class="cta-section">
-        <div class="cta-container">
-          <h2>Başlamaya hazır mısın?</h2>
-          <a href="#" class="cta-button">Oluşturmaya Başla</a>
-        </div>
-      </section>
     </main>
 
-    <!-- Footer -->
-
+    <!-- Footer - Ana sayfadan aynı -->
     <footer class="footer-new">
       <div class="footer-main">
         <div class="footer-content-grid">
-          <!-- Sol Kolon - Logo ve İletişim -->
           <div class="footer-brand-col">
             <img
               src="../assets/images/polikrami-logo.svg"
@@ -761,7 +601,6 @@
             </div>
           </div>
 
-          <!-- Polikrami Cover -->
           <div class="footer-links-col">
             <h3>Polikrami Cover</h3>
             <ul>
@@ -775,7 +614,6 @@
             </ul>
           </div>
 
-          <!-- Bağlantılar -->
           <div class="footer-links-col">
             <h3>Bağlantılar</h3>
             <ul>
@@ -789,7 +627,6 @@
             </ul>
           </div>
 
-          <!-- Hızlı Erişim -->
           <div class="footer-links-col">
             <h3>Hızlı Erişim</h3>
             <ul>
@@ -804,14 +641,15 @@
         </div>
       </div>
 
-      <!-- Alt Dekoratif Görsel -->
       <div class="footer-decoration-bottom">
         <img src="../assets/images/footer-tamamı.svg" alt="" />
       </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="../js/base.js"></script>
     <script src="../js/navigation.js"></script>
+    <script src="../js/artist-profile.js"></script>
     <script src="../js/home-page.js"></script>
   </body>
 </html>

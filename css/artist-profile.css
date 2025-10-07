@@ -1,0 +1,422 @@
+/* ==========================================
+   SANATÇI PROFİL SAYFASI - SADECE ÖZEL STİLLER
+   Ana sayfa (home-page.css) zaten yüklü
+   ========================================== */
+
+/* ==========================================
+   ARTIST HERO SECTION
+   ========================================== */
+
+.artist-hero {
+  margin-top: 70px;
+  background: linear-gradient(to top, #ff9900 5%, transparent 60%),
+    linear-gradient(to bottom, #ffffff 10%, transparent 25%),
+    linear-gradient(to bottom, #ffe5cc 0%, #fff5e6 100%);
+  min-height: 542px;
+  height: auto;
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.artist-hero-container {
+  max-width: 1512px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: 60px;
+  align-items: center;
+}
+
+.artist-hero-content {
+  padding-right: 20px;
+}
+
+.artist-name {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2rem, 3.2vw, 45px);
+  color: #5e5e5e;
+  line-height: 1.2;
+  font-weight: 800;
+  max-width: 600px;
+  margin: 0 0 1rem 0;
+}
+
+.artist-bio {
+  font-family: "Poppins", sans-serif;
+  color: #5e5e5e;
+  margin-bottom: 2rem;
+  font-size: clamp(1rem, 1.2vw, 19px);
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 780px;
+}
+
+.artist-bio p {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 400;
+}
+
+/* Hero Image with Orange Background */
+.artist-hero-image {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.artist-hero-image::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 340px;
+  background: linear-gradient(135deg, #ff9800 0%, #ffa726 100%);
+  border-radius: 20px 0 0 20px;
+  z-index: 1;
+}
+
+.artist-profile-circle {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: #d4c4b0;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  border: 8px solid #d4c4b0;
+}
+
+.artist-profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================
+   ARTIST INFO SECTION
+   ========================================== */
+
+.artist-info {
+  background: #d8d1c8;
+  padding: 60px 0;
+}
+
+.artist-info-container {
+  max-width: 1512px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+}
+
+.info-card {
+  background: transparent;
+}
+
+.info-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #5e5e5e;
+  margin: 0 0 16px 0;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-list li {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5e5e5e;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.info-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #5e5e5e;
+  font-weight: 700;
+}
+
+.info-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5e5e5e;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================
+   ARTIST WORKS SECTION (CAROUSEL)
+   ========================================== */
+
+.artist-works {
+  background: linear-gradient(to bottom, transparent 0%, #f5f5f5 50%);
+  padding: 80px 0;
+  position: relative;
+}
+
+.artist-works-container {
+  max-width: 1512px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.works-title {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 36px);
+  font-weight: 700;
+  color: #5e5e5e;
+  text-align: left;
+  margin: 0 0 50px 0;
+}
+
+.works-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.works-nav-btn {
+  background: #ffb84d;
+  border: none;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 184, 77, 0.3);
+  z-index: 10;
+}
+
+.works-nav-btn:hover {
+  background: #ff9800;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+}
+
+.works-nav-btn svg {
+  stroke: white;
+  stroke-width: 3;
+}
+
+.carousel-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s ease;
+}
+
+.work-slide {
+  min-width: calc(25% - 18px);
+  max-width: calc(25% - 18px);
+  aspect-ratio: 3/4;
+  flex-shrink: 0;
+}
+
+.work-image {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .artist-hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .artist-hero-content {
+    padding-right: 0;
+  }
+
+  .artist-hero-image {
+    margin: 0 auto;
+  }
+
+  .artist-info-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 2rem;
+  }
+
+  .artist-works-container {
+    padding: 0 2rem;
+  }
+
+  .work-slide {
+    min-width: calc(33.333% - 16px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .artist-hero {
+    padding: 80px 0 60px;
+  }
+
+  .artist-hero-container {
+    padding: 0 1.5rem;
+  }
+
+  .artist-name {
+    font-size: 36px;
+  }
+
+  .artist-bio {
+    font-size: 14px;
+  }
+
+  .artist-hero-image {
+    width: 350px;
+    height: 350px;
+  }
+
+  .artist-hero-image::before {
+    width: 220px;
+    height: 280px;
+  }
+
+  .artist-profile-circle {
+    width: 280px;
+    height: 280px;
+  }
+
+  .artist-info {
+    padding: 40px 0;
+  }
+
+  .artist-info-container {
+    gap: 30px;
+    padding: 0 1.5rem;
+  }
+
+  .info-title {
+    font-size: 16px;
+  }
+
+  .info-list li,
+  .info-text {
+    font-size: 14px;
+  }
+
+  .artist-works {
+    padding: 60px 0;
+  }
+
+  .artist-works-container {
+    padding: 0 1.5rem;
+  }
+
+  .works-title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .works-nav-btn {
+    display: none;
+  }
+
+  .works-carousel-wrapper {
+    gap: 0;
+  }
+
+  .work-slide {
+    min-width: calc(50% - 12px);
+  }
+
+  .carousel-track {
+    gap: 16px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .artist-hero-container {
+    padding: 0 1rem;
+  }
+
+  .artist-name {
+    font-size: 28px;
+  }
+
+  .artist-hero-image {
+    width: 300px;
+    height: 300px;
+  }
+
+  .artist-hero-image::before {
+    width: 180px;
+    height: 240px;
+  }
+
+  .artist-profile-circle {
+    width: 240px;
+    height: 240px;
+  }
+
+  .artist-info-container {
+    padding: 0 1rem;
+  }
+
+  .artist-works-container {
+    padding: 0 1rem;
+  }
+
+  .work-slide {
+    min-width: 100%;
+  }
+
+  .carousel-track {
+    gap: 12px;
+  }
+}

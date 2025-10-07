@@ -437,8 +437,8 @@ section {
   height: 60px;
   border-radius: 50%;
   cursor: pointer;
-  display: grid; /* flex yerine grid */
-  place-items: center; /* Tam ortalama */
+  display: grid;
+  place-items: center;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
   padding: 0;
@@ -449,8 +449,7 @@ section {
   width: 32px;
   height: 32px;
   display: block;
-  display: block; /* Ekleyin */
-  margin: auto; /* Ekleyin */
+  margin: auto;
   flex-shrink: 0;
 }
 
