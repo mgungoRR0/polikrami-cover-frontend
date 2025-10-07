@@ -290,7 +290,7 @@ section {
   font-size: clamp(1rem, 1.2vw, 19px);
   font-weight: 500;
   line-height: 1.6;
-  max-width: 400px;
+  max-width: 380px;
 }
 
 .hero-illustration {
