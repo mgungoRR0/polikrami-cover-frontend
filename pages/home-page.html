@@ -29,6 +29,7 @@
     />
     <link rel="stylesheet" href="../css/home-page.css" />
     <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
@@ -482,23 +483,6 @@
       <!-- Testimonials Section -->
       <section class="testimonials-section">
         <div class="testimonials-container">
-          <button
-            class="testimonial-nav-arrow testimonial-prev"
-            onclick="changeTestimonial(-1)"
-            aria-label="Önceki yorum"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-            >
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-
           <div class="testimonial-wrapper">
             <div class="testimonial-card-single active" data-index="0">
               <p class="testimonial-quote">
@@ -576,23 +560,6 @@
               </div>
             </div>
           </div>
-
-          <button
-            class="testimonial-nav-arrow testimonial-next"
-            onclick="changeTestimonial(1)"
-            aria-label="Sonraki yorum"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-            >
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
 
           <div class="testimonial-pagination" id="testimonialPagination">
             <span
@@ -784,7 +751,11 @@
               <li><a href="#">Site Haritası</a></li>
               <li><a href="#">E-Bülten</a></li>
               <li><a href="#">İade</a></li>
-              <li><a href="#">Sanatçı Kullanım Rehberi</a></li>
+              <li>
+                <a href="#" onclick="openArtistGuideModal(); return false;"
+                  >Sanatçı Kullanım Rehberi</a
+                >
+              </li>
             </ul>
           </div>
 
@@ -812,5 +783,86 @@
     <script src="../js/base.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/home-page.js"></script>
+
+    <!-- Sanatçı Kullanım Rehberi Modal -->
+    <div id="artistGuideModal" class="artist-modal">
+      <div class="artist-modal-overlay"></div>
+      <div class="artist-modal-container">
+        <button class="artist-modal-close" aria-label="Kapat">&times;</button>
+
+        <div class="artist-modal-content">
+          <!-- Sol Panel - Adımlar -->
+          <div class="artist-modal-left">
+            <h2 class="artist-modal-title">Sanatçı Kullanım Rehberi</h2>
+
+            <div class="artist-steps">
+              <div class="artist-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h3>Hesap Oluştur</h3>
+                  <p>Sanatçı olarak hesabınızı oluşturun.</p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h3>Çalışmalarını Yükle</h3>
+                  <p>
+                    Gerekli bağlantıları ekleyerek, çalışmalarınızı yükleyin.
+                  </p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h3>Siparişleri Takip Et</h3>
+                  <p>
+                    Bir kullanıcı seçim yaptığında, "Siparişlerim" alanında yeni
+                    siparişinizi görünür.
+                  </p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h3>Tasarımlarını Yükle & Paylaş</h3>
+                  <p>
+                    Çalışman hazır olduğunda kullanıcı teslimleri üzerinden
+                    paylaş.
+                  </p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                  <h3>Revize Taleplerini Kontrol Et</h3>
+                  <p>Kullanıcı revize isterse, yorum kutusundan göreceksin.</p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                  <h3>Teslimat & Değerlendirme Al</h3>
+                  <p>En son olarak çalışmanı yükle ve kullanıcı ile paylaş.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ Panel - Görsel -->
+          <div class="artist-modal-right">
+            <img
+              src="../assets/images/artist-guide-image.png"
+              alt="Sanatçı çalışırken"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

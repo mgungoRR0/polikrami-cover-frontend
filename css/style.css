@@ -1,0 +1,297 @@
+/* ==========================================
+   SANATÇI KULLANIM REHBERİ MODAL
+   ========================================== */
+
+.artist-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.artist-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.artist-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.artist-modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  background: white;
+  border-radius: 16px;
+  padding: 50px 35px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 10001;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.artist-modal.active .artist-modal-container {
+  transform: scale(1);
+}
+
+.artist-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: auto;
+  height: auto;
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  color: #666;
+  cursor: pointer;
+  z-index: 10003;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.artist-modal-close:hover {
+  color: #333;
+}
+
+.artist-modal-content {
+  display: grid;
+  grid-template-columns: 1fr 0.4fr;
+  gap: 20px;
+  height: 710px;
+  max-height: 710px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Sol Panel - Adımlar */
+.artist-modal-left {
+  background: linear-gradient(135deg, #ff9900 0%, #ff8800 100%);
+  padding: 40px 35px;
+  color: white;
+  position: relative;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.artist-modal-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 35px 0;
+  color: white;
+}
+
+.artist-steps {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.artist-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  position: relative;
+  flex: 1;
+}
+
+.artist-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 50px;
+  width: 2px;
+  bottom: -50%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.step-number {
+  min-width: 45px;
+  width: 45px;
+  height: 45px;
+  background: white;
+  color: #ff9900;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.step-content h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: white;
+}
+
+.step-content p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+}
+
+/* Sağ Panel - Görsel */
+.artist-modal-right {
+  background: #f8f8f8;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  max-height: 100%;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.artist-modal-right img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: fill;
+  object-position: top center;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 968px) {
+  .artist-modal-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    height: auto;
+    max-height: none;
+  }
+
+  .artist-modal-container {
+    width: 95%;
+    max-width: 600px;
+    padding: 25px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .artist-modal-left {
+    padding: 35px 30px;
+    height: auto;
+    max-height: none;
+  }
+
+  .artist-modal-right {
+    height: 400px;
+    max-height: 400px;
+  }
+
+  .artist-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .artist-steps {
+    gap: 25px;
+    justify-content: flex-start;
+  }
+
+  .artist-step {
+    flex: 0 0 auto;
+  }
+
+  .artist-step:not(:last-child)::after {
+    top: 45px;
+    height: calc(100% + 25px);
+    bottom: auto;
+  }
+
+  .artist-modal-close {
+    top: 12px;
+    right: 12px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-modal-container {
+    width: 98%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .artist-modal-left {
+    padding: 30px 20px;
+    border-radius: 10px;
+  }
+
+  .artist-modal-title {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+  }
+
+  .artist-modal-close {
+    font-size: 26px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .step-number {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .step-content h3 {
+    font-size: 1rem;
+  }
+
+  .step-content p {
+    font-size: 0.85rem;
+  }
+
+  .artist-modal-right {
+    height: 350px;
+    max-height: 350px;
+    border-radius: 10px;
+  }
+
+  .artist-modal-content {
+    gap: 15px;
+  }
+}
