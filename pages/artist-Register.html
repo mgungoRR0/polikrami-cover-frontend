@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
-
-<head>
+  <head>
     <!-- Default Meta Codes -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,200 +9,298 @@
     <title>Polikrami - Sanatçı Üye Ol</title>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS Link -->
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+    <link rel="stylesheet" href="../css/authflow.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-
-        <!-- Left Panel -->
-        <div class="left-panel">
-
-            <!-- Logo -->
-            <div class="logo-container">
-                <img class="logo-img" src="../assets/images/polikrami-logo.svg" alt="Polikrami">
-            </div>
-
-            <!-- Illustrator -->
-            <div class="illustration-wrapper">
-                <div class="decorative-shape"></div>
-                <div class="illustration-circle">
-                    <div class="woman-illustration">
-                        <img src="../assets/images/artist-register.png" alt="">
-                    </div>
-                </div>
-            </div>
+      <!-- Left Panel -->
+      <div class="left-panel">
+        <!-- Logo -->
+        <div class="logo-container">
+          <img
+            class="logo-img"
+            src="../assets/images/polikrami-logo.svg"
+            alt="Polikrami"
+          />
         </div>
 
-        <!-- Right Panel -->
-        <div class="right-panel">
+        <!-- Illustrator -->
+        <div class="illustration-wrapper">
+          <div class="decorative-shape"></div>
+          <div class="illustration-circle">
+            <div class="woman-illustration">
+              <img src="../assets/images/artist-register.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <!-- Sign Up Form -->
-            <div class="login-container">
-                <h1>HESAP OLUŞTURUN</h1>
-                <p class="subtitle">Bilgilerinizi eksiksiz doldurarak kolayca hesap oluşturabilirsiniz.</p>
+      <!-- Right Panel -->
+      <div class="right-panel">
+        <!-- Sign Up Form -->
+        <div class="login-container">
+          <h1>HESAP OLUŞTURUN</h1>
+          <p class="subtitle">
+            Bilgilerinizi eksiksiz doldurarak kolayca hesap oluşturabilirsiniz.
+          </p>
 
-                <form id="signupForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="firstName" placeholder="Adınız" required>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="lastName" placeholder="Soyadınız" required>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="E-Postanız" required>
-                    </div>
-
-                    <!-- Dropdown Menu -->
-                    <div class="form-group select-wrapper">
-                        <select class="form-control" id="specialization" required autocomplete="off">
-                            <option value="" disabled selected>Uzmanlık Alanınızı Seçiniz</option>
-                            <option value="Tasarımcı">Tasarımcı</option>
-                            <option value="Dijital Tasarım">Dijital Tasarım</option>
-                            <option value="Kapak Tasarımcısı">Kapak Tasarımcısı</option>
-                            <option value="diger">Diğer</option>
-                        </select>
-
-                        <!-- Dropdown Icon -->
-                        <svg class="select-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M6 9l6 6 6-6" />
-                        </svg>
-                    </div>
-
-                    <!-- Password Section -->
-                    <div class="form-group">
-                        <div class="password-wrapper">
-                            <input type="password" class="form-control" id="password" placeholder="Şifreniz" required>
-                            <button type="button" class="toggle-password" id="togglePassword">
-                                <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                    <circle cx="12" cy="12" r="3" />
-                                </svg>
-                                <svg class="eye-closed" style="display:none;" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path
-                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                                    <line x1="1" y1="1" x2="23" y2="23" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Confirm Password Section -->
-                    <div class="form-group">
-                        <div class="password-wrapper">
-                            <input type="password" class="form-control" id="passwordConfirm"
-                                placeholder="Şifreniz (Tekrar)" required>
-                            <button type="button" class="toggle-password" id="togglePasswordConfirm">
-                                <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                    <circle cx="12" cy="12" r="3" />
-                                </svg>
-                                <svg class="eye-closed" style="display:none;" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path
-                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                                    <line x1="1" y1="1" x2="23" y2="23" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="form-group terms-group">
-                        <div class="terms-checkbox">
-                            <input type="checkbox" id="termsAccept" class="checkbox-input" required>
-                            <label for="termsAccept" class="terms-label">
-                                <a href="/pages/terms-of-service.html" target="_blank" class="terms-link">Kullanım
-                                    Şartlarını</a>
-                                ve
-                                <a href="/pages/privacy-policy.html" target="_blank" class="terms-link">Gizlilik
-                                    Sözleşmesini</a>
-                                kabul ediyorum.
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- ★ Gelir Paylaşımı Sözleşmesi Checkbox ★ -->
-                    <div class="form-group terms-group">
-                        <div class="terms-checkbox">
-                            <input type="checkbox" id="revenueShareAccept" class="checkbox-input" required>
-                            <label for="revenueShareAccept" class="terms-label">
-                                <a href="/pages/revenue-share-agreement.html" target="_blank" class="terms-link">Gelir
-                                    Paylaşımı </a>sözleşmesini kabul ediyorum.
-                            </label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Hesap Oluşturun</button>
-                </form>
-
-                <div class="signup-section">
-                    <span>Bir hesabınız var mı?</span>
-                    <a href="../pages/user-login.html">Giriş Yapın</a>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="signup-section">
-                    <a href="/pages/user-Register.html">Sanatçı Değilim</a>
-                </div>
-
-                <!-- Dil Seçeneği -->
-                <div class="language-selector">
-                    <small class="language-option active" data-lang="tr">Türkçe</small>
-                    <small class="language-option" data-lang="en">English</small>
-                    <small class="language-option" data-lang="de">Deutsch</small>
-                </div>
-
+          <form id="signupForm">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="Adınız"
+                required
+              />
             </div>
 
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                placeholder="Soyadınız"
+                required
+              />
+            </div>
 
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="E-Postanız"
+                required
+              />
+            </div>
+
+            <!-- Dropdown Menu -->
+            <div class="form-group select-wrapper">
+              <select
+                class="form-control"
+                id="specialization"
+                required
+                autocomplete="off"
+              >
+                <option value="" disabled selected>
+                  Uzmanlık Alanınızı Seçiniz
+                </option>
+                <option value="Tasarımcı">Tasarımcı</option>
+                <option value="Dijital Tasarım">Dijital Tasarım</option>
+                <option value="Kapak Tasarımcısı">Kapak Tasarımcısı</option>
+                <option value="diger">Diğer</option>
+              </select>
+
+              <!-- Dropdown Icon -->
+              <svg
+                class="select-caret"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </div>
+
+            <!-- Password Section -->
+            <div class="form-group">
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Şifreniz"
+                  required
+                />
+                <button
+                  type="button"
+                  class="toggle-password"
+                  id="togglePassword"
+                >
+                  <svg
+                    class="eye-open"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <svg
+                    class="eye-closed"
+                    style="display: none"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+                    />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Confirm Password Section -->
+            <div class="form-group">
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="passwordConfirm"
+                  placeholder="Şifreniz (Tekrar)"
+                  required
+                />
+                <button
+                  type="button"
+                  class="toggle-password"
+                  id="togglePasswordConfirm"
+                >
+                  <svg
+                    class="eye-open"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <svg
+                    class="eye-closed"
+                    style="display: none"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+                    />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="form-group terms-group">
+              <div class="terms-checkbox">
+                <input
+                  type="checkbox"
+                  id="termsAccept"
+                  class="checkbox-input"
+                  required
+                />
+                <label for="termsAccept" class="terms-label">
+                  <a
+                    href="/pages/terms-of-service.html"
+                    target="_blank"
+                    class="terms-link"
+                    >Kullanım Şartlarını</a
+                  >
+                  ve
+                  <a
+                    href="/pages/privacy-policy.html"
+                    target="_blank"
+                    class="terms-link"
+                    >Gizlilik Sözleşmesini</a
+                  >
+                  kabul ediyorum.
+                </label>
+              </div>
+            </div>
+
+            <!-- ★ Gelir Paylaşımı Sözleşmesi Checkbox ★ -->
+            <div class="form-group terms-group">
+              <div class="terms-checkbox">
+                <input
+                  type="checkbox"
+                  id="revenueShareAccept"
+                  class="checkbox-input"
+                  required
+                />
+                <label for="revenueShareAccept" class="terms-label">
+                  <a
+                    href="/pages/revenue-share-agreement.html"
+                    target="_blank"
+                    class="terms-link"
+                    >Gelir Paylaşımı </a
+                  >sözleşmesini kabul ediyorum.
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Hesap Oluşturun</button>
+          </form>
+
+          <div class="signup-section">
+            <span>Bir hesabınız var mı?</span>
+            <a href="../pages/user-login.html">Giriş Yapın</a>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="signup-section">
+            <a href="/pages/user-Register.html">Sanatçı Değilim</a>
+          </div>
+
+          <!-- Dil Seçeneği -->
+          <div class="language-selector">
+            <small class="language-option active" data-lang="tr">Türkçe</small>
+            <small class="language-option" data-lang="en">English</small>
+            <small class="language-option" data-lang="de">Deutsch</small>
+          </div>
         </div>
-        <!-- Branch Image -->
-        <div class="plant-decoration">
-            <img src="../assets/images/branch-image.png" alt="Dekoratif Bitki">
-        </div>
+      </div>
+      <!-- Branch Image -->
+      <div class="plant-decoration">
+        <img src="../assets/images/branch-image.png" alt="Dekoratif Bitki" />
+      </div>
     </div>
 
     <!-- Email Verification Modal -->
     <div class="modal-overlay" id="emailModal">
-        <div class="modal-box">
-            <button class="modal-close" type="button">
-                <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
+      <div class="modal-box">
+        <button class="modal-close" type="button">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M18 6L6 18M6 6l12 12"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
 
-            <h2 class="modal-title">E-postanı kontrol et</h2>
+        <h2 class="modal-title">E-postanı kontrol et</h2>
 
-            <div class="modal-icon">
-                <img src="../assets/images/eposta-modal.png" alt="">
-            </div>
-
-            <p class="modal-text">
-                <strong id="userEmail">email@example.com</strong> adresine bir mail gönderdik.
-            </p>
-
-            <p class="modal-subtext">
-                Lütfen gelen kutunuzu kontrol edin.
-            </p>
+        <div class="modal-icon">
+          <img src="../assets/images/eposta-modal.png" alt="" />
         </div>
+
+        <p class="modal-text">
+          <strong id="userEmail">email@example.com</strong> adresine bir mail
+          gönderdik.
+        </p>
+
+        <p class="modal-subtext">Lütfen gelen kutunuzu kontrol edin.</p>
+      </div>
     </div>
 
     <!-- JS Link -->
     <script src="../js/base.js"></script>
     <script src="../js/navigation.js"></script>
-
-</body>
-
+  </body>
 </html>

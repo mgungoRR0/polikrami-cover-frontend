@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
-
-<head>
+  <head>
     <!-- Default Meta Codes -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,73 +9,107 @@
     <title>Kodu Doğrula</title>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS Link -->
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+    <link rel="stylesheet" href="../css/authflow.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-
-        <!-- Left Panel -->
-        <div class="left-panel">
-
-            <!-- Logo -->
-            <div class="logo-container">
-                <img class="logo-img" src="../assets/images/polikrami-logo.svg" alt="Polikrami" />
-            </div>
-
-            <!-- Illustrator -->
-            <div class="illustration-wrapper">
-                <div class="decorative-shape"></div>
-                <div class="illustration-circle">
-                    <img src="../assets/images/forgot-my-password-image.png" alt="" />
-                </div>
-            </div>
+      <!-- Left Panel -->
+      <div class="left-panel">
+        <!-- Logo -->
+        <div class="logo-container">
+          <img
+            class="logo-img"
+            src="../assets/images/polikrami-logo.svg"
+            alt="Polikrami"
+          />
         </div>
 
-        <!-- Right Panel -->
-        <div class="right-panel">
+        <!-- Illustrator -->
+        <div class="illustration-wrapper">
+          <div class="decorative-shape"></div>
+          <div class="illustration-circle">
+            <img src="../assets/images/forgot-my-password-image.png" alt="" />
+          </div>
+        </div>
+      </div>
 
-            <!-- Verif Code -->
-            <div class="login-container">
-                <h1>KODU GİRİNİZ</h1>
-                <p class="subtitle">Lütfen e-posta adresinize gönderilen 4 haneli kodu giriniz.</p>
+      <!-- Right Panel -->
+      <div class="right-panel">
+        <!-- Verif Code -->
+        <div class="login-container">
+          <h1>KODU GİRİNİZ</h1>
+          <p class="subtitle">
+            Lütfen e-posta adresinize gönderilen 4 haneli kodu giriniz.
+          </p>
 
-                <form id="otpForm">
-                    <div class="otp-group" id="otpGroup">
-                        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="1. hane">
-                        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="2. hane">
-                        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="3. hane">
-                        <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="4. hane">
-                    </div>
-                    <button type="submit" class="submit-btn">Doğrula</button>
-
-                    <div class="resend-section">
-                        <p class="resend-text">Kod almadınız mı? <button type="button" class="resend-link"
-                                id="resendBtn" disabled>Yeniden Gönder</button></p>
-                        <p class="timer-text" id="timerText">01:30</p>
-                    </div>
-
-                </form>
+          <form id="otpForm">
+            <div class="otp-group" id="otpGroup">
+              <input
+                class="otp-input"
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                aria-label="1. hane"
+              />
+              <input
+                class="otp-input"
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                aria-label="2. hane"
+              />
+              <input
+                class="otp-input"
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                aria-label="3. hane"
+              />
+              <input
+                class="otp-input"
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                aria-label="4. hane"
+              />
             </div>
+            <button type="submit" class="submit-btn">Doğrula</button>
 
+            <div class="resend-section">
+              <p class="resend-text">
+                Kod almadınız mı?
+                <button
+                  type="button"
+                  class="resend-link"
+                  id="resendBtn"
+                  disabled
+                >
+                  Yeniden Gönder
+                </button>
+              </p>
+              <p class="timer-text" id="timerText">01:30</p>
+            </div>
+          </form>
         </div>
-        <!-- Branch Image -->
-        <div class="plant-decoration">
-            <img src="../assets/images/branch-image.png" alt="Dekoratif Bitki">
-        </div>
+      </div>
+      <!-- Branch Image -->
+      <div class="plant-decoration">
+        <img src="../assets/images/branch-image.png" alt="Dekoratif Bitki" />
+      </div>
     </div>
 
     <!-- JS Link -->
     <script src="../js/base.js"></script>
     <script src="../js/verify-Code.js"></script>
     <script src="../js/navigation.js"></script>
-
-</body>
-
+  </body>
 </html>
