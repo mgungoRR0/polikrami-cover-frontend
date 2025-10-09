@@ -37,8 +37,8 @@
   width: 90%;
   max-width: 900px;
   background: white;
-  border-radius: 16px;
-  padding: 50px 35px;
+  border-radius: 8px;
+  padding: 55px 35px 30px 35px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   z-index: 10001;
   transform: scale(0.9);
@@ -75,7 +75,7 @@
 
 .artist-modal-content {
   display: grid;
-  grid-template-columns: 1fr 0.4fr;
+  grid-template-columns: 1fr 0.6fr;
   gap: 20px;
   height: 710px;
   max-height: 710px;
@@ -89,7 +89,7 @@
   padding: 40px 35px;
   color: white;
   position: relative;
-  border-radius: 12px;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   height: 100%;
