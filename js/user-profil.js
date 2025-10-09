@@ -305,3 +305,372 @@ document.addEventListener("DOMContentLoaded", function () {
     alert("Profil fotoğrafı kaldırma özelliği yakında eklenecek!");
   });
 });
+// ==========================================
+// ORDERS PAGE JAVASCRIPT
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if we're on the orders page by checking if modals exist
+  const cancelModal = document.getElementById("cancelModal");
+
+  // If cancel modal doesn't exist, we're not on orders page
+  if (!cancelModal) return;
+
+  // ==========================================
+  // MODAL ELEMENTS
+  // ==========================================
+
+  const reasonModal = document.getElementById("reasonModal");
+  const successModal = document.getElementById("successModal");
+
+  const closeCancelModal = document.getElementById("closeCancelModal");
+  const closeReasonModal = document.getElementById("closeReasonModal");
+  const closeSuccessModal = document.getElementById("closeSuccessModal");
+
+  const cancelNo = document.getElementById("cancelNo");
+  const cancelYes = document.getElementById("cancelYes");
+
+  const skipReason = document.getElementById("skipReason");
+  const submitReason = document.getElementById("submitReason");
+
+  const cancelReason = document.getElementById("cancelReason");
+
+  let currentOrderId = null;
+
+  console.log("Orders page JavaScript loaded");
+  console.log(
+    "Cancel buttons found:",
+    document.querySelectorAll(".cancel-btn").length
+  );
+
+  // ==========================================
+  // CANCEL ORDER FLOW
+  // ==========================================
+
+  // Step 1: Click "İptal Et" button
+  const cancelButtons = document.querySelectorAll(".cancel-btn");
+  cancelButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      currentOrderId = this.getAttribute("data-order-id");
+      console.log("Cancel order requested:", currentOrderId);
+      openModal(cancelModal);
+    });
+  });
+
+  // Step 2: Confirm cancellation
+  cancelYes.addEventListener("click", function () {
+    closeModal(cancelModal);
+    // Open reason modal after a short delay
+    setTimeout(() => {
+      openModal(reasonModal);
+    }, 300);
+  });
+
+  // Step 2b: Cancel the cancellation
+  cancelNo.addEventListener("click", function () {
+    closeModal(cancelModal);
+    currentOrderId = null;
+  });
+
+  // Step 3a: Submit cancellation reason
+  submitReason.addEventListener("click", function () {
+    const reason = cancelReason.value.trim();
+
+    if (reason.length === 0) {
+      alert("Lütfen bir neden giriniz");
+      return;
+    }
+
+    // Mock: Send cancellation to backend
+    console.log("Order cancelled:", currentOrderId);
+    console.log("Reason:", reason);
+
+    // Simulate API call
+    setTimeout(() => {
+      closeModal(reasonModal);
+      cancelReason.value = ""; // Clear textarea
+
+      // Show success modal
+      setTimeout(() => {
+        openModal(successModal);
+
+        // Auto-close success modal after 3 seconds
+        setTimeout(() => {
+          closeModal(successModal);
+          currentOrderId = null;
+
+          // Optionally: Remove the cancelled order from the page
+          // Or update its status
+        }, 3000);
+      }, 300);
+    }, 500);
+  });
+
+  // Step 3b: Skip reason
+  skipReason.addEventListener("click", function () {
+    // Mock: Send cancellation without reason
+    console.log("Order cancelled without reason:", currentOrderId);
+
+    closeModal(reasonModal);
+    cancelReason.value = ""; // Clear textarea
+
+    // Show success modal
+    setTimeout(() => {
+      openModal(successModal);
+
+      // Auto-close success modal after 3 seconds
+      setTimeout(() => {
+        closeModal(successModal);
+        currentOrderId = null;
+      }, 3000);
+    }, 300);
+  });
+
+  // ==========================================
+  // MODAL CLOSE BUTTONS
+  // ==========================================
+
+  closeCancelModal.addEventListener("click", function () {
+    closeModal(cancelModal);
+    currentOrderId = null;
+  });
+
+  closeReasonModal.addEventListener("click", function () {
+    closeModal(reasonModal);
+    cancelReason.value = "";
+  });
+
+  closeSuccessModal.addEventListener("click", function () {
+    closeModal(successModal);
+    currentOrderId = null;
+  });
+
+  // Close modals when clicking outside
+  [cancelModal, reasonModal, successModal].forEach((modal) => {
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        closeModal(modal);
+        if (modal === cancelModal || modal === reasonModal) {
+          currentOrderId = null;
+        }
+        if (modal === reasonModal) {
+          cancelReason.value = "";
+        }
+      }
+    });
+  });
+
+  // ==========================================
+  // PREVIEW BUTTONS
+  // ==========================================
+
+  const previewButtons = document.querySelectorAll(".preview-btn");
+  previewButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      // Mock: Open order preview
+      alert("Önizleme özelliği yakında eklenecek!");
+    });
+  });
+
+  // ==========================================
+  // TRACKING ACTION BUTTON
+  // ==========================================
+
+  const trackingButtons = document.querySelectorAll(".tracking-action-btn");
+  trackingButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      // Mock: Open cargo tracking
+      alert("Kargo takip özelliği yakında eklenecek!");
+    });
+  });
+
+  // ==========================================
+  // HELPER FUNCTIONS
+  // ==========================================
+
+  function openModal(modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevent scrolling
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = ""; // Restore scrolling
+  }
+
+  // Close modals on Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      if (cancelModal.classList.contains("active")) {
+        closeModal(cancelModal);
+        currentOrderId = null;
+      }
+      if (reasonModal.classList.contains("active")) {
+        closeModal(reasonModal);
+        cancelReason.value = "";
+      }
+      if (successModal.classList.contains("active")) {
+        closeModal(successModal);
+        currentOrderId = null;
+      }
+    }
+  });
+});
+// ==========================================
+// PASSWORD PAGE JAVASCRIPT
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if we're on the password page
+  const passwordForm = document.getElementById("passwordForm");
+
+  if (!passwordForm) return;
+
+  console.log("Password page JavaScript loaded");
+
+  // ==========================================
+  // PASSWORD VISIBILITY TOGGLE
+  // ==========================================
+
+  const toggleButtons = document.querySelectorAll(".toggle-password");
+
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const targetId = this.getAttribute("data-target");
+      const input = document.getElementById(targetId);
+
+      if (input.type === "password") {
+        input.type = "text";
+        this.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+        `;
+      } else {
+        input.type = "password";
+        this.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        `;
+      }
+    });
+  });
+
+  // ==========================================
+  // PASSWORD VALIDATION
+  // ==========================================
+
+  const newPasswordInput = document.getElementById("newPassword");
+  const confirmPasswordInput = document.getElementById("confirmPassword");
+  const requirements = document.querySelectorAll(".requirement");
+
+  // Password validation rules
+  const passwordRules = {
+    length: (password) => password.length >= 8,
+    complex: (password) => {
+      const hasUpperCase = /[A-Z]/.test(password);
+      const hasNumber = /[0-9]/.test(password);
+      const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      return hasUpperCase && hasNumber && hasSpecialChar;
+    },
+  };
+
+  // Update requirement indicators
+  function updateRequirements() {
+    const password = newPasswordInput.value;
+
+    requirements.forEach((requirement) => {
+      const rule = requirement.getAttribute("data-rule");
+
+      if (passwordRules[rule](password)) {
+        requirement.classList.add("valid");
+      } else {
+        requirement.classList.remove("valid");
+      }
+    });
+  }
+
+  // Check all requirements are met
+  function isPasswordValid() {
+    const password = newPasswordInput.value;
+    return Object.values(passwordRules).every((rule) => rule(password));
+  }
+
+  newPasswordInput.addEventListener("input", updateRequirements);
+
+  // ==========================================
+  // FORM SUBMISSION
+  // ==========================================
+
+  passwordForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const oldPassword = document.getElementById("oldPassword").value;
+    const newPassword = newPasswordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    // Validation
+    if (!oldPassword) {
+      alert("Lütfen eski şifrenizi giriniz");
+      return;
+    }
+
+    if (!newPassword) {
+      alert("Lütfen yeni şifrenizi giriniz");
+      return;
+    }
+
+    if (!isPasswordValid()) {
+      alert("Yeni şifreniz gereksinimleri karşılamıyor");
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      alert("Yeni şifreler eşleşmiyor");
+      return;
+    }
+
+    if (oldPassword === newPassword) {
+      alert("Yeni şifre eski şifreden farklı olmalıdır");
+      return;
+    }
+
+    // Mock: Send to backend
+    console.log("Password change requested");
+    console.log("Old password:", oldPassword);
+    console.log("New password:", newPassword);
+
+    // Simulate API call
+    setTimeout(() => {
+      alert("Şifreniz başarıyla değiştirildi!");
+
+      // Clear form
+      passwordForm.reset();
+
+      // Reset requirement indicators
+      requirements.forEach((req) => req.classList.remove("valid"));
+    }, 500);
+  });
+
+  // ==========================================
+  // REAL-TIME PASSWORD MATCH CHECK
+  // ==========================================
+
+  confirmPasswordInput.addEventListener("input", function () {
+    const newPassword = newPasswordInput.value;
+    const confirmPassword = confirmPasswordInput.value;
+
+    if (confirmPassword.length > 0) {
+      if (newPassword === confirmPassword) {
+        confirmPasswordInput.style.borderColor = "var(--primary-green)";
+      } else {
+        confirmPasswordInput.style.borderColor = "#e74c3c";
+      }
+    } else {
+      confirmPasswordInput.style.borderColor = "";
+    }
+  });
+});

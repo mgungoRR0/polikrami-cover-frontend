@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profilim | Polikrami</title>
-    <meta name="description" content="Kullanıcı profil sayfası - Polikrami" />
+    <title>Siparişlerim | Polikrami</title>
+    <meta name="description" content="Sipariş listem - Polikrami" />
 
     <!-- Google Fonts - Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -100,7 +100,7 @@
             <!-- Coin Display -->
             <div class="coin-display">
               <span class="coin-amount">50</span>
-              <div class="coin-icon">₵</div>
+              <div class="coin-icon">₺</div>
             </div>
 
             <!-- Profile Avatar -->
@@ -116,7 +116,7 @@
               </div>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="user-orders.html" class="highlighted">
+                  <a href="user-profil.html">
                     <span class="menu-icon">
                       <svg
                         width="20"
@@ -136,7 +136,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="user-orders.html">
+                  <a href="#" class="highlighted">
                     <span class="menu-icon">
                       <svg
                         width="20"
@@ -262,7 +262,7 @@
         <aside class="profile-sidebar">
           <h3 class="sidebar-title">MENÜ</h3>
           <ul class="sidebar-menu">
-            <li class="active">
+            <li>
               <a href="user-profil.html">
                 <svg
                   width="20"
@@ -278,8 +278,8 @@
                 Profilim
               </a>
             </li>
-            <li>
-              <a href="user-orders.html">
+            <li class="active">
+              <a href="user-siparislerim.html">
                 <svg
                   width="20"
                   height="20"
@@ -378,163 +378,270 @@
           </div>
         </aside>
 
-        <!-- Profile Content -->
+        <!-- Orders Content -->
         <div class="profile-content">
-          <h1 class="profile-title">Profili Düzenle</h1>
+          <h1 class="profile-title">Siparişlerim</h1>
 
-          <!-- Profile Photo Section -->
-          <div class="profile-photo-section">
-            <div class="photo-wrapper">
-              <img
-                src="../assets/images/emre-yılmaz-image.png"
-                alt="Profil Fotoğrafı"
-                class="profile-photo"
-              />
-            </div>
-            <div class="photo-actions">
-              <button class="photo-action-link add">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
-                  ></path>
-                  <circle cx="12" cy="13" r="4"></circle>
-                </svg>
-                Profil Fotoğrafı Ekle
-              </button>
-              <button class="photo-action-link remove">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-                Profil Fotoğrafı Kaldır
-              </button>
-            </div>
-          </div>
+          <div class="orders-layout">
+            <!-- Orders List -->
+            <div class="orders-list">
+              <!-- Order 1 - Completed with Cancel Option -->
+              <div class="order-card">
+                <div class="order-number">Sipariş Numarası: 49858476</div>
 
-          <!-- Profile Form -->
-          <form class="profile-form" id="profileForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Adınız<span class="required">*</span></label>
-                <input
-                  type="text"
-                  value="Sinem"
-                  readonly
-                  class="readonly-input"
-                />
-              </div>
-              <div class="form-group">
-                <label>Soyadınız<span class="required">*</span></label>
-                <input
-                  type="text"
-                  value="Koza"
-                  readonly
-                  class="readonly-input"
-                />
-              </div>
-            </div>
+                <div class="order-body">
+                  <div class="order-image">
+                    <img
+                      src="../assets/images/emre-yılmaz-image.png"
+                      alt="Sipariş Görseli"
+                    />
+                  </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label>E-Posta Adresiniz<span class="required">*</span></label>
-                <input
-                  type="email"
-                  value="nursınemı60@gmail.com"
-                  readonly
-                  class="readonly-input"
-                />
-              </div>
-              <div class="form-group">
-                <label
-                  >Telefon numaranız
-                  <span class="optional">(İsteğe Bağlı)</span></label
-                >
-                <div class="phone-input-group">
-                  <input
-                    type="tel"
-                    id="phoneInput"
-                    placeholder="5XX XXX XX XX"
-                    maxlength="13"
-                  />
-                  <button type="button" class="verify-btn" id="verifyPhoneBtn">
-                    Doğrula
-                  </button>
+                  <div class="order-details">
+                    <div class="order-info">
+                      <div class="info-item">
+                        <span class="info-label">Sipariş Durumu</span>
+                        <span class="info-value">Tamamlandı</span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">Tutar</span>
+                        <span class="info-value">350 TL</span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">Alıcı</span>
+                        <span class="info-value">Sinem Nur KOZA</span>
+                      </div>
+                    </div>
+
+                    <div class="order-actions">
+                      <button class="order-btn preview-btn">Önizle</button>
+                      <button
+                        class="order-btn cancel-btn"
+                        data-order-id="49858476"
+                      >
+                        İptal Et
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <small class="form-hint"
-                  >Sipariş vermek için telefon numaranızı doğrulamanız
-                  gerekmektedir.</small
-                >
+              </div>
+
+              <!-- Order 2 - Delivered -->
+              <div class="order-card">
+                <div class="order-number">Sipariş Numarası: 49858476</div>
+
+                <div class="order-body">
+                  <div class="order-image">
+                    <img
+                      src="../assets/images/emre-yılmaz-image.png"
+                      alt="Sipariş Görseli"
+                    />
+                  </div>
+
+                  <div class="order-details">
+                    <div class="order-info">
+                      <div class="info-item">
+                        <span class="info-label">Sipariş Durumu</span>
+                        <span class="info-value">Teslim Edildi</span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">Tutar</span>
+                        <span class="info-value">150 TL</span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">Alıcı</span>
+                        <span class="info-value">Cem Sönmez</span>
+                      </div>
+                    </div>
+
+                    <div class="order-actions">
+                      <button class="order-btn preview-btn">İptal Et</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order 3 - Waiting Revision -->
+              <div class="order-card">
+                <div class="order-number">Sipariş Numarası: 49858476</div>
+
+                <div class="order-body">
+                  <div class="order-image">
+                    <img
+                      src="../assets/images/emre-yılmaz-image.png"
+                      alt="Sipariş Görseli"
+                    />
+                  </div>
+
+                  <div class="order-details">
+                    <div class="order-info">
+                      <div class="info-item">
+                        <span class="info-label">Sipariş Durumu</span>
+                        <span class="info-value">Revize Bekliyor</span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">Tutar</span>
+                        <span class="info-value">500 TL</span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">Alıcı</span>
+                        <span class="info-value">Mehmet Ersoy</span>
+                      </div>
+                    </div>
+
+                    <div class="order-actions">
+                      <button class="order-btn preview-btn">İptal Et</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <button type="submit" class="save-btn">Kaydet</button>
-          </form>
+            <!-- Order Tracking Sidebar -->
+            <aside class="order-tracking">
+              <div class="tracking-title">Aktif Sipariş: 49858476</div>
 
-          <!-- CTA Section -->
-          <div class="profile-cta">
-            <div class="cta-content">
-              <div class="cta-image">
-                <!-- Arka plan - Turuncu şekiller -->
-                <img src="../assets/images/drawing2-image.png" alt="" />
-                <!-- Ön plan - Kitap kapağı -->
-                <img
-                  src="../assets/images/user-profil-cta.png"
-                  alt="Kitap Kapağı"
-                />
+              <div class="tracking-steps">
+                <div class="tracking-step completed">
+                  <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" fill="currentColor" />
+                      <path
+                        d="M8 12.5L10.5 15L16 9.5"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="step-label">Kargoya Verildi</div>
+                </div>
+
+                <div class="tracking-step completed">
+                  <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" fill="currentColor" />
+                      <path
+                        d="M12 6v6l4 2"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="step-label">Onay Bekliyor</div>
+                </div>
+
+                <div class="tracking-step completed">
+                  <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" fill="currentColor" />
+                      <rect
+                        x="7"
+                        y="7"
+                        width="10"
+                        height="10"
+                        stroke="white"
+                        stroke-width="2"
+                        rx="1"
+                      />
+                      <path
+                        d="M7 10h10M10 7v10"
+                        stroke="white"
+                        stroke-width="2"
+                      />
+                    </svg>
+                  </div>
+                  <div class="step-label">Sipariş Tamamlandı</div>
+                </div>
+
+                <div class="tracking-step">
+                  <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" fill="currentColor" />
+                      <path
+                        d="M16 8l-6 8-3-3"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="step-label">Sipariş Alındı</div>
+                </div>
               </div>
-              <div class="cta-text">
-                <p>
-                  Öne çıkan sanatçılarımızın özgün tasarımlarını keşfedin ve
-                  hayalinizi onlarla paylaşarak benzersiz kapaklar oluşturun!
-                </p>
-                <button class="cta-button">Oluşturmaya Başla</button>
-              </div>
-            </div>
+
+              <button class="tracking-action-btn">Kargoyu takip et</button>
+            </aside>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- OTP Verification Modal -->
-    <div class="modal-overlay" id="otpModal">
-      <div class="modal-content">
-        <button class="modal-close" id="closeModal">×</button>
-        <h2 class="modal-title">DOĞRULAMA</h2>
-        <p class="modal-description">
-          (<span id="maskedPhone">539</span>) XXX XX XX nolu telefonunuza sms
-          yoluyla bir onay kodu gönderdik.
-        </p>
+    <!-- Cancel Confirmation Modal -->
+    <div class="modal-overlay" id="cancelModal">
+      <div class="modal-content cancel-modal">
+        <button class="modal-close" id="closeCancelModal">×</button>
 
-        <div class="otp-inputs">
-          <input type="text" maxlength="1" class="otp-input" data-index="0" />
-          <input type="text" maxlength="1" class="otp-input" data-index="1" />
-          <input type="text" maxlength="1" class="otp-input" data-index="2" />
-          <input type="text" maxlength="1" class="otp-input" data-index="3" />
+        <div class="modal-icon warning">
+          <img
+            src="../assets/images/user-order-cancel1.png"
+            alt="İptal"
+            width="60"
+            height="60"
+          />
         </div>
 
-        <button class="modal-verify-btn" id="verifyOtpBtn">Doğrula</button>
+        <h2 class="modal-title">İptal etmek istediğinize emin misiniz?</h2>
 
-        <div class="modal-resend">
-          <span>Kod almadınız mı? </span>
-          <button class="resend-btn" id="resendBtn" disabled>
-            Yeniden Gönder <span class="timer" id="timer">01:30</span>
+        <div class="modal-actions">
+          <button class="modal-btn secondary" id="cancelNo">Hayır</button>
+          <button class="modal-btn primary" id="cancelYes">Evet</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cancel Reason Modal -->
+    <div class="modal-overlay" id="reasonModal">
+      <div class="modal-content reason-modal">
+        <button class="modal-close" id="closeReasonModal">×</button>
+
+        <h2 class="modal-title">
+          İptal etme nedeninizi bizimle paylaşır mısınız?
+        </h2>
+
+        <textarea
+          class="reason-textarea"
+          placeholder="Örn. Yanlış Ürün"
+          id="cancelReason"
+        ></textarea>
+
+        <div class="modal-actions">
+          <button class="modal-btn secondary" id="skipReason">
+            Paylaşmak İstemiyorum
           </button>
+          <button class="modal-btn primary" id="submitReason">Gönder</button>
         </div>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+      <div class="modal-content success-modal">
+        <button class="modal-close" id="closeSuccessModal">×</button>
+
+        <div class="modal-icon success">
+          <img
+            src="../assets/images/user-order-cancel2.png"
+            alt="Başarılı"
+            width="60"
+            height="60"
+          />
+        </div>
+
+        <h2 class="modal-title">İade talebiniz başarıyla oluşturulmuştur.</h2>
       </div>
     </div>
 
@@ -633,8 +740,8 @@
           <div class="footer-links-col">
             <h3>Bağlantılar</h3>
             <ul>
-              <li><a href="user-profil.html">Hesabım</a></li>
-              <li><a href="user-orders.html">Siparişlerim</a></li>
+              <li><a href="#">Hesabım</a></li>
+              <li><a href="#">Siparişlerim</a></li>
               <li><a href="#">İstek Listem</a></li>
               <li><a href="#">Site Haritası</a></li>
               <li><a href="#">E-Bülten</a></li>
