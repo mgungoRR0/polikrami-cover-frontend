@@ -119,7 +119,7 @@
         const parent = this.parentElement;
         input = parent.querySelector(
           'input[type="password"], input[type="text"]'
-);
+        );
 
         if (!input) {
           const wrapper = this.closest(".password-wrapper");
@@ -128,7 +128,7 @@
               'input[type="password"], input[type="text"]'
             );
           }
-}
+        }
 
         if (!input) {
           const formGroup = this.closest(".form-group");
@@ -137,7 +137,7 @@
               'input[type="password"], input[type="text"]'
             );
           }
-}
+        }
 
         if (!input) {
           console.error("Şifre input bulunamadı:", this);
@@ -308,7 +308,7 @@
     const hasNumber = /[0-9]/.test(password);
     const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(
       password
-);
+    );
 
     return {
       isValid: hasLength && hasUpperCase && hasNumber && hasSpecialChar,
