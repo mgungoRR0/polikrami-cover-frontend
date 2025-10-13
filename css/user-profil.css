@@ -1574,3 +1574,1361 @@
     height: 10px;
   }
 }
+/* ==========================================
+ADDRESSES PAGE - COMPLETE UPDATED CSS
+   ========================================== */
+
+/* Address Header */
+.address-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.profile-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.add-address-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.add-address-link:hover {
+  color: var(--primary-orange);
+}
+
+.add-address-link svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Address Cards */
+.address-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.address-card-new {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.address-card-new:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Address Card Wrapper with Radio Button */
+.address-card-wrapper {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  align-items: flex-start;
+}
+
+/* Hide default radio button */
+.default-address-radio {
+  display: none;
+}
+
+/* Custom Radio Button */
+.radio-label {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  margin-top: 2px;
+}
+
+.radio-label:hover {
+  border-color: var(--primary-orange);
+}
+
+/* Radio Button - Checked State */
+.default-address-radio:checked + .radio-label {
+  border-color: var(--primary-orange);
+  background: var(--primary-orange);
+}
+
+/* Inner dot when checked */
+.default-address-radio:checked + .radio-label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* Address Card Content */
+.address-card-content {
+  flex: 1;
+}
+
+.address-card-header-new {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Address Info Rows with Orange Icons */
+.address-info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+}
+
+.address-icon {
+  color: var(--primary-orange);
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.address-label {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.address-recipient,
+.address-phone {
+  font-weight: 400;
+  color: var(--text-gray);
+}
+
+/* Address Actions - Aligned Right */
+.address-actions-new {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.address-action-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-gray);
+}
+
+.address-action-btn:hover {
+  background: #f8f8f8;
+}
+
+.address-action-btn.edit:hover {
+  color: var(--primary-orange);
+}
+
+.address-action-btn.delete:hover {
+  color: #e74c3c;
+}
+
+/* Address Detail Text */
+.address-detail-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* ==========================================
+   ADDRESS FORM
+   ========================================== */
+
+.address-form-view {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.address-form-new {
+  width: 100%;
+}
+
+/* 2 Column Grid Layout */
+.form-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Full Width Items */
+.form-col-full {
+  grid-column: 1 / -1;
+}
+
+/* Form Groups */
+.address-form-new .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.address-form-new .form-group label {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+/* Form Inputs */
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #bbb;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+}
+
+/* Select Dropdown Arrow */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%235e5e5e' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.form-select:disabled {
+  background-color: #f8f8f8;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Textarea - NO RESIZE */
+.form-textarea {
+  resize: none;
+  min-height: 120px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-gray);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  text-decoration: underline;
+}
+
+.back-btn:hover {
+  color: var(--text-dark);
+}
+
+.save-btn {
+  padding: 1rem 2.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 153, 0, 0.4);
+}
+
+/* ==========================================
+   DELETE MODAL
+   ========================================== */
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #f5f5f5;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  font-size: 32px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+}
+
+.modal-close:hover {
+  color: #333;
+  transform: rotate(90deg);
+}
+
+.delete-modal {
+  text-align: center;
+}
+
+.modal-icon.warning {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: #fff3e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-icon.warning svg {
+  color: var(--primary-orange);
+}
+
+.delete-modal .modal-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.modal-btn {
+  padding: 1rem 3rem;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  min-width: 160px;
+}
+
+.modal-btn.secondary {
+  background: #dc3545;
+  color: white;
+}
+
+.modal-btn.secondary:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.modal-btn.primary {
+  background: var(--primary-green);
+  color: white;
+}
+
+.modal-btn.primary:hover {
+  background: #558a2e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(101, 158, 54, 0.3);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .address-header {
+    gap: 1rem;
+  }
+
+  .add-address-link {
+    font-size: 14px;
+  }
+
+  .address-card-wrapper {
+    padding: 1rem;
+  }
+
+  .address-card-new {
+    padding: 0;
+  }
+
+  .address-card-header-new {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .address-actions-new {
+    width: 100%;
+    justify-content: flex-end;
+    margin-left: 0;
+  }
+
+  .address-detail-text {
+    font-size: 13px;
+  }
+
+  /* Form 2 Column → 1 Column on Mobile */
+  .form-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-col-full {
+    grid-column: 1;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .save-btn {
+    width: 100%;
+  }
+
+  .back-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .modal-btn {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .address-info-row {
+    font-size: 14px;
+  }
+
+  .address-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .address-detail-text {
+    font-size: 12px;
+  }
+
+  .modal-icon.warning {
+    width: 60px;
+    height: 60px;
+  }
+
+  .modal-icon.warning svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profile-title {
+    font-size: 24px;
+  }
+
+  .add-address-link {
+    font-size: 13px;
+  }
+
+  .add-address-link svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+/* ==========================================
+   CREDIT PAGE STYLES - COMPLETE UPDATED
+   ========================================== */
+
+/* Credit List View */
+.credit-list-view {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Credit Balance Section - SMALLER SIZE */
+.credit-balance-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+.credit-balance-card {
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.credit-balance-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.balance-icon {
+  font-size: 28px;
+  color: var(--primary-orange);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.balance-amount {
+  font-family: "Poppins", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.balance-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.balance-description {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  color: var(--text-gray);
+  line-height: 1.5;
+}
+
+/* Credit Load Button - LEFT ALIGNED, HALF WIDTH */
+.credit-load-btn {
+  width: 50%;
+  max-width: 350px;
+  padding: 1rem 2rem;
+  background: var(--primary-green);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(101, 158, 54, 0.3);
+  margin-bottom: 2.5rem;
+  display: block;
+}
+
+.credit-load-btn:hover {
+  background: #558a2e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(101, 158, 54, 0.4);
+}
+
+/* Credit History List */
+.credit-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.credit-transaction-item {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.credit-transaction-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateX(4px);
+}
+
+.transaction-info {
+  flex: 1;
+}
+
+.transaction-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+
+.transaction-date {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: var(--text-gray);
+}
+
+.transaction-amount {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.transaction-amount.positive {
+  color: var(--primary-green);
+}
+
+.transaction-amount.negative {
+  color: #e74c3c;
+}
+
+/* ==========================================
+   CREDIT LOAD VIEW
+   ========================================== */
+
+.credit-load-view {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Credit Amount Options */
+.credit-amount-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.credit-option-btn {
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.credit-option-btn:hover {
+  border-color: var(--primary-orange);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(255, 153, 0, 0.2);
+}
+
+.credit-option-btn.active {
+  border-color: var(--primary-orange);
+  border-width: 3px;
+  background: #fff9f0;
+}
+
+.option-icon {
+  font-size: 24px;
+  color: var(--primary-orange);
+  font-weight: 700;
+}
+
+.option-credit {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.option-price {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* Custom Amount Input - WITH SUFFIX */
+.credit-custom-input {
+  margin-bottom: 2.5rem;
+}
+
+.credit-custom-input label {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.custom-amount-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.custom-amount {
+  flex: 1;
+  padding: 1rem 3rem 1rem 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+.custom-amount:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+}
+
+.custom-amount-suffix {
+  position: absolute;
+  right: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-gray);
+  pointer-events: none;
+}
+
+/* ==========================================
+   FORM CONTAINER - SIDE BY SIDE
+   ========================================== */
+
+.credit-form-container {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Payment Section (Left) */
+.credit-payment-section {
+  background: white;
+  border: 2px solid var(--primary-orange);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.credit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.credit-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.credit-form .form-group label {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.credit-form .form-input,
+.credit-form .form-select {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.credit-form .form-input:focus,
+.credit-form .form-select:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+}
+
+/* Card Input Wrapper */
+.card-input-wrapper {
+  position: relative;
+}
+
+.card-input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-gray);
+}
+
+.card-input-wrapper .form-input {
+  padding-left: 3rem;
+}
+
+/* Form Row - 3 COLUMNS for Month, Year, CVV */
+.credit-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+  gap: 1rem;
+}
+
+/* Select Dropdown Arrow */
+.credit-form .form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%235e5e5e' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+/* CVV Group with Inline Tooltip */
+.cvv-group {
+  position: relative;
+}
+
+.cvv-input-wrapper {
+  position: relative;
+}
+
+.cvv-question-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-gray);
+  background: transparent;
+  color: var(--text-gray);
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.cvv-question-btn:hover {
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
+  color: white;
+}
+
+/* CVV Tooltip - INLINE (NOT MODAL) */
+.cvv-tooltip {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 320px;
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: tooltipSlideIn 0.3s ease;
+}
+
+.cvv-tooltip.active {
+  display: block;
+}
+
+@keyframes tooltipSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cvv-tooltip-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.cvv-tooltip-close:hover {
+  color: #333;
+}
+
+.cvv-tooltip-cards {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.cvv-tooltip-card-front,
+.cvv-tooltip-card-back {
+  width: 100px;
+  height: 65px;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cvv-tooltip-card-front {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cvv-tooltip-number {
+  width: 50px;
+  height: 22px;
+  background: white;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+  border: 2px solid #e74c3c;
+}
+
+.cvv-tooltip-card-back {
+  background: linear-gradient(135deg, #757575, #9e9e9e);
+}
+
+.cvv-tooltip-stripe {
+  width: 100%;
+  height: 18px;
+  background: #333;
+  margin-top: 10px;
+}
+
+.cvv-tooltip-code {
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+  width: 38px;
+  height: 20px;
+  background: white;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #333;
+  border: 2px solid #e74c3c;
+}
+
+.cvv-tooltip-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-orange);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.cvv-tooltip-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: var(--text-gray);
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+
+/* Submit Button */
+.credit-submit-btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: var(--primary-orange);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+  margin-top: 0.5rem;
+}
+
+.credit-submit-btn:hover {
+  background: var(--secondary-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 153, 0, 0.4);
+}
+
+/* ==========================================
+   ORDER SUMMARY (Right Side)
+   ========================================== */
+
+.credit-order-summary {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 100px;
+}
+
+.order-summary-card {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.summary-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.summary-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.summary-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.summary-text strong {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.summary-text span {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: var(--text-gray);
+}
+
+.summary-details {
+  padding: 1.5rem;
+}
+
+.summary-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+}
+
+.summary-row span:last-child {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.summary-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 1.5rem 0;
+}
+
+.summary-total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.summary-total span:last-child {
+  font-size: 18px;
+  color: var(--text-dark);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .credit-form-container {
+    grid-template-columns: 1fr;
+  }
+
+  .credit-order-summary {
+    position: static;
+  }
+
+  .credit-balance-section {
+    grid-template-columns: 1fr;
+  }
+
+  .credit-amount-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .credit-load-btn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .credit-balance-section {
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  .credit-balance-card {
+    padding: 1.5rem;
+  }
+
+  .balance-amount {
+    font-size: 28px;
+  }
+
+  .credit-amount-options {
+    gap: 1rem;
+  }
+
+  .credit-option-btn {
+    padding: 1.25rem 1rem;
+  }
+
+  .credit-form .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cvv-tooltip {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+  }
+
+  .credit-payment-section {
+    padding: 1.5rem;
+  }
+
+  .summary-details {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .credit-balance-card {
+    padding: 1.25rem;
+  }
+
+  .balance-amount {
+    font-size: 24px;
+  }
+
+  .balance-label {
+    font-size: 14px;
+  }
+
+  .balance-description {
+    font-size: 12px;
+  }
+
+  .credit-transaction-item {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .transaction-amount {
+    font-size: 16px;
+  }
+
+  .cvv-tooltip {
+    width: 260px;
+  }
+
+  .cvv-tooltip-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cvv-tooltip-title {
+    font-size: 14px;
+  }
+
+  .cvv-tooltip-text {
+    font-size: 12px;
+  }
+
+  .cvv-tooltip-card-front,
+  .cvv-tooltip-card-back {
+    width: 90px;
+    height: 58px;
+  }
+}

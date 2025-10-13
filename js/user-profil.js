@@ -683,3 +683,1067 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+// ==========================================
+// ADDRESSES PAGE JAVASCRIPT - COMPLETE
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const addressListView = document.getElementById("addressListView");
+  const addressFormView = document.getElementById("addressFormView");
+
+  if (!addressListView || !addressFormView) return;
+
+  const addAddressBtn = document.getElementById("addAddressBtn");
+  const backBtn = document.getElementById("backBtn");
+  const addressForm = document.getElementById("addressForm");
+
+  let isEditMode = false;
+  let currentEditId = null;
+
+  // ==========================================
+  // FORM DATA STRUCTURE
+  // ==========================================
+
+  // İl-İlçe-Mahalle Hiyerarşisi
+  const locationData = {
+    ankara: {
+      districts: {
+        cankaya: ["Çayyolu", "Ümitköy", "Alacaatlı", "Yaşamkent", "Kızılay"],
+        kecioren: ["Etlik", "Bağlum", "Kalaba", "Şentepe", "Ayvalı"],
+        yenimahalle: ["Demetevler", "Batıkent", "Ergazi", "Kardelen", "İvedik"],
+        mamak: ["Akdere", "Ege", "Harman", "Boğaziçi", "Ege"],
+        etimesgut: ["Eryaman", "Elvankent", "Güzelkent", "Tunahan", "Bağlıca"],
+      },
+    },
+    istanbul: {
+      districts: {
+        kadikoy: ["Moda", "Fenerbahçe", "Göztepe", "Caddebostan", "Bostancı"],
+        besiktas: ["Levent", "Etiler", "Bebek", "Ortaköy", "Arnavutköy"],
+        sisli: [
+          "Mecidiyeköy",
+          "Gayrettepe",
+          "Osmanbey",
+          "Halaskargazi",
+          "Teşvikiye",
+        ],
+        uskudar: [
+          "Kısıklı",
+          "Beylerbeyi",
+          "Çengelköy",
+          "Kandilli",
+          "Altunizade",
+        ],
+        beyoglu: ["Taksim", "Cihangir", "Galata", "Karaköy", "Şişhane"],
+      },
+    },
+    izmir: {
+      districts: {
+        konak: ["Alsancak", "Basmane", "Göztepe", "Hatay", "Kahramanlar"],
+        karsiyaka: [
+          "Bostanlı",
+          "Mavişehir",
+          "Çiğli",
+          "Karşıyaka Merkez",
+          "Yamanlar",
+        ],
+        bornova: ["Erzene", "Kazımdirik", "Atatürk", "Evka", "Çamdibi"],
+        buca: ["İnönü", "Kozağaç", "Adatepe", "Yaylacık", "Kuruçeşme"],
+        cigli: ["Atatürk", "Balatçık", "Harmandalı", "Kalecik", "Pınarbaşı"],
+      },
+    },
+  };
+
+  // ==========================================
+  // PHONE MASKING
+  // ==========================================
+
+  const phoneInput = document.getElementById("phoneNumber");
+
+  if (phoneInput) {
+    phoneInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
+
+      if (value.length > 10) {
+        value = value.slice(0, 10);
+      }
+
+      let formatted = "";
+      if (value.length > 0) {
+        formatted = "(" + value.slice(0, 3);
+      }
+      if (value.length > 3) {
+        formatted += ")" + value.slice(3, 6);
+      }
+      if (value.length > 6) {
+        formatted += " " + value.slice(6, 8);
+      }
+      if (value.length > 8) {
+        formatted += " " + value.slice(8, 10);
+      }
+
+      e.target.value = formatted;
+    });
+
+    phoneInput.addEventListener("keypress", function (e) {
+      if (!/\d/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
+        e.preventDefault();
+      }
+    });
+  }
+
+  // ==========================================
+  // LOCATION DROPDOWNS (İL-İLÇE-MAHALLE)
+  // ==========================================
+
+  const citySelect = document.getElementById("citySelect");
+  const districtSelect = document.getElementById("districtSelect");
+  const neighborhoodSelect = document.getElementById("neighborhoodSelect");
+
+  // İl seçildiğinde İlçeleri yükle
+  citySelect.addEventListener("change", function () {
+    const selectedCity = this.value;
+
+    // İlçe dropdown'unu sıfırla
+    districtSelect.innerHTML = '<option value="">İlçe seçiniz</option>';
+    districtSelect.disabled = !selectedCity;
+
+    // Mahalle dropdown'unu sıfırla
+    neighborhoodSelect.innerHTML = '<option value="">Mahalle seçiniz</option>';
+    neighborhoodSelect.disabled = true;
+
+    if (selectedCity && locationData[selectedCity]) {
+      const districts = locationData[selectedCity].districts;
+      Object.keys(districts).forEach((districtKey) => {
+        const option = document.createElement("option");
+        option.value = districtKey;
+        option.textContent =
+          districtKey.charAt(0).toUpperCase() + districtKey.slice(1);
+        districtSelect.appendChild(option);
+      });
+    }
+  });
+
+  // İlçe seçildiğinde Mahalleleri yükle
+  districtSelect.addEventListener("change", function () {
+    const selectedCity = citySelect.value;
+    const selectedDistrict = this.value;
+
+    // Mahalle dropdown'unu sıfırla
+    neighborhoodSelect.innerHTML = '<option value="">Mahalle seçiniz</option>';
+    neighborhoodSelect.disabled = !selectedDistrict;
+
+    if (
+      selectedCity &&
+      selectedDistrict &&
+      locationData[selectedCity]?.districts[selectedDistrict]
+    ) {
+      const neighborhoods =
+        locationData[selectedCity].districts[selectedDistrict];
+      neighborhoods.forEach((neighborhood) => {
+        const option = document.createElement("option");
+        option.value = neighborhood.toLowerCase();
+        option.textContent = neighborhood;
+        neighborhoodSelect.appendChild(option);
+      });
+    }
+  });
+
+  // ==========================================
+  // VIEW SWITCHING
+  // ==========================================
+
+  function showAddressForm(editMode = false, addressId = null) {
+    addressListView.style.display = "none";
+    addressFormView.style.display = "block";
+
+    isEditMode = editMode;
+    currentEditId = addressId;
+
+    const formTitle = addressFormView.querySelector(".profile-title");
+    formTitle.textContent = editMode ? "Adres Düzenle" : "Adres Ekle";
+
+    if (editMode && addressId) {
+      populateFormForEdit(addressId);
+    } else {
+      addressForm.reset();
+      districtSelect.disabled = true;
+      neighborhoodSelect.disabled = true;
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function showAddressList() {
+    addressFormView.style.display = "none";
+    addressListView.style.display = "block";
+
+    addressForm.reset();
+    districtSelect.disabled = true;
+    neighborhoodSelect.disabled = true;
+    isEditMode = false;
+    currentEditId = null;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  addAddressBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    showAddressForm(false);
+  });
+
+  backBtn.addEventListener("click", function () {
+    showAddressList();
+  });
+
+  // ==========================================
+  // EDIT ADDRESS
+  // ==========================================
+
+  function attachEditListeners() {
+    const editButtons = document.querySelectorAll(".address-action-btn.edit");
+    editButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const addressId = this.getAttribute("data-address-id");
+        showAddressForm(true, addressId);
+      });
+    });
+  }
+
+  function populateFormForEdit(addressId) {
+    const addressCard = document.querySelector(
+      `.address-card-new[data-address-id="${addressId}"]`
+    );
+
+    if (addressCard) {
+      // Adres kartından bilgileri çek
+      const label = addressCard
+        .querySelector(".address-label")
+        .textContent.trim();
+      const recipientFull = addressCard
+        .querySelector(".address-recipient")
+        .textContent.trim();
+      const phone = addressCard
+        .querySelector(".address-phone")
+        .textContent.trim();
+      const fullAddress = addressCard
+        .querySelector(".address-detail-text")
+        .textContent.trim();
+
+      // Ad ve Soyad'ı ayır
+      const nameParts = recipientFull.split(" ");
+      const firstName = nameParts[0] || "";
+      const lastName = nameParts.slice(1).join(" ") || "";
+
+      // Form alanlarını doldur
+      document.getElementById("firstName").value = firstName;
+      document.getElementById("lastName").value = lastName;
+      document.getElementById("phoneNumber").value = phone;
+      document.getElementById("addressTitle").value = label;
+
+      // Açık adresten il, ilçe, mahalle ve detayı ayıkla
+      // Format: "Detay, Mahalle, İlçe / İl, Türkiye"
+      const addressParts = fullAddress.split(",").map((part) => part.trim());
+
+      if (addressParts.length >= 3) {
+        // Açık adres detayı (ilk kısım)
+        const addressDetail = addressParts[0];
+        document.getElementById("addressDetail").value = addressDetail;
+
+        // Mahalle (ikinci kısım)
+        const neighborhood = addressParts[1];
+
+        // İlçe / İl (üçüncü kısım)
+        const districtCity = addressParts[2]
+          .split("/")
+          .map((part) => part.trim());
+
+        if (districtCity.length >= 2) {
+          const district = districtCity[0];
+          const cityFull = districtCity[1].split(",")[0].trim(); // "Ankara, Türkiye" -> "Ankara"
+
+          // İl'i küçük harfe çevir (select value ile eşleşmesi için)
+          const cityValue = cityFull
+            .toLowerCase()
+            .replace(/ı/g, "i")
+            .replace(/ğ/g, "g")
+            .replace(/ü/g, "u")
+            .replace(/ş/g, "s")
+            .replace(/ö/g, "o")
+            .replace(/ç/g, "c");
+
+          // İl seç
+          citySelect.value = cityValue;
+          citySelect.dispatchEvent(new Event("change"));
+
+          // İlçe ve Mahalle'yi seç (bir süre bekle ki dropdown'lar yüklensin)
+          setTimeout(() => {
+            const districtValue = district
+              .toLowerCase()
+              .replace(/ı/g, "i")
+              .replace(/ğ/g, "g")
+              .replace(/ü/g, "u")
+              .replace(/ş/g, "s")
+              .replace(/ö/g, "o")
+              .replace(/ç/g, "c")
+              .replace(/\s+/g, "");
+
+            districtSelect.value = districtValue;
+            districtSelect.dispatchEvent(new Event("change"));
+
+            setTimeout(() => {
+              const neighborhoodValue = neighborhood
+                .toLowerCase()
+                .replace(/ı/g, "i")
+                .replace(/ğ/g, "g")
+                .replace(/ü/g, "u")
+                .replace(/ş/g, "s")
+                .replace(/ö/g, "o")
+                .replace(/ç/g, "c");
+
+              neighborhoodSelect.value = neighborhoodValue;
+            }, 100);
+          }, 100);
+        }
+      }
+    }
+  }
+
+  // ==========================================
+  // DELETE ADDRESS
+  // ==========================================
+
+  const deleteModal = document.getElementById("deleteModal");
+  const closeDeleteModal = document.getElementById("closeDeleteModal");
+  const deleteNo = document.getElementById("deleteNo");
+  const deleteYes = document.getElementById("deleteYes");
+
+  let deleteAddressId = null;
+
+  function attachDeleteListeners() {
+    const deleteButtons = document.querySelectorAll(
+      ".address-action-btn.delete"
+    );
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        deleteAddressId = this.getAttribute("data-address-id");
+        openModal(deleteModal);
+      });
+    });
+  }
+
+  deleteNo.addEventListener("click", function () {
+    closeModal(deleteModal);
+    deleteAddressId = null;
+  });
+
+  deleteYes.addEventListener("click", function () {
+    if (deleteAddressId) {
+      const addressCard = document.querySelector(
+        `.address-card-new[data-address-id="${deleteAddressId}"]`
+      );
+
+      if (addressCard) {
+        // Silinen adresin varsayılan olup olmadığını kontrol et
+        const radioButton = addressCard.querySelector(".default-address-radio");
+        const wasDefault = radioButton && radioButton.checked;
+
+        addressCard.style.opacity = "0";
+        addressCard.style.transform = "translateX(-20px)";
+
+        setTimeout(() => {
+          addressCard.remove();
+
+          // Eğer silinen adres varsayılansa ve başka adres varsa, ilk adresi varsayılan yap
+          if (wasDefault) {
+            const remainingAddresses =
+              document.querySelectorAll(".address-card-new");
+            if (remainingAddresses.length > 0) {
+              const firstRadio = remainingAddresses[0].querySelector(
+                ".default-address-radio"
+              );
+              if (firstRadio) {
+                firstRadio.checked = true;
+                console.log(
+                  "Varsayılan adres silindi, ilk adres yeni varsayılan olarak ayarlandı"
+                );
+              }
+            }
+          }
+
+          alert("Adres başarıyla silindi!");
+        }, 300);
+      }
+
+      closeModal(deleteModal);
+      deleteAddressId = null;
+    }
+  });
+
+  closeDeleteModal.addEventListener("click", function () {
+    closeModal(deleteModal);
+    deleteAddressId = null;
+  });
+
+  deleteModal.addEventListener("click", function (e) {
+    if (e.target === deleteModal) {
+      closeModal(deleteModal);
+      deleteAddressId = null;
+    }
+  });
+
+  // ==========================================
+  // FORM SUBMISSION
+  // ==========================================
+
+  addressForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const phone = document.getElementById("phoneNumber").value.trim();
+    const city = citySelect.value;
+    const district = districtSelect.value;
+    const neighborhood = neighborhoodSelect.value;
+    const detail = document.getElementById("addressDetail").value.trim();
+    const title = document.getElementById("addressTitle").value.trim();
+
+    // Validasyonlar
+    if (!firstName || !lastName) {
+      alert("Lütfen ad ve soyad giriniz");
+      return;
+    }
+
+    if (!phone || phone.replace(/\D/g, "").length !== 10) {
+      alert("Lütfen geçerli bir telefon numarası giriniz");
+      return;
+    }
+
+    if (!city || !district || !neighborhood) {
+      alert("Lütfen il, ilçe ve mahalle seçiniz");
+      return;
+    }
+
+    if (!detail || !title) {
+      alert("Lütfen tüm alanları doldurunuz");
+      return;
+    }
+
+    const addressData = {
+      firstName,
+      lastName,
+      phone,
+      city,
+      district,
+      neighborhood,
+      detail,
+      title,
+    };
+
+    if (isEditMode) {
+      updateAddressCard(currentEditId, addressData);
+      alert("Adres başarıyla güncellendi!");
+    } else {
+      addNewAddressCard(addressData);
+      alert("Adres başarıyla eklendi!");
+    }
+
+    showAddressList();
+  });
+
+  // ==========================================
+  // ADD/UPDATE ADDRESS CARD
+  // ==========================================
+
+  function updateAddressCard(addressId, data) {
+    const card = document.querySelector(
+      `.address-card-new[data-address-id="${addressId}"]`
+    );
+
+    if (card) {
+      // Etiket güncelle
+      card.querySelector(".address-label").textContent = data.title;
+
+      // Alıcı adı güncelle
+      card.querySelector(
+        ".address-recipient"
+      ).textContent = `${data.firstName} ${data.lastName}`;
+
+      // Telefon güncelle
+      card.querySelector(".address-phone").textContent = data.phone;
+
+      // Adres detayı güncelle - Select'lerden seçilen metinleri al
+      const citySelectEl = document.getElementById("citySelect");
+      const districtSelectEl = document.getElementById("districtSelect");
+      const neighborhoodSelectEl =
+        document.getElementById("neighborhoodSelect");
+
+      const cityName =
+        citySelectEl.options[citySelectEl.selectedIndex].textContent;
+      const districtName =
+        districtSelectEl.options[districtSelectEl.selectedIndex].textContent;
+      const neighborhoodName =
+        neighborhoodSelectEl.options[neighborhoodSelectEl.selectedIndex]
+          .textContent;
+
+      card.querySelector(
+        ".address-detail-text"
+      ).textContent = `${data.detail}, ${neighborhoodName}, ${districtName} / ${cityName}, Türkiye`;
+    }
+  }
+
+  function addNewAddressCard(data) {
+    const newId = Date.now();
+    const cityName = citySelect.options[citySelect.selectedIndex].textContent;
+    const districtName =
+      districtSelect.options[districtSelect.selectedIndex].textContent;
+    const neighborhoodName =
+      neighborhoodSelect.options[neighborhoodSelect.selectedIndex].textContent;
+
+    // ÖNEMLI: Eğer hiç adres yoksa, yeni adresi varsayılan olarak işaretle
+    const existingAddresses = document.querySelectorAll(".address-card-new");
+    const isFirstAddress = existingAddresses.length === 0;
+
+    const cardHTML = `
+      <div class="address-card-new" data-address-id="${newId}" style="opacity: 0; transform: translateY(20px);">
+        <div class="address-card-wrapper">
+          <input
+            type="radio"
+            name="defaultAddress"
+            class="default-address-radio"
+            id="default-${newId}"
+            data-address-id="${newId}"
+            ${isFirstAddress ? "checked" : ""}
+          />
+          <label for="default-${newId}" class="radio-label"></label>
+
+          <div class="address-card-content">
+            <div class="address-card-header-new">
+              <div class="address-info-row">
+                <svg
+                  class="address-icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                  ></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="address-label">${data.title}</span>
+              </div>
+
+              <div class="address-info-row">
+                <svg
+                  class="address-icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                  ></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="address-recipient">${data.firstName} ${
+      data.lastName
+    }</span>
+              </div>
+
+              <div class="address-info-row">
+                <svg
+                  class="address-icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+                <span class="address-phone">${data.phone}</span>
+              </div>
+
+              <div class="address-actions-new">
+                <button class="address-action-btn edit" data-address-id="${newId}">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                    ></path>
+                    <path
+                      d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                    ></path>
+                  </svg>
+                </button>
+                <button class="address-action-btn delete" data-address-id="${newId}">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path
+                      d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <p class="address-detail-text">
+              ${
+                data.detail
+              }, ${neighborhoodName}, ${districtName} / ${cityName}, Türkiye
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const addressCards = document.querySelector(".address-cards");
+    addressCards.insertAdjacentHTML("beforeend", cardHTML);
+
+    const newCard = addressCards.lastElementChild;
+    setTimeout(() => {
+      newCard.style.transition = "all 0.3s ease";
+      newCard.style.opacity = "1";
+      newCard.style.transform = "translateY(0)";
+    }, 50);
+
+    // Yeni karta event listener'ları ekle
+    attachEditListeners();
+    attachDeleteListeners();
+    attachDefaultAddressListeners();
+
+    // Eğer ilk adres ise, kullanıcıya bilgi ver
+    if (isFirstAddress) {
+      console.log("İlk adres eklendi ve varsayılan olarak işaretlendi");
+    }
+  }
+
+  // ==========================================
+  // HELPER FUNCTIONS
+  // ==========================================
+
+  function openModal(modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  // Escape tuşu ile modal kapatma
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      if (deleteModal.classList.contains("active")) {
+        closeModal(deleteModal);
+        deleteAddressId = null;
+      }
+    }
+  });
+
+  // ==========================================
+  // DEFAULT ADDRESS HANDLING
+  // ==========================================
+
+  function attachDefaultAddressListeners() {
+    const radioButtons = document.querySelectorAll(".default-address-radio");
+    radioButtons.forEach((radio) => {
+      radio.addEventListener("change", function () {
+        if (this.checked) {
+          const addressId = this.getAttribute("data-address-id");
+          console.log("Varsayılan adres değiştirildi:", addressId);
+
+          // Burada backend'e varsayılan adres güncellemesi gönderilebilir
+          // Mock: Backend'e API call
+          // updateDefaultAddress(addressId);
+        }
+      });
+    });
+  }
+
+  // ==========================================
+  // INITIALIZATION
+  // ==========================================
+
+  // Sayfa yüklendiğinde mevcut kartlara event listener'ları ekle
+  attachEditListeners();
+  attachDeleteListeners();
+  attachDefaultAddressListeners();
+});
+// ==========================================
+// CREDIT PAGE JAVASCRIPT - UPDATED
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const creditPageContent = document.getElementById("creditPageContent");
+
+  if (!creditPageContent) return;
+
+  console.log("Credit page JavaScript loaded - UPDATED");
+
+  const creditListView = document.getElementById("creditListView");
+  const creditLoadView = document.getElementById("creditLoadView");
+  const openLoadCreditBtn = document.getElementById("openLoadCreditBtn");
+
+  const creditOptionButtons = document.querySelectorAll(".credit-option-btn");
+  const customCreditAmount = document.getElementById("customCreditAmount");
+
+  const cardNumberInput = document.getElementById("cardNumber");
+  const cvvNumberInput = document.getElementById("cvvNumber");
+  const creditForm = document.getElementById("creditForm");
+
+  // CVV Tooltip Elements (NOT MODAL)
+  const cvvQuestionBtn = document.getElementById("cvvQuestionBtn");
+  const cvvTooltip = document.getElementById("cvvTooltip");
+  const cvvTooltipClose = document.getElementById("cvvTooltipClose");
+
+  // Expiry Date Elements
+  const expiryMonth = document.getElementById("expiryMonth");
+  const expiryYear = document.getElementById("expiryYear");
+
+  // Summary elements
+  const summaryPriceDisplay = document.getElementById("summaryPriceDisplay");
+  const summaryOrderPrice = document.getElementById("summaryOrderPrice");
+  const summaryCargoPrice = document.getElementById("summaryCargoPrice");
+  const summaryTotalPrice = document.getElementById("summaryTotalPrice");
+
+  let selectedCredit = 500;
+  let selectedPrice = 100;
+
+  // ==========================================
+  // VIEW SWITCHING
+  // ==========================================
+
+  function showLoadCreditView() {
+    creditListView.style.display = "none";
+    creditLoadView.style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function showListView() {
+    creditLoadView.style.display = "none";
+    creditListView.style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  if (openLoadCreditBtn) {
+    openLoadCreditBtn.addEventListener("click", showLoadCreditView);
+  }
+
+  // ==========================================
+  // CREDIT AMOUNT SELECTION
+  // ==========================================
+
+  creditOptionButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      creditOptionButtons.forEach((btn) => btn.classList.remove("active"));
+      this.classList.add("active");
+
+      selectedCredit = parseInt(this.getAttribute("data-credit"));
+      selectedPrice = parseInt(this.getAttribute("data-price"));
+
+      if (customCreditAmount) {
+        customCreditAmount.value = "";
+      }
+
+      updateSummary(selectedPrice);
+    });
+  });
+
+  // ==========================================
+  // CUSTOM AMOUNT INPUT - FIXED: DELETABLE
+  // ==========================================
+
+  if (customCreditAmount) {
+    customCreditAmount.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/[^\d]/g, "");
+
+      if (value.length > 0) {
+        creditOptionButtons.forEach((btn) => btn.classList.remove("active"));
+
+        // NO SUFFIX IN INPUT - IT'S OUTSIDE NOW
+        e.target.value = value;
+
+        const customCredit = parseInt(value);
+        const calculatedPrice = Math.round(customCredit * 0.2);
+
+        selectedCredit = customCredit;
+        selectedPrice = calculatedPrice;
+
+        updateSummary(calculatedPrice);
+      } else {
+        e.target.value = "";
+      }
+    });
+
+    // Allow only numbers
+    customCreditAmount.addEventListener("keypress", function (e) {
+      if (!/\d/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
+        e.preventDefault();
+      }
+    });
+  }
+
+  // ==========================================
+  // UPDATE SUMMARY
+  // ==========================================
+
+  function updateSummary(orderPrice) {
+    const cargo = 30;
+    const total = orderPrice + cargo;
+
+    if (summaryPriceDisplay) {
+      summaryPriceDisplay.textContent = orderPrice + " TL/Adet";
+    }
+
+    if (summaryOrderPrice) {
+      summaryOrderPrice.textContent = orderPrice + " TL";
+    }
+
+    if (summaryCargoPrice) {
+      summaryCargoPrice.textContent = cargo + " TL";
+    }
+
+    if (summaryTotalPrice) {
+      summaryTotalPrice.textContent = total + " TL";
+    }
+  }
+
+  // ==========================================
+  // CARD NUMBER FORMATTING
+  // ==========================================
+
+  if (cardNumberInput) {
+    cardNumberInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\s/g, "").replace(/[^\d]/g, "");
+
+      if (value.length > 16) {
+        value = value.slice(0, 16);
+      }
+
+      let formatted = "";
+      for (let i = 0; i < value.length; i++) {
+        if (i > 0 && i % 4 === 0) {
+          formatted += "-";
+        }
+        formatted += value[i];
+      }
+
+      e.target.value = formatted;
+    });
+
+    cardNumberInput.addEventListener("keypress", function (e) {
+      if (!/\d/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
+        e.preventDefault();
+      }
+    });
+  }
+
+  // ==========================================
+  // CVV INPUT
+  // ==========================================
+
+  if (cvvNumberInput) {
+    cvvNumberInput.addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, "");
+
+      if (value.length > 3) {
+        value = value.slice(0, 3);
+      }
+
+      e.target.value = value;
+    });
+
+    cvvNumberInput.addEventListener("keypress", function (e) {
+      if (!/\d/.test(e.key) && e.key !== "Backspace" && e.key !== "Delete") {
+        e.preventDefault();
+      }
+    });
+  }
+
+  // ==========================================
+  // CVV TOOLTIP (INLINE, NOT MODAL)
+  // ==========================================
+
+  if (cvvQuestionBtn && cvvTooltip) {
+    cvvQuestionBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      cvvTooltip.classList.toggle("active");
+    });
+  }
+
+  if (cvvTooltipClose) {
+    cvvTooltipClose.addEventListener("click", function () {
+      cvvTooltip.classList.remove("active");
+    });
+  }
+
+  // Close tooltip when clicking outside
+  document.addEventListener("click", function (e) {
+    if (
+      cvvTooltip &&
+      !cvvTooltip.contains(e.target) &&
+      e.target !== cvvQuestionBtn
+    ) {
+      cvvTooltip.classList.remove("active");
+    }
+  });
+
+  // ==========================================
+  // FORM SUBMISSION
+  // ==========================================
+
+  if (creditForm) {
+    creditForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const cardHolderName = document
+        .getElementById("cardHolderName")
+        .value.trim();
+      const cardNumber = cardNumberInput.value.replace(/-/g, "");
+      const month = expiryMonth.value;
+      const year = expiryYear.value;
+      const cvv = cvvNumberInput.value;
+
+      // Validation
+      if (!cardHolderName) {
+        alert("Lütfen kart sahibinin adını ve soyadını giriniz");
+        return;
+      }
+
+      if (cardNumber.length !== 16) {
+        alert("Lütfen geçerli bir kart numarası giriniz (16 hane)");
+        return;
+      }
+
+      if (!month || !year) {
+        alert("Lütfen son kullanma tarihini seçiniz");
+        return;
+      }
+
+      if (cvv.length !== 3) {
+        alert("Lütfen geçerli bir CVV giriniz (3 hane)");
+        return;
+      }
+
+      // Mock: Payment processing
+      console.log("Payment:", {
+        credit: selectedCredit,
+        price: selectedPrice,
+        cardHolderName,
+        cardNumber,
+        expiry: `${month}/${year}`,
+        cvv,
+      });
+
+      setTimeout(() => {
+        alert(`Ödeme başarılı! ${selectedCredit} kredi yüklendi.`);
+
+        creditForm.reset();
+        showListView();
+
+        // Update balance
+        const balanceElement = document.querySelector(".balance-amount");
+        if (balanceElement) {
+          const currentBalance = parseInt(
+            balanceElement.textContent.replace(/[^\d]/g, "")
+          );
+          const newBalance = currentBalance + selectedCredit;
+          balanceElement.textContent = newBalance;
+        }
+
+        addTransactionToHistory(selectedPrice);
+      }, 1000);
+    });
+  }
+
+  // ==========================================
+  // ADD TRANSACTION TO HISTORY - UPDATED WITH ₺
+  // ==========================================
+
+  function addTransactionToHistory(price) {
+    const historyList = document.querySelector(".credit-history-list");
+
+    if (!historyList) return;
+
+    const now = new Date();
+    const dateString = `${now.getDate()} ${getMonthName(
+      now.getMonth()
+    )} ${now.getFullYear()} | ${now.getHours()}:${now
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+
+    const newTransaction = document.createElement("div");
+    newTransaction.className = "credit-transaction-item";
+    newTransaction.style.opacity = "0";
+    newTransaction.style.transform = "translateY(-10px)";
+
+    newTransaction.innerHTML = `
+      <div class="transaction-info">
+        <div class="transaction-title">Kredi Yükleme</div>
+        <div class="transaction-date">${dateString}</div>
+      </div>
+      <div class="transaction-amount positive">+₺${price}</div>
+    `;
+
+    historyList.insertBefore(newTransaction, historyList.firstChild);
+
+    setTimeout(() => {
+      newTransaction.style.transition = "all 0.3s ease";
+      newTransaction.style.opacity = "1";
+      newTransaction.style.transform = "translateY(0)";
+    }, 100);
+  }
+
+  // ==========================================
+  // HELPER FUNCTIONS
+  // ==========================================
+
+  function getMonthName(monthIndex) {
+    const months = [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık",
+    ];
+    return months[monthIndex];
+  }
+
+  // ==========================================
+  // INITIALIZATION
+  // ==========================================
+
+  updateSummary(100);
+});
