@@ -3,23 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Siparişlerim | Polikrami</title>
-    <meta name="description" content="Sipariş listem - Polikrami" />
-
-    <!-- Google Fonts - Poppins -->
+    <title>Sipariş Önizleme - Polikrami</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- CSS Files -->
     <link rel="stylesheet" href="../css/home-page.css" />
     <link rel="stylesheet" href="../css/footer.css" />
     <link rel="stylesheet" href="../css/user-profil.css" />
   </head>
-
   <body>
     <!-- Header -->
     <header>
@@ -136,7 +130,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="highlighted">
+                  <a href="user-siparislerim.html" class="highlighted">
                     <span class="menu-icon">
                       <svg
                         width="20"
@@ -258,7 +252,7 @@
     <!-- Main Content -->
     <main class="profile-page">
       <div class="profile-container">
-        <!-- Sidebar Menu -->
+        <!-- Sidebar -->
         <aside class="profile-sidebar">
           <h3 class="sidebar-title">MENÜ</h3>
           <ul class="sidebar-menu">
@@ -378,277 +372,268 @@
           </div>
         </aside>
 
-        <!-- Orders Content -->
-        <div class="profile-content">
-          <h1 class="profile-title">Siparişlerim</h1>
+        <!-- Content -->
+        <section class="profile-content" id="orderPreviewPage">
+          <h1 class="profile-title">Önizle</h1>
 
-          <div class="orders-layout">
-            <!-- Orders List -->
-            <div class="orders-list">
-              <!-- Order 1 - Completed with Cancel Option -->
-              <div class="order-card">
-                <div class="order-number">Sipariş Numarası: 49858476</div>
-
-                <div class="order-body">
-                  <div class="order-image">
-                    <img
-                      src="../assets/images/emre-yılmaz-image.png"
-                      alt="Sipariş Görseli"
-                    />
-                  </div>
-
-                  <div class="order-details">
-                    <div class="order-info">
-                      <div class="info-item">
-                        <span class="info-label">Sipariş Durumu</span>
-                        <span class="info-value">Tamamlandı</span>
-                      </div>
-                      <div class="info-item">
-                        <span class="info-label">Tutar</span>
-                        <span class="info-value">350 TL</span>
-                      </div>
-                      <div class="info-item">
-                        <span class="info-label">Alıcı</span>
-                        <span class="info-value">Sinem Nur KOZA</span>
-                      </div>
-                    </div>
-
-                    <div class="order-actions">
-                      <a
-                        href="user-order-preview.html?orderId=49858476"
-                        class="order-action-btn order-action-btn--preview"
-                      >
-                        <button class="order-btn preview-btn">Önizle</button>
-                      </a>
-                      <button
-                        class="order-btn cancel-btn"
-                        data-order-id="49858476"
-                      >
-                        İptal Et
-                      </button>
-                    </div>
-                  </div>
+          <!-- State 1: Önizleme -->
+          <div class="order-preview" id="previewState">
+            <div class="order-preview__card">
+              <div class="order-preview__header">
+                <div class="order-preview__info">
+                  <span class="order-preview__label">Sipariş Numarası:</span>
+                  <span class="order-preview__value" id="orderNumber"
+                    >49858476</span
+                  >
+                </div>
+                <div class="order-preview__info">
+                  <span class="order-preview__label">Tarih:</span>
+                  <span class="order-preview__value" id="orderDate"
+                    >03.10.2025</span
+                  >
                 </div>
               </div>
 
-              <!-- Order 2 - Delivered -->
-              <div class="order-card">
-                <div class="order-number">Sipariş Numarası: 49858476</div>
-
-                <div class="order-body">
-                  <div class="order-image">
-                    <img
-                      src="../assets/images/emre-yılmaz-image.png"
-                      alt="Sipariş Görseli"
-                    />
-                  </div>
-
-                  <div class="order-details">
-                    <div class="order-info">
-                      <div class="info-item">
-                        <span class="info-label">Sipariş Durumu</span>
-                        <span class="info-value">Teslim Edildi</span>
-                      </div>
-                      <div class="info-item">
-                        <span class="info-label">Tutar</span>
-                        <span class="info-value">150 TL</span>
-                      </div>
-                      <div class="info-item">
-                        <span class="info-label">Alıcı</span>
-                        <span class="info-value">Cem Sönmez</span>
-                      </div>
-                    </div>
-
-                    <div class="order-actions">
-                      <button class="order-btn preview-btn">İptal Et</button>
-                    </div>
-                  </div>
+              <div class="order-preview__content">
+                <div class="order-preview__image-wrapper">
+                  <img
+                    src="../assets/images/preview-sample.jpg"
+                    alt="Sipariş Önizleme"
+                    class="order-preview__image"
+                    id="previewImage"
+                  />
                 </div>
-              </div>
 
-              <!-- Order 3 - Waiting Revision -->
-              <div class="order-card">
-                <div class="order-number">Sipariş Numarası: 49858476</div>
+                <div class="order-preview__details">
+                  <h3 class="order-preview__artist" id="artistName">
+                    Melis Aksoy
+                  </h3>
+                  <p class="order-preview__message" id="artistMessage">
+                    Çalışmanızı tamamladım ve ekteki görselde önizlemesini
+                    görebilirsiniz. Umarım beklentilerinizi karşılar :)
+                  </p>
 
-                <div class="order-body">
-                  <div class="order-image">
-                    <img
-                      src="../assets/images/emre-yılmaz-image.png"
-                      alt="Sipariş Görseli"
-                    />
-                  </div>
-
-                  <div class="order-details">
-                    <div class="order-info">
-                      <div class="info-item">
-                        <span class="info-label">Sipariş Durumu</span>
-                        <span class="info-value">Revize Bekliyor</span>
-                      </div>
-                      <div class="info-item">
-                        <span class="info-label">Tutar</span>
-                        <span class="info-value">500 TL</span>
-                      </div>
-                      <div class="info-item">
-                        <span class="info-label">Alıcı</span>
-                        <span class="info-value">Mehmet Ersoy</span>
-                      </div>
-                    </div>
-
-                    <div class="order-actions">
-                      <button class="order-btn preview-btn">İptal Et</button>
-                    </div>
+                  <div class="order-preview__actions">
+                    <button
+                      type="button"
+                      class="order-preview__btn order-preview__btn--revision"
+                      id="revisionBtn"
+                    >
+                      Revize Talep Et
+                    </button>
+                    <button
+                      type="button"
+                      class="order-preview__btn order-preview__btn--approve"
+                      id="approveBtn"
+                    >
+                      Onayla
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Order Tracking Sidebar -->
-            <aside class="order-tracking">
-              <div class="tracking-title">Aktif Sipariş: 49858476</div>
-
-              <div class="tracking-steps">
-                <div class="tracking-step completed">
-                  <div class="step-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" fill="currentColor" />
-                      <path
-                        d="M8 12.5L10.5 15L16 9.5"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                  <div class="step-label">Kargoya Verildi</div>
+          <!-- State 2: Değerlendirme -->
+          <div class="order-review" id="reviewState" style="display: none">
+            <div class="order-review__card">
+              <div class="order-review__content">
+                <div class="order-review__image-wrapper">
+                  <img
+                    src="../assets/images/preview-sample.jpg"
+                    alt="Sipariş Önizleme"
+                    class="order-review__image"
+                  />
                 </div>
 
-                <div class="tracking-step completed">
-                  <div class="step-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" fill="currentColor" />
-                      <path
-                        d="M12 6v6l4 2"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                      />
-                    </svg>
-                  </div>
-                  <div class="step-label">Onay Bekliyor</div>
-                </div>
+                <div class="order-review__form">
+                  <h3 class="order-review__title">Müşteri Değerlendirmeleri</h3>
 
-                <div class="tracking-step completed">
-                  <div class="step-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" fill="currentColor" />
-                      <rect
-                        x="7"
-                        y="7"
-                        width="10"
-                        height="10"
-                        stroke="white"
-                        stroke-width="2"
-                        rx="1"
-                      />
-                      <path
-                        d="M7 10h10M10 7v10"
-                        stroke="white"
-                        stroke-width="2"
-                      />
-                    </svg>
+                  <!-- Rating -->
+                  <div class="order-review__rating">
+                    <button
+                      type="button"
+                      class="order-review__star"
+                      data-rating="1"
+                    >
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                      >
+                        <path
+                          d="M16 2L20.12 11.76L31 13.24L23.5 20.52L25.24 31.76L16 26.76L6.76 31.76L8.5 20.52L1 13.24L11.88 11.76L16 2Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      class="order-review__star"
+                      data-rating="2"
+                    >
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                      >
+                        <path
+                          d="M16 2L20.12 11.76L31 13.24L23.5 20.52L25.24 31.76L16 26.76L6.76 31.76L8.5 20.52L1 13.24L11.88 11.76L16 2Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      class="order-review__star"
+                      data-rating="3"
+                    >
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                      >
+                        <path
+                          d="M16 2L20.12 11.76L31 13.24L23.5 20.52L25.24 31.76L16 26.76L6.76 31.76L8.5 20.52L1 13.24L11.88 11.76L16 2Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      class="order-review__star"
+                      data-rating="4"
+                    >
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                      >
+                        <path
+                          d="M16 2L20.12 11.76L31 13.24L23.5 20.52L25.24 31.76L16 26.76L6.76 31.76L8.5 20.52L1 13.24L11.88 11.76L16 2Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      class="order-review__star"
+                      data-rating="5"
+                    >
+                      <svg
+                        width="32"
+                        height="32"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                      >
+                        <path
+                          d="M16 2L20.12 11.76L31 13.24L23.5 20.52L25.24 31.76L16 26.76L6.76 31.76L8.5 20.52L1 13.24L11.88 11.76L16 2Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
                   </div>
-                  <div class="step-label">Sipariş Tamamlandı</div>
-                </div>
 
-                <div class="tracking-step">
-                  <div class="step-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" fill="currentColor" />
-                      <path
-                        d="M16 8l-6 8-3-3"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+                  <div class="order-review__comment">
+                    <label for="reviewComment" class="order-review__label"
+                      >Yorum</label
+                    >
+                    <textarea
+                      id="reviewComment"
+                      class="order-review__textarea"
+                      placeholder="Yorumlarınızı paylaşabilirsiniz"
+                      rows="4"
+                    ></textarea>
                   </div>
-                  <div class="step-label">Sipariş Alındı</div>
+
+                  <button
+                    type="button"
+                    class="order-review__submit"
+                    id="submitReviewBtn"
+                  >
+                    Gönder
+                  </button>
                 </div>
               </div>
-
-              <button class="tracking-action-btn">Kargoyu takip et</button>
-            </aside>
+            </div>
           </div>
-        </div>
+
+          <!-- State 3: Revize Talebi -->
+          <div class="order-revision" id="revisionState" style="display: none">
+            <div class="order-revision__card">
+              <div class="order-revision__content">
+                <div class="order-revision__image-wrapper">
+                  <img
+                    src="../assets/images/preview-sample.jpg"
+                    alt="Sipariş Önizleme"
+                    class="order-revision__image"
+                  />
+                </div>
+
+                <div class="order-revision__form">
+                  <!-- Revize Hakkı Bilgisi -->
+                  <div class="order-revision__info">
+                    <div class="order-revision__info-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM11 15H9V13H11V15ZM11 11H9V5H11V11Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <span class="order-revision__info-text">
+                      Toplam <strong id="totalRevisions">3</strong> revize
+                      hakkınız var. Kalan:<strong id="remainingRevisions"
+                        >2</strong
+                      >
+                    </span>
+                  </div>
+
+                  <!-- Progress Bar -->
+                  <div class="order-revision__progress">
+                    <div
+                      class="order-revision__progress-bar"
+                      id="revisionProgressBar"
+                      style="width: 66.66%"
+                    ></div>
+                  </div>
+
+                  <!-- Revize Notu -->
+                  <div class="order-revision__note">
+                    <label for="revisionNote" class="order-revision__label"
+                      >Revize Notu</label
+                    >
+                    <textarea
+                      id="revisionNote"
+                      class="order-revision__textarea"
+                      placeholder='Lütfen revize için kısa bir yorum yazınız (ör. "Arka plan biraz daha açık ton olsun" gibi)'
+                      rows="4"
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="order-revision__submit"
+                    id="submitRevisionBtn"
+                  >
+                    Gönder
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
-
-    <!-- Cancel Confirmation Modal -->
-    <div class="modal-overlay" id="cancelModal">
-      <div class="modal-content cancel-modal">
-        <button class="modal-close" id="closeCancelModal">×</button>
-
-        <div class="modal-icon warning">
-          <img
-            src="../assets/images/user-order-cancel1.png"
-            alt="İptal"
-            width="60"
-            height="60"
-          />
-        </div>
-
-        <h2 class="modal-title">İptal etmek istediğinize emin misiniz?</h2>
-
-        <div class="modal-actions">
-          <button class="modal-btn secondary" id="cancelNo">Hayır</button>
-          <button class="modal-btn primary" id="cancelYes">Evet</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cancel Reason Modal -->
-    <div class="modal-overlay" id="reasonModal">
-      <div class="modal-content reason-modal">
-        <button class="modal-close" id="closeReasonModal">×</button>
-
-        <h2 class="modal-title">
-          İptal etme nedeninizi bizimle paylaşır mısınız?
-        </h2>
-
-        <textarea
-          class="reason-textarea"
-          placeholder="Örn. Yanlış Ürün"
-          id="cancelReason"
-        ></textarea>
-
-        <div class="modal-actions">
-          <button class="modal-btn secondary" id="skipReason">
-            Paylaşmak İstemiyorum
-          </button>
-          <button class="modal-btn primary" id="submitReason">Gönder</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div class="modal-overlay" id="successModal">
-      <div class="modal-content success-modal">
-        <button class="modal-close" id="closeSuccessModal">×</button>
-
-        <div class="modal-icon success">
-          <img
-            src="../assets/images/user-order-cancel2.png"
-            alt="Başarılı"
-            width="60"
-            height="60"
-          />
-        </div>
-
-        <h2 class="modal-title">İade talebiniz başarıyla oluşturulmuştur.</h2>
-      </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer-new">
@@ -780,7 +765,55 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Revize Onay Modal -->
+    <div class="modal-overlay" id="revisionConfirmModal">
+      <div class="modal-content modal-content--confirm">
+        <button type="button" class="modal-close" id="closeRevisionModal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+
+        <div class="modal-icon modal-icon--warning">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <path
+              d="M24 4C12.96 4 4 12.96 4 24C4 35.04 12.96 44 24 44C35.04 44 44 35.04 44 24C44 12.96 35.04 4 24 4ZM26 34H22V30H26V34ZM26 26H22V14H26V26Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+
+        <p class="modal-text">
+          Toplam <strong id="modalTotalRevisions">3</strong> revize hakkınız
+          bulunmaktadır. Bu talebinizden sonra
+          <strong id="modalRemainingRevisions">2</strong> hakkınız kalacak.
+          Onaylıyor musunuz?
+        </p>
+
+        <div class="modal-actions">
+          <button
+            type="button"
+            class="modal-btn modal-btn--secondary"
+            id="cancelRevisionBtn"
+          >
+            Hayır
+          </button>
+          <button
+            type="button"
+            class="modal-btn modal-btn--primary"
+            id="confirmRevisionBtn"
+          >
+            Evet
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="../js/base.js"></script>
     <script src="../js/home-page.js"></script>
     <script src="../js/user-profil.js"></script>

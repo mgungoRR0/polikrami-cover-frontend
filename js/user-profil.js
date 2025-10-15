@@ -1747,3 +1747,397 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateSummary(100);
 });
+// ==========================================
+// RETURN PAGE JAVASCRIPT
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  const returnPageContent = document.getElementById("returnPageContent");
+
+  if (!returnPageContent) return;
+
+  console.log("Return page JavaScript loaded");
+
+  // Modal elements
+  const cancelReturnModal = document.getElementById("cancelReturnModal");
+  const successReturnCancelModal = document.getElementById(
+    "successReturnCancelModal"
+  );
+
+  const closeCancelReturnModal = document.getElementById(
+    "closeCancelReturnModal"
+  );
+  const closeSuccessReturnModal = document.getElementById(
+    "closeSuccessReturnModal"
+  );
+
+  const cancelReturnNo = document.getElementById("cancelReturnNo");
+  const cancelReturnYes = document.getElementById("cancelReturnYes");
+
+  let currentReturnId = null;
+
+  // ==========================================
+  // CANCEL RETURN FLOW
+  // ==========================================
+
+  // Step 1: Click "İptal Et" button
+  const returnCancelButtons = document.querySelectorAll(".return-cancel-btn");
+
+  returnCancelButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      currentReturnId = this.getAttribute("data-return-id");
+      console.log("Cancel return requested:", currentReturnId);
+      openModal(cancelReturnModal);
+    });
+  });
+
+  // Step 2: Confirm cancellation
+  cancelReturnYes.addEventListener("click", function () {
+    closeModal(cancelReturnModal);
+
+    // Mock: Send cancellation to backend
+    console.log("Return cancelled:", currentReturnId);
+
+    // Simulate API call
+    setTimeout(() => {
+      // Show success modal
+      openModal(successReturnCancelModal);
+
+      // Auto-close success modal after 3 seconds
+      setTimeout(() => {
+        closeModal(successReturnCancelModal);
+
+        // Remove the cancelled return item from the page
+        const returnCard = document
+          .querySelector(
+            `.return-cancel-btn[data-return-id="${currentReturnId}"]`
+          )
+          .closest(".return-item-card");
+
+        if (returnCard) {
+          returnCard.style.opacity = "0";
+          returnCard.style.transform = "translateX(-20px)";
+
+          setTimeout(() => {
+            returnCard.remove();
+          }, 300);
+        }
+
+        currentReturnId = null;
+      }, 3000);
+    }, 500);
+  });
+
+  // Step 2b: Cancel the cancellation
+  cancelReturnNo.addEventListener("click", function () {
+    closeModal(cancelReturnModal);
+    currentReturnId = null;
+  });
+
+  // ==========================================
+  // MODAL CLOSE BUTTONS
+  // ==========================================
+
+  closeCancelReturnModal.addEventListener("click", function () {
+    closeModal(cancelReturnModal);
+    currentReturnId = null;
+  });
+
+  closeSuccessReturnModal.addEventListener("click", function () {
+    closeModal(successReturnCancelModal);
+    currentReturnId = null;
+  });
+
+  // Close modals when clicking outside
+  [cancelReturnModal, successReturnCancelModal].forEach((modal) => {
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        closeModal(modal);
+        if (modal === cancelReturnModal) {
+          currentReturnId = null;
+        }
+      }
+    });
+  });
+
+  // ==========================================
+  // HELPER FUNCTIONS
+  // ==========================================
+
+  function openModal(modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal(modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  // Close modals on Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      if (cancelReturnModal.classList.contains("active")) {
+        closeModal(cancelReturnModal);
+        currentReturnId = null;
+      }
+      if (successReturnCancelModal.classList.contains("active")) {
+        closeModal(successReturnCancelModal);
+        currentReturnId = null;
+      }
+    }
+  });
+});
+/* ====================================
+   SİPARİŞ ÖNİZLEME SAYFASI
+   ==================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const orderPreviewPage = document.getElementById("orderPreviewPage");
+  if (!orderPreviewPage) return;
+
+  // Mock Data - Backend'den gelecek
+  const mockOrderData = {
+    orderId: "49858476",
+    orderDate: "03.10.2025",
+    artistName: "Melis Aksoy",
+    artistMessage:
+      "Çalışmanızı tamamladım ve ekteki görselde önizlemesini görebilirsiniz. Umarım beklentilerinizi karşılar :)",
+    previewImage: "../images/preview-sample.jpg",
+    totalRevisions: 3,
+    usedRevisions: 1,
+    remainingRevisions: 2,
+  };
+
+  // State Elementleri
+  const previewState = document.getElementById("previewState");
+  const reviewState = document.getElementById("reviewState");
+  const revisionState = document.getElementById("revisionState");
+
+  // Önizleme Butonları
+  const approveBtn = document.getElementById("approveBtn");
+  const revisionBtn = document.getElementById("revisionBtn");
+
+  // Değerlendirme
+  const ratingStars = document.querySelectorAll(".order-review__star");
+  const reviewComment = document.getElementById("reviewComment");
+  const submitReviewBtn = document.getElementById("submitReviewBtn");
+
+  // Revize
+  const revisionNote = document.getElementById("revisionNote");
+  const submitRevisionBtn = document.getElementById("submitRevisionBtn");
+  const totalRevisionsEl = document.getElementById("totalRevisions");
+  const remainingRevisionsEl = document.getElementById("remainingRevisions");
+  const revisionProgressBar = document.getElementById("revisionProgressBar");
+
+  // Modal
+  const revisionConfirmModal = document.getElementById("revisionConfirmModal");
+  const closeRevisionModal = document.getElementById("closeRevisionModal");
+  const cancelRevisionBtn = document.getElementById("cancelRevisionBtn");
+  const confirmRevisionBtn = document.getElementById("confirmRevisionBtn");
+  const modalTotalRevisions = document.getElementById("modalTotalRevisions");
+  const modalRemainingRevisions = document.getElementById(
+    "modalRemainingRevisions"
+  );
+
+  // Sayfa verilerini doldur
+  function initializePageData() {
+    document.getElementById("orderNumber").textContent = mockOrderData.orderId;
+    document.getElementById("orderDate").textContent = mockOrderData.orderDate;
+    document.getElementById("artistName").textContent =
+      mockOrderData.artistName;
+    document.getElementById("artistMessage").textContent =
+      mockOrderData.artistMessage;
+
+    // Tüm görselleri güncelle
+    document
+      .querySelectorAll(
+        ".order-preview__image, .order-review__image, .order-revision__image"
+      )
+      .forEach((img) => {
+        img.src = mockOrderData.previewImage;
+      });
+
+    // Revize bilgilerini güncelle
+    updateRevisionInfo();
+  }
+
+  // Revize bilgilerini güncelle
+  function updateRevisionInfo() {
+    const remaining = mockOrderData.remainingRevisions;
+    const total = mockOrderData.totalRevisions;
+    const percentage = ((total - remaining) / total) * 100;
+
+    totalRevisionsEl.textContent = total;
+    remainingRevisionsEl.textContent = remaining;
+    revisionProgressBar.style.width = percentage + "%";
+
+    modalTotalRevisions.textContent = total;
+    modalRemainingRevisions.textContent = remaining;
+  }
+
+  // State değiştirme fonksiyonu
+  function changeState(targetState) {
+    // Tüm state'leri gizle
+    previewState.style.display = "none";
+    reviewState.style.display = "none";
+    revisionState.style.display = "none";
+
+    // Hedef state'i göster
+    switch (targetState) {
+      case "review":
+        reviewState.style.display = "block";
+        break;
+      case "revision":
+        revisionState.style.display = "block";
+        break;
+      default:
+        previewState.style.display = "block";
+    }
+
+    // Sayfayı yukarı scroll et
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Onayla butonu - Değerlendirme sayfasına geç
+  approveBtn.addEventListener("click", function () {
+    changeState("review");
+  });
+
+  // Revize Talep Et butonu - Revize sayfasına geç
+  revisionBtn.addEventListener("click", function () {
+    changeState("revision");
+  });
+
+  /* ====================================
+       DEĞERLENDİRME (RATING) SİSTEMİ
+       ==================================== */
+
+  let selectedRating = 0;
+
+  ratingStars.forEach((star) => {
+    star.addEventListener("click", function () {
+      selectedRating = parseInt(this.getAttribute("data-rating"));
+      updateStars(selectedRating);
+    });
+
+    star.addEventListener("mouseenter", function () {
+      const hoverRating = parseInt(this.getAttribute("data-rating"));
+      updateStars(hoverRating);
+    });
+  });
+
+  // Rating container'dan çıkınca seçili rating'i göster
+  const ratingContainer = document.querySelector(".order-review__rating");
+  if (ratingContainer) {
+    ratingContainer.addEventListener("mouseleave", function () {
+      updateStars(selectedRating);
+    });
+  }
+
+  function updateStars(rating) {
+    ratingStars.forEach((star, index) => {
+      if (index < rating) {
+        star.classList.add("active");
+      } else {
+        star.classList.remove("active");
+      }
+    });
+  }
+
+  // Değerlendirme gönder
+  submitReviewBtn.addEventListener("click", function () {
+    const comment = reviewComment.value.trim();
+
+    // Validasyon
+    if (selectedRating === 0) {
+      alert("Lütfen yıldız vererek değerlendirme yapın.");
+      return;
+    }
+
+    if (comment === "") {
+      alert("Lütfen bir yorum yazın.");
+      return;
+    }
+
+    // Backend'e gönderilecek veri
+    const reviewData = {
+      orderId: mockOrderData.orderId,
+      rating: selectedRating,
+      comment: comment,
+    };
+
+    console.log("Değerlendirme gönderiliyor:", reviewData);
+
+    // TODO: Sanatçı sayfasına yönlendir
+    // window.location.href = "artist-profile.html?id=" + artistId;
+    alert(
+      "Değerlendirmeniz için teşekkürler! Sanatçı sayfasına yönlendirileceksiniz."
+    );
+  });
+
+  /* ====================================
+       REVİZE TALEBİ
+       ==================================== */
+
+  submitRevisionBtn.addEventListener("click", function () {
+    const note = revisionNote.value.trim();
+
+    // Validasyon
+    if (note === "") {
+      alert("Lütfen revize notunuzu yazın.");
+      return;
+    }
+
+    if (mockOrderData.remainingRevisions <= 0) {
+      alert("Revize hakkınız kalmamıştır.");
+      return;
+    }
+
+    // Modal'ı aç
+    revisionConfirmModal.classList.add("active");
+  });
+
+  // Modal kapatma
+  function closeModal() {
+    revisionConfirmModal.classList.remove("active");
+  }
+
+  closeRevisionModal.addEventListener("click", closeModal);
+  cancelRevisionBtn.addEventListener("click", closeModal);
+
+  // Modal overlay'e tıklayınca kapat
+  revisionConfirmModal.addEventListener("click", function (e) {
+    if (e.target === revisionConfirmModal) {
+      closeModal();
+    }
+  });
+
+  // Revize talebini onayla
+  confirmRevisionBtn.addEventListener("click", function () {
+    const note = revisionNote.value.trim();
+
+    // Backend'e gönderilecek veri
+    const revisionData = {
+      orderId: mockOrderData.orderId,
+      revisionNote: note,
+      remainingRevisions: mockOrderData.remainingRevisions - 1,
+    };
+
+    console.log("Revize talebi gönderiliyor:", revisionData);
+
+    // Modal'ı kapat
+    closeModal();
+
+    // TODO: Sanatçı sayfasına yönlendir
+    // window.location.href = "artist-profile.html?id=" + artistId;
+    alert("Revize talebiniz iletildi! Sanatçı sayfasına yönlendirileceksiniz.");
+
+    // Mock: Revize hakkını azalt (gerçek uygulamada backend'den gelecek)
+    mockOrderData.remainingRevisions--;
+    updateRevisionInfo();
+  });
+
+  // Sayfa yüklendiğinde verileri doldur
+  initializePageData();
+});

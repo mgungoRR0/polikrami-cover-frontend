@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satın Al | Polikrami</title>
+    <meta
+      name="description"
+      content="Özel kitap kapağı tasarımı siparişi oluştur"
+    />
+
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/purchase.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/home-page.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <nav aria-label="Ana gezinme">
+        <div class="logo">
+          <img
+            src="../assets/images/polikrami-logo.svg"
+            alt="Polikrami Logo"
+            style="height: 40px"
+            width="160"
+            height="40"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <button
+          class="mobile-menu-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navLinks"
+          aria-label="Menüyü aç/kapat"
+        >
+          ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="portfolio.html">Çalışmalarımız</a></li>
+          <li><a href="artists.html">Sanatçılarımız</a></li>
+          <li><a href="about-us.html">Hakkımızda</a></li>
+
+          <!-- Language Selector -->
+          <li class="language-selector">
+            <button
+              class="language-btn"
+              id="languageBtn"
+              aria-label="Dil seçimi"
+              aria-expanded="false"
+            >
+              <img
+                src="../assets/icons/world.svg"
+                alt=""
+                class="world-icon"
+                width="32"
+                height="32"
+              />
+              <span class="lang-text">Türkçe</span>
+              <svg
+                class="dropdown-arrow"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+              >
+                <path
+                  d="M3 4.5L6 7.5L9 4.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+
+            <div class="language-dropdown" id="languageDropdown">
+              <a href="#" class="lang-option active" data-lang="tr">
+                <span>Türkçe</span>
+              </a>
+              <a href="#" class="lang-option" data-lang="en">
+                <span>English</span>
+              </a>
+              <a href="#" class="lang-option" data-lang="de">
+                <span>Deutsch</span>
+              </a>
+            </div>
+          </li>
+
+          <!-- User Section -->
+          <li class="user-section">
+            <!-- Coin Display -->
+            <div class="coin-display">
+              <span class="coin-amount">50</span>
+              <div class="coin-icon">₵</div>
+            </div>
+
+            <!-- Profile Avatar -->
+            <div class="profile-avatar" id="profileAvatar">
+              <img src="../assets/images/emre-yılmaz-image.png" alt="Profil" />
+            </div>
+
+            <!-- Profile Dropdown -->
+            <div class="profile-dropdown" id="profileDropdown">
+              <div class="dropdown-header">
+                <h4>Hoş Geldin!</h4>
+                <p>kullanici@email.com</p>
+              </div>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="user-profil.html" class="highlighted">
+                    <span class="menu-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                        ></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    </span>
+                    Profilim
+                  </a>
+                </li>
+                <li>
+                  <a href="user-orders.html">
+                    <span class="menu-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 .553-.894L9 2m0 18l6-3m-6 3v-8.618m6 5.618l5.447 2.724A1 1 0 0 0 21 16.382V5.618a1 1 0 0 0-.553-.894L15 2m0 0L9 5m6-3v8.618"
+                        ></path>
+                      </svg>
+                    </span>
+                    Siparişlerim
+                  </a>
+                </li>
+                <li>
+                  <a href="user-profile-reset-password.html">
+                    <span class="menu-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <rect
+                          x="3"
+                          y="11"
+                          width="18"
+                          height="11"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                    </span>
+                    Şifre Ayarları
+                  </a>
+                </li>
+                <li>
+                  <a href="user-addresses.html">
+                    <span class="menu-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                        ></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                    </span>
+                    Adreslerim
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="menu-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <rect
+                          x="1"
+                          y="4"
+                          width="22"
+                          height="16"
+                          rx="2"
+                          ry="2"
+                        ></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                      </svg>
+                    </span>
+                    Kredi İşlemlerim
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="menu-icon">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path
+                          d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                        ></path>
+                        <polyline points="9 14 12 11 15 14"></polyline>
+                      </svg>
+                    </span>
+                    İade İşlemlerim
+                  </a>
+                </li>
+              </ul>
+              <div class="dropdown-footer">
+                <a href="#">Çıkış Yap</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="purchase-page">
+      <div class="purchase-container">
+        <!-- Sidebar - Step Indicator -->
+        <aside class="purchase-sidebar">
+          <div class="step-indicator" id="stepIndicator">
+            <div class="step-item active" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Adım 1</h3>
+                <p>Tasarım Yöntemini Seç</p>
+              </div>
+            </div>
+
+            <div class="step-item" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>Adım 2</h3>
+                <p>Gerekli Bilgileri Doldur</p>
+              </div>
+            </div>
+
+            <div class="step-item" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>Adım 3</h3>
+                <p>Mesaj Kartını Seç</p>
+              </div>
+            </div>
+
+            <div class="step-item" data-step="4">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>Adım 4</h3>
+                <p>Sipariş Bilgilerini Gir</p>
+              </div>
+            </div>
+
+            <div class="step-item" data-step="5">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3>Adım 5</h3>
+                <p>Ödemeni Tamamla</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="purchase-content">
+          <!-- Step 1: Design Method Selection -->
+          <div class="step-section active" id="step1">
+            <div class="step-header">
+              <span class="step-label">Adım 1</span>
+              <h1 class="step-title">Tasarım Yöntemini Seç</h1>
+            </div>
+
+            <div class="method-cards">
+              <!-- Card 1: Own Design -->
+              <div class="method-card" data-method="own">
+                <div class="card-image">
+                  <img
+                    src="../assets/images/upload-your-own-design-image.png"
+                    alt=""
+                  />
+                </div>
+                <h3 class="card-title">Kendi Tasarımını Yükle</h3>
+                <p class="card-description">
+                  Kapak tasarımını kendin mi hazırladın? Dosyanı yükleyerek
+                  süreci başlatabilirsin.
+                </p>
+                <div class="card-price">1230 TL</div>
+                <div class="card-radio">
+                  <input
+                    type="radio"
+                    name="method"
+                    id="method-own"
+                    value="own"
+                  />
+                  <label for="method-own"></label>
+                </div>
+              </div>
+
+              <!-- Card 2: AI Design -->
+              <div class="method-card" data-method="ai">
+                <div class="card-image">
+                  <img
+                    src="../assets/images/artificial-intelligence-image.png"
+                    alt=""
+                  />
+                </div>
+                <h3 class="card-title">Yapay Zeka ile Oluştur</h3>
+                <p class="card-description">
+                  Hayalini yaz, yapay zekamız senin için bir kapak tasarımı
+                  oluştursun!
+                </p>
+                <div class="card-price">1230 TL</div>
+                <div class="card-radio">
+                  <input type="radio" name="method" id="method-ai" value="ai" />
+                  <label for="method-ai"></label>
+                </div>
+              </div>
+
+              <!-- Card 3: Artist Selection -->
+              <div class="method-card" data-method="artist">
+                <div class="card-image">
+                  <img
+                    src="../assets/images/choose-your-artist-image.png"
+                    alt=""
+                  />
+                </div>
+                <h3 class="card-title">Sanatçı Seç</h3>
+                <p class="card-description">
+                  Tarzını yansıtan sanatçıyı seç; senin için özel bir kapak
+                  çizsin!
+                </p>
+                <div class="card-price">1230 TL</div>
+                <div class="card-radio">
+                  <input
+                    type="radio"
+                    name="method"
+                    id="method-artist"
+                    value="artist"
+                  />
+                  <label for="method-artist"></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button class="btn-next" onclick="nextStep()">İleri</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Fill Required Information -->
+          <div class="step-section" id="step2">
+            <div class="step-header">
+              <span class="step-label">Adım 2</span>
+              <h1 class="step-title">Kendi Tasarımını Yükle</h1>
+            </div>
+
+            <form class="step2-form">
+              <!-- Grid Layout for Name and Type -->
+              <div class="form-grid-2col">
+                <div class="form-group">
+                  <label for="bookName">
+                    Kitabın adı nedir?<span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="bookName"
+                    class="form-input"
+                    placeholder="Lütfen okuduğunuz kitabın adını yazınız."
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="bookType">
+                    Kitabın türü nedir?<span class="required">*</span>
+                  </label>
+                  <select id="bookType" class="form-select" required>
+                    <option value="">
+                      Lütfen okuduğunuz kitap türünü seçiniz.
+                    </option>
+                    <option value="roman">Roman</option>
+                    <option value="hikaye">Hikaye</option>
+                    <option value="siir">Şiir</option>
+                    <option value="deneme">Deneme</option>
+                    <option value="biyografi">Biyografi</option>
+                    <option value="diger">Diğer</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Design Purpose & Gift Card - Side by Side -->
+              <div class="form-grid-purpose-gift">
+                <!-- Left: Design Purpose -->
+                <div class="form-group">
+                  <label class="form-label-main">
+                    Kapak tasarımı kendin için mi, hediye mi?
+                  </label>
+                  <div class="radio-group-vertical">
+                    <label class="radio-label">
+                      <input
+                        type="radio"
+                        name="designPurpose"
+                        value="self"
+                        checked
+                      />
+                      <span class="radio-custom"></span>
+                      <span class="radio-text">Kendim için</span>
+                    </label>
+                    <label class="radio-label">
+                      <input
+                        type="radio"
+                        name="designPurpose"
+                        value="selfGift"
+                      />
+                      <span class="radio-custom"></span>
+                      <span class="radio-text">Kendime hediye</span>
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="designPurpose" value="gift" />
+                      <span class="radio-custom"></span>
+                      <span class="radio-text">Hediye</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Right: Gift Card Option -->
+                <div class="form-group">
+                  <label class="form-label-main"
+                    >Hediye kartı ister misiniz?</label
+                  >
+                  <div class="radio-group-vertical">
+                    <label class="radio-label">
+                      <input
+                        type="radio"
+                        name="giftCard"
+                        value="yes"
+                        onchange="handleGiftCardChange()"
+                      />
+                      <span class="radio-custom"></span>
+                      <span class="radio-text">Evet</span>
+                    </label>
+                    <label class="radio-label">
+                      <input
+                        type="radio"
+                        name="giftCard"
+                        value="no"
+                        checked
+                        onchange="handleGiftCardChange()"
+                      />
+                      <span class="radio-custom"></span>
+                      <span class="radio-text">Hayır</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- File Upload Area -->
+              <div class="form-group">
+                <label class="form-label-main">
+                  Hayalinizdeki kapak tasarımını anlatmak için örnek bir görsel
+                  yükleyebilirsiniz.
+                </label>
+                <div class="file-upload-area" id="fileUploadArea">
+                  <div class="upload-icon">
+                    <svg
+                      width="64"
+                      height="64"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <path
+                        d="M7 18C4.79086 18 3 16.2091 3 14C3 11.7909 4.79086 10 7 10C7 7.23858 9.23858 5 12 5C14.7614 5 17 7.23858 17 10C19.2091 10 21 11.7909 21 14C21 16.2091 19.2091 18 17 18"
+                      />
+                      <path d="M12 12V21M12 12L15 15M12 12L9 15" />
+                    </svg>
+                  </div>
+                  <p class="upload-text">
+                    Bir dosya seçin veya buraya sürükleyip bırakın.
+                  </p>
+                  <p class="upload-hint">
+                    txt,docx,pdf,jpeg,xlsx~50 mb'a kadar
+                  </p>
+                  <button
+                    type="button"
+                    class="upload-btn"
+                    onclick="triggerFileInput()"
+                  >
+                    Dosyalara göz at
+                  </button>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    accept=".txt,.docx,.pdf,.jpeg,.jpg,.png,.xlsx"
+                    style="display: none"
+                    onchange="handleFileSelect(event)"
+                  />
+                </div>
+                <div id="filePreview" class="file-preview"></div>
+              </div>
+            </form>
+
+            <div class="step-actions">
+              <button class="btn-back" onclick="prevStep()">Geri</button>
+              <button class="btn-next" onclick="nextStep()">İleri</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Select Message Card -->
+          <div class="step-section" id="step3">
+            <div class="step-header">
+              <span class="step-label">Adım 3</span>
+              <h1 class="step-title">Mesaj Kartı</h1>
+            </div>
+
+            <form class="step3-form">
+              <!-- Receiver and Sender Info -->
+              <div class="form-grid-2col">
+                <div class="form-group">
+                  <label for="receiverName">Alıcı Bilgisi</label>
+                  <input
+                    type="text"
+                    id="receiverName"
+                    class="form-input"
+                    placeholder="Kime hitap edeceğiniz?"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="senderName">Gönderen Ad Soyad</label>
+                  <input
+                    type="text"
+                    id="senderName"
+                    class="form-input"
+                    placeholder="Gönderen kişinin adı ve soyadını giriniz"
+                  />
+                </div>
+              </div>
+
+              <!-- Message Content -->
+              <div class="form-group">
+                <label for="messageContent">Mesaj İçeriği</label>
+                <textarea
+                  id="messageContent"
+                  class="form-textarea"
+                  placeholder="İçten bir mesaj yazabilirsiniz."
+                  rows="5"
+                ></textarea>
+              </div>
+
+              <!-- Card Selection Info -->
+              <div class="card-selection-info">
+                <p>
+                  Tarzına en uygun mesaj kartını seç, sevdiklerine özel bir
+                  dokunuş kat.
+                </p>
+              </div>
+
+              <!-- Message Card Templates -->
+              <div class="message-cards-grid">
+                <div class="message-card-item">
+                  <div class="message-card-preview">
+                    <img src="../assets/images/card-image.png" alt="" />
+                  </div>
+                  <div class="message-card-radio">
+                    <input
+                      type="radio"
+                      name="messageCard"
+                      id="card1"
+                      value="card1"
+                    />
+                    <label for="card1"></label>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="message-card-item">
+                  <div class="message-card-preview">
+                    <img src="../assets/images/card2-image.png" alt="" />
+                  </div>
+                  <div class="message-card-radio">
+                    <input
+                      type="radio"
+                      name="messageCard"
+                      id="card2"
+                      value="card2"
+                    />
+                    <label for="card2"></label>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="message-card-item">
+                  <div class="message-card-preview">
+                    <img src="../assets/images/card3-image.png" alt="" />
+                  </div>
+                  <div class="message-card-radio">
+                    <input
+                      type="radio"
+                      name="messageCard"
+                      id="card3"
+                      value="card3"
+                    />
+                    <label for="card3"></label>
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="message-card-item">
+                  <div class="message-card-preview">
+                    <img src="../assets/images/card4-image.png" alt="" />
+                  </div>
+                  <div class="message-card-radio">
+                    <input
+                      type="radio"
+                      name="messageCard"
+                      id="card4"
+                      value="card4"
+                    />
+                    <label for="card4"></label>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <div class="step-actions">
+              <button class="btn-back" onclick="prevStep()">Geri</button>
+              <button class="btn-next" onclick="nextStep()">İleri</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Enter Order Information -->
+          <div class="step-section" id="step4">
+            <div class="step-header">
+              <span class="step-label">Adım 4</span>
+              <h1 class="step-title">Sipariş Bilgileri</h1>
+            </div>
+
+            <div class="order-layout">
+              <!-- Left: Delivery Address -->
+              <div class="order-delivery">
+                <!-- Teslimat Adresi -->
+                <div class="delivery-header">
+                  <h2 class="delivery-title">Teslimat Adresi</h2>
+                  <button
+                    class="add-address-btn"
+                    type="button"
+                    onclick="openAddressModal()"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Adres Ekle/Değiştir
+                  </button>
+                </div>
+
+                <!-- Adres Kartı -->
+                <div class="address-card-purchase" id="selectedAddressCard">
+                  <div class="address-card-wrapper-purchase">
+                    <div class="address-card-content-purchase">
+                      <div class="address-card-header-purchase">
+                        <div class="address-info-row">
+                          <svg
+                            class="address-icon"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path
+                              d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                            ></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                          </svg>
+                          <span class="address-label">Ev</span>
+                        </div>
+                        <div class="address-info-row">
+                          <svg
+                            class="address-icon"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path
+                              d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                            ></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                          </svg>
+                          <span class="address-recipient">Sinem Nur Koza</span>
+                        </div>
+                        <div class="address-info-row">
+                          <svg
+                            class="address-icon"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path
+                              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                            ></path>
+                          </svg>
+                          <span class="address-phone">(539)601 30 25</span>
+                        </div>
+                      </div>
+                      <p class="address-detail-text">
+                        Yenimahalle, Akasya Caddesi No: 72, Akdeniz Apartmanı,
+                        Kat: 5, Daire: 9, 06560 Çankaya / Ankara, Türkiye
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Fatura Adresi Checkbox -->
+                <div class="billing-checkbox">
+                  <label class="checkbox-label">
+                    <input
+                      type="checkbox"
+                      id="sameBillingAddress"
+                      checked
+                      onchange="toggleBillingAddress()"
+                    />
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-text"
+                      >Fatura bilgilerim teslimat bilgilerim ile aynı</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <!-- Right: Order Summary -->
+              <div class="order-summary">
+                <h2 class="summary-title">Sipariş Özeti</h2>
+
+                <div class="summary-amounts">
+                  <div class="summary-row">
+                    <span>Sipariş Tutarı:</span>
+                    <strong>1260 TL</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Kargo:</span>
+                    <strong>30 TL</strong>
+                  </div>
+                  <div class="summary-divider"></div>
+                  <div class="summary-row summary-total">
+                    <span>Toplam:</span>
+                    <strong>1290 TL</strong>
+                  </div>
+                </div>
+
+                <div class="summary-product">
+                  <div class="product-image">
+                    <!-- Görsel buraya gelecek -->
+                  </div>
+                  <div class="product-info">
+                    <h4 class="product-name">Kendi Tasarımını Yükle</h4>
+                    <p class="product-price">1260 TL/Adet</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fatura Adresi Formu (Full Width, Grid Dışında) -->
+            <div
+              class="billing-address-form"
+              id="billingAddressForm"
+              style="display: none"
+            >
+              <h3 class="billing-form-title">Fatura Adresi</h3>
+
+              <div class="form-grid-2col">
+                <!-- Ad -->
+                <div class="form-group">
+                  <label>Ad</label>
+                  <input
+                    type="text"
+                    class="form-input"
+                    placeholder="Adınızı giriniz"
+                  />
+                </div>
+
+                <!-- Soyad -->
+                <div class="form-group">
+                  <label>Soyad</label>
+                  <input
+                    type="text"
+                    class="form-input"
+                    placeholder="Soyadınızı giriniz"
+                  />
+                </div>
+
+                <!-- Telefon -->
+                <div class="form-group">
+                  <label>Telefon</label>
+                  <input
+                    type="tel"
+                    class="form-input"
+                    placeholder="Telefon numaranızı giriniz"
+                    maxlength="15"
+                  />
+                </div>
+
+                <!-- İl -->
+                <div class="form-group">
+                  <label>İl</label>
+                  <select class="form-select">
+                    <option value="">İl seçiniz</option>
+                    <option value="ankara">Ankara</option>
+                    <option value="istanbul">İstanbul</option>
+                    <option value="izmir">İzmir</option>
+                  </select>
+                </div>
+
+                <!-- İlçe -->
+                <div class="form-group">
+                  <label>İlçe</label>
+                  <select class="form-select" disabled>
+                    <option value="">İlçe seçiniz</option>
+                  </select>
+                </div>
+
+                <!-- Mahalle -->
+                <div class="form-group">
+                  <label>Mahalle</label>
+                  <select class="form-select" disabled>
+                    <option value="">Mahalle seçiniz</option>
+                  </select>
+                </div>
+
+                <!-- Açık Adres - Full Width -->
+                <div class="form-group form-col-full">
+                  <label>Adres</label>
+                  <textarea
+                    class="form-textarea"
+                    rows="3"
+                    placeholder="Açık adres giriniz"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Bireysel / Kurumsal -->
+              <div class="billing-type-wrapper">
+                <label class="billing-type-label">
+                  <input
+                    type="radio"
+                    name="billingType"
+                    value="individual"
+                    checked
+                    onchange="toggleBillingFields()"
+                  />
+                  <span class="billing-type-radio"></span>
+                  <span class="billing-type-text">Bireysel</span>
+                </label>
+                <label class="billing-type-label">
+                  <input
+                    type="radio"
+                    name="billingType"
+                    value="corporate"
+                    onchange="toggleBillingFields()"
+                  />
+                  <span class="billing-type-radio"></span>
+                  <span class="billing-type-text">Kurumsal</span>
+                </label>
+              </div>
+
+              <div class="form-grid-2col">
+                <!-- VKN/TCKN (Her zaman göster) -->
+                <div class="form-group">
+                  <label>VKN/TCKN*</label>
+                  <input
+                    type="text"
+                    class="form-input"
+                    placeholder="VKN/TCKN giriniz"
+                    maxlength="11"
+                  />
+                </div>
+
+                <!-- Vergi Dairesi (Kurumsal için) -->
+                <div
+                  class="form-group"
+                  id="taxOfficeField"
+                  style="display: none"
+                >
+                  <label>Vergi Dairesi</label>
+                  <input
+                    type="text"
+                    class="form-input"
+                    placeholder="Vergi dairesi giriniz"
+                  />
+                </div>
+
+                <!-- Firma Adı (Kurumsal için) -->
+                <div
+                  class="form-group form-col-full"
+                  id="companyNameField"
+                  style="display: none"
+                >
+                  <label>Firma Adı</label>
+                  <input
+                    type="text"
+                    class="form-input"
+                    placeholder="Firma adı giriniz"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button class="btn-back" onclick="prevStep()">Geri</button>
+              <button class="btn-next" onclick="nextStep()">İleri</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Complete Payment -->
+          <div class="step-section" id="step5">
+            <div class="step-header">
+              <span class="step-label">Adım 5</span>
+              <h1 class="step-title">Ödeme Bilgileri</h1>
+            </div>
+
+            <div class="payment-layout">
+              <!-- Left: Payment Form -->
+              <div class="payment-form-section">
+                <form class="payment-form" id="paymentForm">
+                  <!-- Kart Numarası -->
+                  <div class="form-group">
+                    <label for="cardNumber">Kart Numarası</label>
+                    <input
+                      type="text"
+                      id="cardNumber"
+                      class="form-input"
+                      placeholder="XXXX-XXXX-XXXX-XXXX"
+                      maxlength="19"
+                      required
+                    />
+                  </div>
+
+                  <!-- Kart Sahibi Adı Soyadı -->
+                  <div class="form-group">
+                    <label for="cardHolder">Kart Sahibi Adı Soyadı</label>
+                    <input
+                      type="text"
+                      id="cardHolder"
+                      class="form-input"
+                      placeholder="Kart üzerindeki adını ve soyadını giriniz"
+                      required
+                    />
+                  </div>
+
+                  <!-- Son Kullanma Tarihi & CVV -->
+                  <div class="form-grid-2col">
+                    <div class="form-group">
+                      <label for="expiryMonth">Son Kullanma Tarihi</label>
+                      <div class="expiry-grid">
+                        <select id="expiryMonth" class="form-select" required>
+                          <option value="">Ay/Yıl</option>
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                          <option value="05">05</option>
+                          <option value="06">06</option>
+                          <option value="07">07</option>
+                          <option value="08">08</option>
+                          <option value="09">09</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                        </select>
+                        <select id="expiryYear" class="form-select" required>
+                          <option value="">Yıl</option>
+                          <option value="2025">2025</option>
+                          <option value="2026">2026</option>
+                          <option value="2027">2027</option>
+                          <option value="2028">2028</option>
+                          <option value="2029">2029</option>
+                          <option value="2030">2030</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cvv">CVV</label>
+                      <input
+                        type="text"
+                        id="cvv"
+                        class="form-input"
+                        placeholder="CVV numarası"
+                        maxlength="3"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Taksit Seçenekleri -->
+                  <div class="installment-section">
+                    <h3 class="installment-title">Taksit Seçenekleri</h3>
+                    <div class="installment-options">
+                      <label class="installment-option">
+                        <input
+                          type="radio"
+                          name="installment"
+                          value="1"
+                          checked
+                        />
+                        <span class="installment-radio"></span>
+                        <span class="installment-text">
+                          <strong>Tek Çekim</strong>
+                          <span class="installment-amount">1290 TL</span>
+                        </span>
+                      </label>
+
+                      <label class="installment-option">
+                        <input type="radio" name="installment" value="3" />
+                        <span class="installment-radio"></span>
+                        <span class="installment-text">
+                          <strong>3 Taksit</strong>
+                          <span class="installment-amount">430 TL x 3</span>
+                        </span>
+                      </label>
+
+                      <label class="installment-option">
+                        <input type="radio" name="installment" value="6" />
+                        <span class="installment-radio"></span>
+                        <span class="installment-text">
+                          <strong>6 Taksit</strong>
+                          <span class="installment-amount">215 TL x 6</span>
+                        </span>
+                      </label>
+
+                      <label class="installment-option">
+                        <input type="radio" name="installment" value="9" />
+                        <span class="installment-radio"></span>
+                        <span class="installment-text">
+                          <strong>9 Taksit</strong>
+                          <span class="installment-amount">143 TL x 9</span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Sözleşmeler -->
+                  <div class="payment-agreements">
+                    <label class="agreement-checkbox">
+                      <input type="checkbox" required />
+                      <span class="checkbox-custom"></span>
+                      <span class="agreement-text">
+                        <a href="#">Ön Bilgilendirme Formu</a>nu ve
+                        <a href="#">Uzaktan Satış Sözleşmesi</a>ni okudum, kabul
+                        ediyorum.
+                      </span>
+                    </label>
+
+                    <label class="agreement-checkbox">
+                      <input type="checkbox" />
+                      <span class="checkbox-custom"></span>
+                      <span class="agreement-text">
+                        Birden fazla kampanya ve ürün olması durumunda farklı
+                        teslimat adreslerim olabilir. Bu sebeple 128 ISS Sistemi
+                        ile ayrı teslimat süreçleri hakkında bilgilendirildim.
+                      </span>
+                    </label>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Right: Payment Summary -->
+              <div class="payment-summary">
+                <h2 class="summary-title">Sipariş Özeti</h2>
+
+                <div class="summary-amounts">
+                  <div class="summary-row">
+                    <span>Sipariş Tutarı:</span>
+                    <strong>1260 TL</strong>
+                  </div>
+                  <div class="summary-row">
+                    <span>Kargo:</span>
+                    <strong>30 TL</strong>
+                  </div>
+                  <div class="summary-divider"></div>
+                  <div class="summary-row summary-total">
+                    <span>Toplam:</span>
+                    <strong>1290 TL</strong>
+                  </div>
+                </div>
+
+                <div class="summary-product">
+                  <div class="product-image">
+                    <img src="../assets/images/card-image.png" alt="Ürün" />
+                  </div>
+                  <div class="product-info">
+                    <h4 class="product-name">Kendi Tasarımını Yükle</h4>
+                    <p class="product-price">1260 TL/Adet</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button class="btn-back" onclick="prevStep()">Geri</button>
+              <button class="btn-submit" onclick="submitPayment()">
+                Ödeme Yap
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ADDRESS SELECTION MODAL -->
+    <div class="address-modal-overlay" id="addressModal">
+      <div class="address-modal-container">
+        <button class="address-modal-close" onclick="closeAddressModal()">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <h2 class="address-modal-title">Teslimat Adresi</h2>
+
+        <div class="address-modal-list" id="addressList">
+          <!-- Address cards will be loaded here dynamically -->
+        </div>
+
+        <div class="address-modal-buttons">
+          <button
+            type="button"
+            class="address-modal-btn-secondary"
+            onclick="openAddressFormModal()"
+          >
+            Yeni Adres Ekle
+          </button>
+          <button
+            type="button"
+            class="address-modal-btn-primary"
+            onclick="selectAddress()"
+          >
+            Adresi Seç
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADDRESS FORM MODAL (Add/Edit) -->
+    <div class="address-form-modal-overlay" id="addressFormModal">
+      <div class="address-form-modal-container">
+        <button class="address-modal-close" onclick="closeAddressFormModal()">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <h2 class="address-form-modal-title" id="addressFormTitle">
+          Adres Ekle/Düzenle
+        </h2>
+
+        <form
+          class="address-form"
+          id="addressForm"
+          onsubmit="saveAddress(event)"
+        >
+          <div class="address-form-grid">
+            <!-- Ad -->
+            <div class="address-form-group">
+              <label for="formFirstName">Ad</label>
+              <input
+                type="text"
+                id="formFirstName"
+                class="address-form-input"
+                placeholder="Adınızı giriniz"
+                required
+              />
+            </div>
+
+            <!-- Soyad -->
+            <div class="address-form-group">
+              <label for="formLastName">Soyad</label>
+              <input
+                type="text"
+                id="formLastName"
+                class="address-form-input"
+                placeholder="Soyadınızı giriniz"
+                required
+              />
+            </div>
+
+            <!-- Telefon -->
+            <div class="address-form-group">
+              <label for="formPhone">Telefon</label>
+              <input
+                type="tel"
+                id="formPhone"
+                class="address-form-input"
+                placeholder="(539) 601 52 59"
+                maxlength="15"
+                required
+              />
+            </div>
+
+            <!-- İl -->
+            <div class="address-form-group">
+              <label for="formCity">İl</label>
+              <select id="formCity" class="address-form-select" required>
+                <option value="">İl seçiniz</option>
+                <option value="ankara">Ankara</option>
+                <option value="istanbul">İstanbul</option>
+                <option value="izmir">İzmir</option>
+                <option value="mugla">Muğla</option>
+              </select>
+            </div>
+
+            <!-- İlçe -->
+            <div class="address-form-group">
+              <label for="formDistrict">İlçe</label>
+              <select id="formDistrict" class="address-form-select" required>
+                <option value="">İlçe seçiniz</option>
+              </select>
+            </div>
+
+            <!-- Mahalle -->
+            <div class="address-form-group">
+              <label for="formNeighborhood">Mahalle</label>
+              <select
+                id="formNeighborhood"
+                class="address-form-select"
+                required
+              >
+                <option value="">Mahalle seçiniz</option>
+              </select>
+            </div>
+
+            <!-- Açık Adres -->
+            <div class="address-form-group address-form-full">
+              <label for="formAddress">Adres</label>
+              <textarea
+                id="formAddress"
+                class="address-form-textarea"
+                rows="3"
+                placeholder="Açık adres giriniz"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Adres Başlığı -->
+            <div class="address-form-group address-form-full">
+              <label for="formAddressLabel">Adres Başlığı</label>
+              <input
+                type="text"
+                id="formAddressLabel"
+                class="address-form-input"
+                placeholder="Adres başlığı giriniz"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Bireysel / Kurumsal -->
+          <div class="address-form-type-wrapper">
+            <label class="address-form-type-label">
+              <input
+                type="radio"
+                name="formAddressType"
+                value="individual"
+                checked
+                onchange="toggleAddressTypeFields()"
+              />
+              <span class="address-form-type-radio"></span>
+              <span class="address-form-type-text">Bireysel</span>
+            </label>
+            <label class="address-form-type-label">
+              <input
+                type="radio"
+                name="formAddressType"
+                value="corporate"
+                onchange="toggleAddressTypeFields()"
+              />
+              <span class="address-form-type-radio"></span>
+              <span class="address-form-type-text">Kurumsal</span>
+            </label>
+          </div>
+
+          <div class="address-form-grid" id="formTypeFields">
+            <!-- TC Kimlik No (Bireysel için) -->
+            <div class="address-form-group address-form-full" id="formTcField">
+              <label for="formTcNumber">Tc Kimlik No</label>
+              <input
+                type="text"
+                id="formTcNumber"
+                class="address-form-input"
+                placeholder="T.c kimlik numaranızı giriniz"
+                maxlength="11"
+              />
+            </div>
+
+            <!-- Vergi Dairesi (Kurumsal için) -->
+            <div
+              class="address-form-group"
+              id="formTaxOfficeField"
+              style="display: none"
+            >
+              <label for="formTaxOffice">Vergi Dairesi</label>
+              <input
+                type="text"
+                id="formTaxOffice"
+                class="address-form-input"
+                placeholder="Vergi dairesi giriniz"
+              />
+            </div>
+
+            <!-- VKN (Kurumsal için) -->
+            <div
+              class="address-form-group"
+              id="formTaxNumberField"
+              style="display: none"
+            >
+              <label for="formTaxNumber">VKN</label>
+              <input
+                type="text"
+                id="formTaxNumber"
+                class="address-form-input"
+                placeholder="VKN giriniz"
+                maxlength="10"
+              />
+            </div>
+
+            <!-- Firma Adı (Kurumsal için) -->
+            <div
+              class="address-form-group address-form-full"
+              id="formCompanyNameField"
+              style="display: none"
+            >
+              <label for="formCompanyName">Firma Adı</label>
+              <input
+                type="text"
+                id="formCompanyName"
+                class="address-form-input"
+                placeholder="Firma adı giriniz"
+              />
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="address-form-buttons">
+            <button
+              type="button"
+              class="address-form-btn-back"
+              onclick="backToAddressList()"
+            >
+              Geri
+            </button>
+            <button type="submit" class="address-form-btn-save">Kaydet</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-new">
+      <div class="footer-main">
+        <div class="footer-content-grid">
+          <!-- Sol Kolon - Logo ve İletişim -->
+          <div class="footer-brand-col">
+            <img
+              src="../assets/images/polikrami-logo.svg"
+              alt="Polikrami"
+              class="footer-logo"
+            />
+            <div class="footer-work-hours">
+              <p class="work-title">Çalışma Saatleri:</p>
+              <p class="work-time">Pazartesi-Cumartesi 09:00-19:00</p>
+            </div>
+            <div class="footer-address">
+              <p>Atatürk Mah. 121. Sk. No:4</p>
+              <p>Nehir APT. Kat:2 Daire:5</p>
+              <p>Merkez/Tunceli</p>
+            </div>
+            <div class="footer-social-icons">
+              <a href="tel:+90" aria-label="Telefon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+              </a>
+              <a href="mailto:info@polikrami.com" aria-label="Email">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </a>
+              <a href="#" aria-label="WhatsApp">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Polikrami Cover -->
+          <div class="footer-links-col">
+            <h3>Polikrami Cover</h3>
+            <ul>
+              <li><a href="#">Kargo Bilgileri</a></li>
+              <li><a href="#">Gizlilik İlkesi</a></li>
+              <li><a href="#">Kullanım Şartları</a></li>
+              <li><a href="#">Sayfa Haritası</a></li>
+              <li><a href="#">Markalar</a></li>
+              <li><a href="#">Sık Sorulan Sorular</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <!-- Bağlantılar -->
+          <div class="footer-links-col">
+            <h3>Bağlantılar</h3>
+            <ul>
+              <li><a href="#">Hesabım</a></li>
+              <li><a href="#">Siparişlerim</a></li>
+              <li><a href="#">İstek Listem</a></li>
+              <li><a href="#">Site Haritası</a></li>
+              <li><a href="#">E-Bülten</a></li>
+              <li><a href="#">İade</a></li>
+              <li><a href="#">Sanatçı Kullanım Rehberi</a></li>
+            </ul>
+          </div>
+
+          <!-- Hızlı Erişim -->
+          <div class="footer-links-col">
+            <h3>Hızlı Erişim</h3>
+            <ul>
+              <li><a href="#">Ana Sayfa</a></li>
+              <li><a href="#">Çalışmalarımız</a></li>
+              <li><a href="#">Sanatçılarımız</a></li>
+              <li><a href="#">Hakkımızda</a></li>
+              <li><a href="#">Oluşturmaya Başla</a></li>
+              <li><a href="#">Sipariş Takibi</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alt Dekoratif Görsel -->
+      <div class="footer-decoration-bottom">
+        <img src="../assets/images/footer-tamamı.svg" alt="" />
+      </div>
+    </footer>
+
+    <script src="../js/base.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/purchase.js"></script>
+  </body>
+</html>
