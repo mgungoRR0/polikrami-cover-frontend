@@ -1,8 +1,8 @@
-// Purchase Page JavaScript
+// Purchase Page JavaScript - Dynamic Step System
 
 let currentStep = 1;
-let totalSteps = 5; // Her zaman 5 adım
-let giftCardEnabled = false;
+let totalSteps = 4; // Default: 4 adım (hediye kartı yok)
+let giftCardEnabled = false; // Default: Hayır
 
 // MOCK DATA - Adresler (Backend entegrasyonunda silinecek)
 const mockAddresses = [
@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeMessageCards();
   loadAddresses();
   initializePaymentInputs();
+  updateSidebarStructure(); // İlk yükleme için sidebar'ı güncelle
 });
 
 function initializeSteps() {
@@ -81,6 +82,7 @@ function initializeSteps() {
   document.querySelectorAll(".step-item").forEach((item) => {
     item.addEventListener("click", function () {
       const step = parseInt(this.dataset.step);
+      // Sadece geçerli adımlara tıklanabilir
       if (step <= currentStep) {
         goToStep(step);
       }
@@ -90,38 +92,50 @@ function initializeSteps() {
 
 function updateSidebarStructure() {
   const stepIndicator = document.getElementById("stepIndicator");
-
-  // Her zaman 5 adım olsun
-  if (stepIndicator.children.length === 4) {
-    // 5. adımı ekle
-    const step5 = document.createElement("div");
-    step5.className = "step-item";
-    step5.setAttribute("data-step", "5");
-    step5.innerHTML = `
-      <div class="step-number">5</div>
-      <div class="step-content">
-        <h3>Adım 5</h3>
-        <p>Ödemeni Tamamla</p>
-      </div>
-    `;
-    stepIndicator.appendChild(step5);
-
-    step5.addEventListener("click", function () {
-      const step = parseInt(this.dataset.step);
-      if (step <= currentStep) {
-        goToStep(step);
-      }
-    });
-  }
+  if (!stepIndicator) return;
 
   const steps = stepIndicator.querySelectorAll(".step-item");
 
   if (giftCardEnabled) {
-    // Hediye kartı EVET: Step 3 = Mesaj Kartı
-    steps[2].querySelector("p").textContent = "Mesaj Kartını Seç";
+    // Hediye kartı EVET: 5 adım - Step 3 göster
+    totalSteps = 5;
+
+    // Step 3'ü görünür yap ve içeriğini güncelle
+    if (steps[2]) {
+      steps[2].style.display = "flex";
+      steps[2].querySelector("h3").textContent = "Adım 3";
+      steps[2].querySelector("p").textContent = "Mesaj Kartını Seç";
+    }
+
+    // Step 4 ve 5'i yeniden numaralandır
+    if (steps[3]) {
+      steps[3].querySelector("h3").textContent = "Adım 4";
+      steps[3].querySelector("p").textContent = "Sipariş Bilgilerini Gir";
+    }
+    if (steps[4]) {
+      steps[4].querySelector("h3").textContent = "Adım 5";
+      steps[4].querySelector("p").textContent = "Ödemeni Tamamla";
+    }
   } else {
-    // Hediye kartı HAYIR: Step 3'ü atla (görünmez yap)
-    steps[2].querySelector("p").textContent = "Mesaj Kartını Seç";
+    // Hediye kartı HAYIR: 4 adım - Step 3'ü gizle
+    totalSteps = 4;
+
+    // Step 3'ü gizle (Mesaj Kartı)
+    if (steps[2]) {
+      steps[2].style.display = "none";
+    }
+
+    // Step 4'ü 3 olarak göster
+    if (steps[3]) {
+      steps[3].querySelector("h3").textContent = "Adım 3";
+      steps[3].querySelector("p").textContent = "Sipariş Bilgilerini Gir";
+    }
+
+    // Step 5'i 4 olarak göster
+    if (steps[4]) {
+      steps[4].querySelector("h3").textContent = "Adım 4";
+      steps[4].querySelector("p").textContent = "Ödemeni Tamamla";
+    }
   }
 
   updateSidebar(currentStep);
@@ -133,6 +147,7 @@ function handleGiftCardChange() {
   );
   const newGiftCardState = giftCardYes.checked;
 
+  // Eğer durum değiştiyse
   if (newGiftCardState !== giftCardEnabled) {
     giftCardEnabled = newGiftCardState;
     updateSidebarStructure();
@@ -323,7 +338,12 @@ function updateSidebar(step) {
 }
 
 function goToStep(step) {
-  if (step >= 1 && step <= totalSteps) {
+  if (step >= 1 && step <= 5) {
+    // Eğer Step 3'e gidilmek isteniyorsa ve hediye kartı kapalıysa, izin verme
+    if (step === 3 && !giftCardEnabled) {
+      return;
+    }
+
     currentStep = step;
     showStep(step);
   }
@@ -331,12 +351,13 @@ function goToStep(step) {
 
 function nextStep() {
   if (validateStep(currentStep)) {
-    if (currentStep < totalSteps) {
+    if (currentStep < 5) {
       let nextStepNumber = currentStep + 1;
 
       // Hediye kartı HAYIR ise step 3'ü (mesaj kartı) atla
-      if (currentStep === 2 && !giftCardEnabled && nextStepNumber === 3) {
-        nextStepNumber = 4; // Direkt step 4'e (sipariş bilgileri) git
+      if (currentStep === 2 && !giftCardEnabled) {
+        // Step 2'den sonra direkt Step 4'e git
+        nextStepNumber = 4;
       }
 
       currentStep = nextStepNumber;
@@ -350,8 +371,9 @@ function prevStep() {
     let prevStepNumber = currentStep - 1;
 
     // Hediye kartı HAYIR ise step 3'ü (mesaj kartı) atla
-    if (currentStep === 4 && !giftCardEnabled && prevStepNumber === 3) {
-      prevStepNumber = 2; // Direkt step 2'ye (bilgiler) git
+    if (currentStep === 4 && !giftCardEnabled) {
+      // Step 4'ten geriye giderken direkt Step 2'ye git
+      prevStepNumber = 2;
     }
 
     currentStep = prevStepNumber;
@@ -670,7 +692,6 @@ function openAddressFormModal(address = null) {
     title.textContent = "Adres Ekle";
     form.reset();
     editingAddressId = null;
-    // Default olarak bireysel seçili
     toggleAddressTypeFields();
   }
 
@@ -706,7 +727,6 @@ function fillAddressForm(address) {
     toggleAddressTypeFields();
   }
 
-  // Bireysel veya Kurumsal bilgileri doldur
   if (address.addressType === "individual") {
     document.getElementById("formTcNumber").value = address.tcNumber || "";
   } else {
@@ -734,7 +754,6 @@ function saveAddress(event) {
       .value,
   };
 
-  // Bireysel veya Kurumsal bilgileri kaydet
   if (formData.addressType === "individual") {
     formData.tcNumber = document.getElementById("formTcNumber").value.trim();
   } else {
@@ -803,7 +822,6 @@ function toggleAddressTypeFields() {
   const companyNameField = document.getElementById("formCompanyNameField");
 
   if (individualRadio && individualRadio.checked) {
-    // Bireysel: Sadece TC Kimlik No göster
     if (tcField) {
       tcField.style.display = "block";
       document.getElementById("formTcNumber").required = true;
@@ -821,7 +839,6 @@ function toggleAddressTypeFields() {
       document.getElementById("formCompanyName").required = false;
     }
   } else {
-    // Kurumsal: Vergi Dairesi, VKN, Firma Adı göster
     if (tcField) {
       tcField.style.display = "none";
       document.getElementById("formTcNumber").required = false;
@@ -841,7 +858,6 @@ function toggleAddressTypeFields() {
   }
 }
 
-// Modal dışına tıklanınca kapat
 document.addEventListener("click", function (e) {
   const addressModal = document.getElementById("addressModal");
   const formModal = document.getElementById("addressFormModal");
@@ -855,7 +871,6 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// ESC tuşu ile modal kapat
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
     const addressModal = document.getElementById("addressModal");
@@ -868,28 +883,6 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
-
-// Export functions
-window.nextStep = nextStep;
-window.prevStep = prevStep;
-window.goToStep = goToStep;
-window.handleGiftCardChange = handleGiftCardChange;
-window.triggerFileInput = triggerFileInput;
-window.handleFileSelect = handleFileSelect;
-window.removeFile = removeFile;
-window.toggleBillingAddress = toggleBillingAddress;
-window.toggleBillingFields = toggleBillingFields;
-window.openAddressModal = openAddressModal;
-window.closeAddressModal = closeAddressModal;
-window.selectAddress = selectAddress;
-window.editAddress = editAddress;
-window.deleteAddress = deleteAddress;
-window.openAddressFormModal = openAddressFormModal;
-window.closeAddressFormModal = closeAddressFormModal;
-window.saveAddress = saveAddress;
-window.backToAddressList = backToAddressList;
-window.toggleAddressTypeFields = toggleAddressTypeFields;
-window.submitPayment = submitPayment;
 
 // ==========================================
 // PAYMENT FUNCTIONS
@@ -912,19 +905,27 @@ function initializePaymentInputs() {
   }
 }
 
-// Kart numarası formatla (XXXX-XXXX-XXXX-XXXX)
 function formatCardNumber(input) {
   let value = input.value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
   let formattedValue = value.match(/.{1,4}/g)?.join("-") || value;
   input.value = formattedValue;
 }
 
-// CVV sadece rakam
 function formatCVV(input) {
   input.value = input.value.replace(/[^0-9]/g, "");
 }
 
-// Ödeme işlemi
+// Tarih formatı: AA/YY
+function formatExpiryDate(input) {
+  let value = input.value.replace(/\D/g, "");
+
+  if (value.length >= 2) {
+    value = value.slice(0, 2) + "/" + value.slice(2, 4);
+  }
+
+  input.value = value;
+}
+
 function submitPayment() {
   const form = document.getElementById("paymentForm");
 
@@ -933,13 +934,11 @@ function submitPayment() {
     return;
   }
 
-  // Form validasyonu
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
   }
 
-  // Sözleşme onayı kontrolü
   const agreement1 = form.querySelector(
     '.payment-agreements input[type="checkbox"][required]'
   );
@@ -948,22 +947,35 @@ function submitPayment() {
     return;
   }
 
-  // Ödeme bilgilerini topla
   const paymentData = {
     cardNumber: document.getElementById("cardNumber").value,
     cardHolder: document.getElementById("cardHolder").value,
-    expiryMonth: document.getElementById("expiryMonth").value,
-    expiryYear: document.getElementById("expiryYear").value,
+    expiryDate: document.getElementById("expiryDate").value,
     cvv: document.getElementById("cvv").value,
-    installment: document.querySelector('input[name="installment"]:checked')
-      .value,
   };
 
   console.log("Payment data:", paymentData);
-
-  // TODO: Backend'e gönderilecek
   alert("Ödeme işlemi başarıyla tamamlandı! (Bu bir test mesajıdır)");
-
-  // Başarılı ödeme sonrası yönlendirme yapılabilir
-  // window.location.href = "/order-success";
 }
+
+// Export functions
+window.nextStep = nextStep;
+window.prevStep = prevStep;
+window.goToStep = goToStep;
+window.handleGiftCardChange = handleGiftCardChange;
+window.triggerFileInput = triggerFileInput;
+window.handleFileSelect = handleFileSelect;
+window.removeFile = removeFile;
+window.toggleBillingAddress = toggleBillingAddress;
+window.toggleBillingFields = toggleBillingFields;
+window.openAddressModal = openAddressModal;
+window.closeAddressModal = closeAddressModal;
+window.selectAddress = selectAddress;
+window.editAddress = editAddress;
+window.deleteAddress = deleteAddress;
+window.openAddressFormModal = openAddressFormModal;
+window.closeAddressFormModal = closeAddressFormModal;
+window.saveAddress = saveAddress;
+window.backToAddressList = backToAddressList;
+window.toggleAddressTypeFields = toggleAddressTypeFields;
+window.submitPayment = submitPayment;

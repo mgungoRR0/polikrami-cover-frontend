@@ -1000,7 +1000,7 @@
                       type="text"
                       id="cardHolder"
                       class="form-input"
-                      placeholder="Kart üzerindeki adını ve soyadını giriniz"
+                      placeholder="Kart üzerindeki adınızı ve soyadınızı giriniz"
                       required
                     />
                   </div>
@@ -1009,9 +1009,9 @@
                   <div class="form-grid-2col">
                     <div class="form-group">
                       <label for="expiryMonth">Son Kullanma Tarihi</label>
-                      <div class="expiry-grid">
+                      <div class="expiry-date-grid">
                         <select id="expiryMonth" class="form-select" required>
-                          <option value="">Ay/Yıl</option>
+                          <option value="">Ay</option>
                           <option value="01">01</option>
                           <option value="02">02</option>
                           <option value="03">03</option>
@@ -1027,12 +1027,17 @@
                         </select>
                         <select id="expiryYear" class="form-select" required>
                           <option value="">Yıl</option>
+                          <option value="2024">2024</option>
                           <option value="2025">2025</option>
                           <option value="2026">2026</option>
                           <option value="2027">2027</option>
                           <option value="2028">2028</option>
                           <option value="2029">2029</option>
                           <option value="2030">2030</option>
+                          <option value="2031">2031</option>
+                          <option value="2032">2032</option>
+                          <option value="2033">2033</option>
+                          <option value="2034">2034</option>
                         </select>
                       </div>
                     </div>
@@ -1050,74 +1055,50 @@
                     </div>
                   </div>
 
-                  <!-- Taksit Seçenekleri -->
-                  <div class="installment-section">
-                    <h3 class="installment-title">Taksit Seçenekleri</h3>
-                    <div class="installment-options">
-                      <label class="installment-option">
-                        <input
-                          type="radio"
-                          name="installment"
-                          value="1"
-                          checked
-                        />
-                        <span class="installment-radio"></span>
-                        <span class="installment-text">
-                          <strong>Tek Çekim</strong>
-                          <span class="installment-amount">1290 TL</span>
-                        </span>
-                      </label>
-
-                      <label class="installment-option">
-                        <input type="radio" name="installment" value="3" />
-                        <span class="installment-radio"></span>
-                        <span class="installment-text">
-                          <strong>3 Taksit</strong>
-                          <span class="installment-amount">430 TL x 3</span>
-                        </span>
-                      </label>
-
-                      <label class="installment-option">
-                        <input type="radio" name="installment" value="6" />
-                        <span class="installment-radio"></span>
-                        <span class="installment-text">
-                          <strong>6 Taksit</strong>
-                          <span class="installment-amount">215 TL x 6</span>
-                        </span>
-                      </label>
-
-                      <label class="installment-option">
-                        <input type="radio" name="installment" value="9" />
-                        <span class="installment-radio"></span>
-                        <span class="installment-text">
-                          <strong>9 Taksit</strong>
-                          <span class="installment-amount">143 TL x 9</span>
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <!-- Sözleşmeler -->
+                  <!-- Sözleşmeler - Figma Tasarımı -->
                   <div class="payment-agreements">
-                    <label class="agreement-checkbox">
-                      <input type="checkbox" required />
+                    <label class="agreement-checkbox" for="paymentAgreement">
+                      <input type="checkbox" id="paymentAgreement" required />
                       <span class="checkbox-custom"></span>
                       <span class="agreement-text">
-                        <a href="#">Ön Bilgilendirme Formu</a>nu ve
-                        <a href="#">Uzaktan Satış Sözleşmesi</a>ni okudum, kabul
-                        ediyorum.
+                        Polikrami Cover
+                        <a href="#" onclick="event.preventDefault();"
+                          >Ön Bilgilendirme Formunu</a
+                        >
+                        ve
+                        <a href="#" onclick="event.preventDefault();"
+                          >Uzaktan Satış Sözleşmesini</a
+                        >
+                        okudum, kabul ediyorum.
                       </span>
                     </label>
 
-                    <label class="agreement-checkbox">
-                      <input type="checkbox" />
-                      <span class="checkbox-custom"></span>
-                      <span class="agreement-text">
-                        Birden fazla kampanya ve ürün olması durumunda farklı
-                        teslimat adreslerim olabilir. Bu sebeple 128 ISS Sistemi
-                        ile ayrı teslimat süreçleri hakkında bilgilendirildim.
-                      </span>
-                    </label>
+                    <div class="payment-security-info">
+                      <div class="security-icon">
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <rect
+                            x="3"
+                            y="11"
+                            width="18"
+                            height="11"
+                            rx="2"
+                            ry="2"
+                          ></rect>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                      </div>
+                      <p>
+                        Girilen kart bilgileriniz sistemimizde saklanmamaktadır.
+                        Bu sayfa 128 bit SSL sertifikasıyla korunmaktadır.
+                      </p>
+                    </div>
                   </div>
                 </form>
               </div>
