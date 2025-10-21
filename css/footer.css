@@ -11,7 +11,7 @@
 
 .footer-main {
   padding: 4rem 2rem 2rem 2rem;
-  background: #fff;
+  background: #f3f3f3;
   position: relative;
   z-index: 2;
 }
@@ -152,7 +152,7 @@
   height: auto;
   display: block;
   transform: scale(1.1);
-  background-color: #fff;
+  background-color: #f3f3f3;
 }
 
 /* ==========================================
