@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Satın Al | Polikrami</title>
+    <title>Sanatçı Seç | Polikrami</title>
     <meta
       name="description"
-      content="Özel kitap kapağı tasarımı siparişi oluştur"
+      content="Sanatçı seçerek özel kitap kapağı tasarımı yaptır"
     />
 
     <!-- Google Fonts - Poppins -->
@@ -16,7 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/purchase.css" />
+    <link rel="stylesheet" href="../css/purchase-artist.css" />
     <link rel="stylesheet" href="../css/footer.css" />
     <link rel="stylesheet" href="../css/home-page.css" />
   </head>
@@ -281,7 +281,7 @@
               <div class="step-number">3</div>
               <div class="step-content">
                 <h3>Adım 3</h3>
-                <p>Mesaj Kartını Seç</p>
+                <p>Sanatçını Seç</p>
               </div>
             </div>
 
@@ -289,7 +289,7 @@
               <div class="step-number">4</div>
               <div class="step-content">
                 <h3>Adım 4</h3>
-                <p>Sipariş Bilgilerini Gir</p>
+                <p>Mesaj Kartını Seç</p>
               </div>
             </div>
 
@@ -297,6 +297,14 @@
               <div class="step-number">5</div>
               <div class="step-content">
                 <h3>Adım 5</h3>
+                <p>Sipariş Bilgilerini Gir</p>
+              </div>
+            </div>
+
+            <div class="step-item" data-step="6">
+              <div class="step-number">6</div>
+              <div class="step-content">
+                <h3>Adım 6</h3>
                 <p>Ödemeni Tamamla</p>
               </div>
             </div>
@@ -393,7 +401,7 @@
           <div class="step-section" id="step2">
             <div class="step-header">
               <span class="step-label">Adım 2</span>
-              <h1 class="step-title">Kendi Tasarımını Yükle</h1>
+              <h1 class="step-title">Gerekli Bilgileri Doldur</h1>
             </div>
 
             <form class="step2-form">
@@ -496,50 +504,17 @@
                 </div>
               </div>
 
-              <!-- File Upload Area -->
+              <!-- Hayalinizdeki kapak tasarımını anlatın -->
               <div class="form-group">
-                <label class="form-label-main">
-                  Hayalinizdeki kapak tasarımını anlatmak için örnek bir görsel
-                  yükleyebilirsiniz.
+                <label for="coverDescription" class="form-label-main">
+                  Hayalinizdeki kapak tasarımını anlatın.
                 </label>
-                <div class="file-upload-area" id="fileUploadArea">
-                  <div class="upload-icon">
-                    <svg
-                      width="64"
-                      height="64"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                    >
-                      <path
-                        d="M7 18C4.79086 18 3 16.2091 3 14C3 11.7909 4.79086 10 7 10C7 7.23858 9.23858 5 12 5C14.7614 5 17 7.23858 17 10C19.2091 10 21 11.7909 21 14C21 16.2091 19.2091 18 17 18"
-                      />
-                      <path d="M12 12V21M12 12L15 15M12 12L9 15" />
-                    </svg>
-                  </div>
-                  <p class="upload-text">
-                    Bir dosya seçin veya buraya sürükleyip bırakın.
-                  </p>
-                  <p class="upload-hint">
-                    txt,docx,pdf,jpeg,xlsx~50 mb'a kadar
-                  </p>
-                  <button
-                    type="button"
-                    class="upload-btn"
-                    onclick="triggerFileInput()"
-                  >
-                    Dosyalara göz at
-                  </button>
-                  <input
-                    type="file"
-                    id="fileInput"
-                    accept=".txt,.docx,.pdf,.jpeg,.jpg,.png,.xlsx"
-                    style="display: none"
-                    onchange="handleFileSelect(event)"
-                  />
-                </div>
-                <div id="filePreview" class="file-preview"></div>
+                <textarea
+                  id="coverDescription"
+                  class="form-textarea-large"
+                  placeholder="Renkler, figürler veya hissettirdiklerini paylaşabilirsiniz."
+                  rows="6"
+                ></textarea>
               </div>
             </form>
 
@@ -549,10 +524,58 @@
             </div>
           </div>
 
-          <!-- Step 3: Select Message Card -->
+          <!-- Step 3: Artist Selection -->
           <div class="step-section" id="step3">
             <div class="step-header">
               <span class="step-label">Adım 3</span>
+              <h1 class="step-title">Sanatçını Seç</h1>
+              <p class="step-subtitle">
+                Sizin tarzınıza göre seçiminizi kolaylaştırmak için birkaç öneri
+                hazırladık.
+              </p>
+            </div>
+
+            <!-- Artist Search -->
+            <div class="artist-search-wrapper">
+              <div class="artist-search-box">
+                <input
+                  type="text"
+                  id="artistSearch"
+                  class="artist-search-input"
+                  placeholder="Kerem Özer"
+                  oninput="handleArtistSearch()"
+                />
+                <button class="artist-search-btn" type="button">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Artist Cards Grid -->
+            <div class="artist-cards-grid" id="artistCardsGrid">
+              <!-- Artist cards will be loaded dynamically -->
+            </div>
+
+            <div class="step-actions">
+              <button class="btn-back" onclick="prevStep()">Geri</button>
+              <button class="btn-next" onclick="nextStep()">İleri</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Message Card -->
+          <div class="step-section" id="step4">
+            <div class="step-header">
+              <span class="step-label">Adım 4</span>
               <h1 class="step-title">Mesaj Kartı</h1>
             </div>
 
@@ -616,7 +639,6 @@
                   </div>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="message-card-item">
                   <div class="message-card-preview">
                     <img src="../assets/images/card2-image.png" alt="" />
@@ -632,7 +654,6 @@
                   </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="message-card-item">
                   <div class="message-card-preview">
                     <img src="../assets/images/card3-image.png" alt="" />
@@ -648,7 +669,6 @@
                   </div>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="message-card-item">
                   <div class="message-card-preview">
                     <img src="../assets/images/card4-image.png" alt="" />
@@ -672,17 +692,16 @@
             </div>
           </div>
 
-          <!-- Step 4: Enter Order Information -->
-          <div class="step-section" id="step4">
+          <!-- Step 5: Order Information -->
+          <div class="step-section" id="step5">
             <div class="step-header">
-              <span class="step-label">Adım 4</span>
+              <span class="step-label">Adım 5</span>
               <h1 class="step-title">Sipariş Bilgileri</h1>
             </div>
 
             <div class="order-layout">
               <!-- Left: Delivery Address -->
               <div class="order-delivery">
-                <!-- Teslimat Adresi -->
                 <div class="delivery-header">
                   <h2 class="delivery-title">Teslimat Adresi</h2>
                   <button
@@ -705,7 +724,6 @@
                   </button>
                 </div>
 
-                <!-- Adres Kartı -->
                 <div class="address-card-purchase" id="selectedAddressCard">
                   <div class="address-card-wrapper-purchase">
                     <div class="address-card-content-purchase">
@@ -769,7 +787,6 @@
                   </div>
                 </div>
 
-                <!-- Fatura Adresi Checkbox -->
                 <div class="billing-checkbox">
                   <label class="checkbox-label">
                     <input
@@ -811,14 +828,14 @@
                     <!-- Görsel buraya gelecek -->
                   </div>
                   <div class="product-info">
-                    <h4 class="product-name">Kendi Tasarımını Yükle</h4>
+                    <h4 class="product-name">Sanatçı Seç</h4>
                     <p class="product-price">1260 TL/Adet</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Fatura Adresi Formu (Full Width, Grid Dışında) -->
+            <!-- Billing Address Form -->
             <div
               class="billing-address-form"
               id="billingAddressForm"
@@ -827,7 +844,6 @@
               <h3 class="billing-form-title">Fatura Adresi</h3>
 
               <div class="form-grid-2col">
-                <!-- Ad -->
                 <div class="form-group">
                   <label>Ad</label>
                   <input
@@ -837,7 +853,6 @@
                   />
                 </div>
 
-                <!-- Soyad -->
                 <div class="form-group">
                   <label>Soyad</label>
                   <input
@@ -847,7 +862,6 @@
                   />
                 </div>
 
-                <!-- Telefon -->
                 <div class="form-group">
                   <label>Telefon</label>
                   <input
@@ -858,7 +872,6 @@
                   />
                 </div>
 
-                <!-- İl -->
                 <div class="form-group">
                   <label>İl</label>
                   <select class="form-select">
@@ -869,7 +882,6 @@
                   </select>
                 </div>
 
-                <!-- İlçe -->
                 <div class="form-group">
                   <label>İlçe</label>
                   <select class="form-select" disabled>
@@ -877,7 +889,6 @@
                   </select>
                 </div>
 
-                <!-- Mahalle -->
                 <div class="form-group">
                   <label>Mahalle</label>
                   <select class="form-select" disabled>
@@ -885,7 +896,6 @@
                   </select>
                 </div>
 
-                <!-- Açık Adres - Full Width -->
                 <div class="form-group form-col-full">
                   <label>Adres</label>
                   <textarea
@@ -896,7 +906,6 @@
                 </div>
               </div>
 
-              <!-- Bireysel / Kurumsal -->
               <div class="billing-type-wrapper">
                 <label class="billing-type-label">
                   <input
@@ -922,7 +931,6 @@
               </div>
 
               <div class="form-grid-2col">
-                <!-- VKN/TCKN (Her zaman göster) -->
                 <div class="form-group">
                   <label>VKN/TCKN*</label>
                   <input
@@ -933,7 +941,6 @@
                   />
                 </div>
 
-                <!-- Vergi Dairesi (Kurumsal için) -->
                 <div
                   class="form-group"
                   id="taxOfficeField"
@@ -947,7 +954,6 @@
                   />
                 </div>
 
-                <!-- Firma Adı (Kurumsal için) -->
                 <div
                   class="form-group form-col-full"
                   id="companyNameField"
@@ -969,18 +975,16 @@
             </div>
           </div>
 
-          <!-- Step 5: Complete Payment -->
-          <div class="step-section" id="step5">
+          <!-- Step 6: Payment -->
+          <div class="step-section" id="step6">
             <div class="step-header">
-              <span class="step-label">Adım 5</span>
+              <span class="step-label">Adım 6</span>
               <h1 class="step-title">Ödeme Bilgileri</h1>
             </div>
 
             <div class="payment-layout">
-              <!-- Left: Payment Form -->
               <div class="payment-form-section">
                 <form class="payment-form" id="paymentForm">
-                  <!-- Kart Numarası -->
                   <div class="form-group">
                     <label for="cardNumber">Kart Numarası</label>
                     <input
@@ -993,7 +997,6 @@
                     />
                   </div>
 
-                  <!-- Kart Sahibi Adı Soyadı -->
                   <div class="form-group">
                     <label for="cardHolder">Kart Sahibi Adı Soyadı</label>
                     <input
@@ -1005,7 +1008,6 @@
                     />
                   </div>
 
-                  <!-- Son Kullanma Tarihi & CVV -->
                   <div class="form-grid-2col">
                     <div class="form-group">
                       <label for="expiryMonth">Son Kullanma Tarihi</label>
@@ -1034,10 +1036,6 @@
                           <option value="2028">2028</option>
                           <option value="2029">2029</option>
                           <option value="2030">2030</option>
-                          <option value="2031">2031</option>
-                          <option value="2032">2032</option>
-                          <option value="2033">2033</option>
-                          <option value="2034">2034</option>
                         </select>
                       </div>
                     </div>
@@ -1055,8 +1053,6 @@
                     </div>
                   </div>
 
-                  <!-- Sözleşmeler - Figma Tasarımı -->
-                  <!-- SÖZLEŞMELERİN BULUNDUĞU BÖLÜM -->
                   <div class="payment-agreements">
                     <label class="agreement-checkbox">
                       <input type="checkbox" id="paymentAgreement" required />
@@ -1104,7 +1100,6 @@
                 </form>
               </div>
 
-              <!-- Right: Payment Summary -->
               <div class="payment-summary">
                 <h2 class="summary-title">Sipariş Özeti</h2>
 
@@ -1129,7 +1124,7 @@
                     <img src="../assets/images/card-image.png" alt="Ürün" />
                   </div>
                   <div class="product-info">
-                    <h4 class="product-name">Kendi Tasarımını Yükle</h4>
+                    <h4 class="product-name">Sanatçı Seç</h4>
                     <p class="product-price">1260 TL/Adet</p>
                   </div>
                 </div>
@@ -1147,7 +1142,7 @@
       </div>
     </main>
 
-    <!-- ADDRESS SELECTION MODAL -->
+    <!-- ADDRESS MODALS -->
     <div class="address-modal-overlay" id="addressModal">
       <div class="address-modal-container">
         <button class="address-modal-close" onclick="closeAddressModal()">
@@ -1163,13 +1158,8 @@
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-
         <h2 class="address-modal-title">Teslimat Adresi</h2>
-
-        <div class="address-modal-list" id="addressList">
-          <!-- Address cards will be loaded here dynamically -->
-        </div>
-
+        <div class="address-modal-list" id="addressList"></div>
         <div class="address-modal-buttons">
           <button
             type="button"
@@ -1189,7 +1179,6 @@
       </div>
     </div>
 
-    <!-- ADDRESS FORM MODAL (Add/Edit) -->
     <div class="address-form-modal-overlay" id="addressFormModal">
       <div class="address-form-modal-container">
         <button class="address-modal-close" onclick="closeAddressFormModal()">
@@ -1205,18 +1194,15 @@
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
-
         <h2 class="address-form-modal-title" id="addressFormTitle">
           Adres Ekle/Düzenle
         </h2>
-
         <form
           class="address-form"
           id="addressForm"
           onsubmit="saveAddress(event)"
         >
           <div class="address-form-grid">
-            <!-- Ad -->
             <div class="address-form-group">
               <label for="formFirstName">Ad</label>
               <input
@@ -1227,8 +1213,6 @@
                 required
               />
             </div>
-
-            <!-- Soyad -->
             <div class="address-form-group">
               <label for="formLastName">Soyad</label>
               <input
@@ -1239,8 +1223,6 @@
                 required
               />
             </div>
-
-            <!-- Telefon -->
             <div class="address-form-group">
               <label for="formPhone">Telefon</label>
               <input
@@ -1252,8 +1234,6 @@
                 required
               />
             </div>
-
-            <!-- İl -->
             <div class="address-form-group">
               <label for="formCity">İl</label>
               <select id="formCity" class="address-form-select" required>
@@ -1264,16 +1244,12 @@
                 <option value="mugla">Muğla</option>
               </select>
             </div>
-
-            <!-- İlçe -->
             <div class="address-form-group">
               <label for="formDistrict">İlçe</label>
               <select id="formDistrict" class="address-form-select" required>
                 <option value="">İlçe seçiniz</option>
               </select>
             </div>
-
-            <!-- Mahalle -->
             <div class="address-form-group">
               <label for="formNeighborhood">Mahalle</label>
               <select
@@ -1284,8 +1260,6 @@
                 <option value="">Mahalle seçiniz</option>
               </select>
             </div>
-
-            <!-- Açık Adres -->
             <div class="address-form-group address-form-full">
               <label for="formAddress">Adres</label>
               <textarea
@@ -1296,8 +1270,6 @@
                 required
               ></textarea>
             </div>
-
-            <!-- Adres Başlığı -->
             <div class="address-form-group address-form-full">
               <label for="formAddressLabel">Adres Başlığı</label>
               <input
@@ -1309,8 +1281,6 @@
               />
             </div>
           </div>
-
-          <!-- Bireysel / Kurumsal -->
           <div class="address-form-type-wrapper">
             <label class="address-form-type-label">
               <input
@@ -1334,9 +1304,7 @@
               <span class="address-form-type-text">Kurumsal</span>
             </label>
           </div>
-
           <div class="address-form-grid" id="formTypeFields">
-            <!-- TC Kimlik No (Bireysel için) -->
             <div class="address-form-group address-form-full" id="formTcField">
               <label for="formTcNumber">Tc Kimlik No</label>
               <input
@@ -1347,8 +1315,6 @@
                 maxlength="11"
               />
             </div>
-
-            <!-- Vergi Dairesi (Kurumsal için) -->
             <div
               class="address-form-group"
               id="formTaxOfficeField"
@@ -1362,8 +1328,6 @@
                 placeholder="Vergi dairesi giriniz"
               />
             </div>
-
-            <!-- VKN (Kurumsal için) -->
             <div
               class="address-form-group"
               id="formTaxNumberField"
@@ -1378,8 +1342,6 @@
                 maxlength="10"
               />
             </div>
-
-            <!-- Firma Adı (Kurumsal için) -->
             <div
               class="address-form-group address-form-full"
               id="formCompanyNameField"
@@ -1394,8 +1356,6 @@
               />
             </div>
           </div>
-
-          <!-- Buttons -->
           <div class="address-form-buttons">
             <button
               type="button"
@@ -1414,7 +1374,6 @@
     <footer class="footer-new">
       <div class="footer-main">
         <div class="footer-content-grid">
-          <!-- Sol Kolon - Logo ve İletişim -->
           <div class="footer-brand-col">
             <img
               src="../assets/images/polikrami-logo.svg"
@@ -1486,8 +1445,6 @@
               </a>
             </div>
           </div>
-
-          <!-- Polikrami Cover -->
           <div class="footer-links-col">
             <h3>Polikrami Cover</h3>
             <ul>
@@ -1500,8 +1457,6 @@
               <li><a href="#">Blog</a></li>
             </ul>
           </div>
-
-          <!-- Bağlantılar -->
           <div class="footer-links-col">
             <h3>Bağlantılar</h3>
             <ul>
@@ -1514,8 +1469,6 @@
               <li><a href="#">Sanatçı Kullanım Rehberi</a></li>
             </ul>
           </div>
-
-          <!-- Hızlı Erişim -->
           <div class="footer-links-col">
             <h3>Hızlı Erişim</h3>
             <ul>
@@ -1529,8 +1482,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Alt Dekoratif Görsel -->
       <div class="footer-decoration-bottom">
         <img src="../assets/images/footer-tamamı.svg" alt="" />
       </div>
@@ -1538,6 +1489,6 @@
 
     <script src="../js/base.js"></script>
     <script src="../js/navigation.js"></script>
-    <script src="../js/purchase.js"></script>
+    <script src="../js/purchase-artist.js"></script>
   </body>
 </html>

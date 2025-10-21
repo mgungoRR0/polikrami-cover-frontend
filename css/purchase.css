@@ -379,12 +379,18 @@ body {
 }
 
 .btn-submit {
-  background: linear-gradient(135deg, var(--primary-green), #558a2e);
-  box-shadow: 0 4px 12px rgba(101, 158, 54, 0.3);
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
 }
 
 .btn-submit:hover {
-  box-shadow: 0 6px 16px rgba(101, 158, 54, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 153, 0, 0.4);
 }
 
 /* ==========================================
@@ -1320,10 +1326,6 @@ body {
     gap: 2rem;
   }
 
-  .order-summary {
-    /* Already not sticky - no change needed */
-  }
-
   .delivery-header {
     flex-direction: column;
     align-items: flex-start;
@@ -2174,9 +2176,39 @@ body {
   display: none;
 }
 
+.agreement-checkbox .checkbox-custom {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  background: white;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px; /* Text ile hizalama için */
+}
+.agreement-checkbox input[type="checkbox"]:checked + .checkbox-custom {
+  border-color: var(--primary-orange);
+  background: var(--primary-orange);
+}
+
+.agreement-checkbox input[type="checkbox"]:checked + .checkbox-custom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 8px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: translate(-50%, -60%) rotate(-45deg);
+}
 .agreement-text {
   flex: 1;
   font-weight: 400;
+  user-select: none;
 }
 
 .agreement-text a {
@@ -2184,6 +2216,7 @@ body {
   text-decoration: underline;
   font-weight: 600;
   transition: color 0.3s ease;
+  pointer-events: auto;
 }
 
 .agreement-text a:hover {

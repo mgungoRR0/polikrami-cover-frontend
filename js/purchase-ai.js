@@ -1,8 +1,9 @@
-// Purchase Page JavaScript - Dynamic Step System
+// Purchase AI Page JavaScript - Dynamic Step System with AI Generation
 
 let currentStep = 1;
-let totalSteps = 4; // Default: 4 adım (hediye kartı yok)
+let totalSteps = 5; // Default: 5 adım (hediye kartı hayır)
 let giftCardEnabled = false; // Default: Hayır
+let selectedImageIndex = null;
 
 // MOCK DATA - Adresler (Backend entegrasyonunda silinecek)
 const mockAddresses = [
@@ -65,15 +66,21 @@ let selectedAddressId = 1;
 let editingAddressId = null;
 let nextAddressId = 4;
 
+// Mock AI generated images
+const mockGeneratedImages = [
+  "../assets/images/ai-generated-1.png",
+  "../assets/images/ai-generated-2.png",
+  "../assets/images/ai-generated-3.png",
+];
+
 // Initialize page
 document.addEventListener("DOMContentLoaded", function () {
   initializeSteps();
   initializeMethodCards();
-  initializeFileUpload();
   initializeMessageCards();
   loadAddresses();
   initializePaymentInputs();
-  updateSidebarStructure(); // İlk yükleme için sidebar'ı güncelle
+  updateSidebarStructure();
 });
 
 function initializeSteps() {
@@ -82,7 +89,6 @@ function initializeSteps() {
   document.querySelectorAll(".step-item").forEach((item) => {
     item.addEventListener("click", function () {
       const step = parseInt(this.dataset.step);
-      // Sadece geçerli adımlara tıklanabilir
       if (step <= currentStep) {
         goToStep(step);
       }
@@ -97,44 +103,44 @@ function updateSidebarStructure() {
   const steps = stepIndicator.querySelectorAll(".step-item");
 
   if (giftCardEnabled) {
-    // Hediye kartı EVET: 5 adım - Step 3 göster
-    totalSteps = 5;
+    // Hediye kartı EVET: 6 adım
+    totalSteps = 6;
 
-    // Step 3'ü görünür yap ve içeriğini güncelle
-    if (steps[2]) {
-      steps[2].style.display = "flex";
-      steps[2].querySelector("h3").textContent = "Adım 3";
-      steps[2].querySelector("p").textContent = "Mesaj Kartını Seç";
-    }
-
-    // Step 4 ve 5'i yeniden numaralandır
+    // Step 4'ü göster (Mesaj Kartı)
     if (steps[3]) {
+      steps[3].style.display = "flex";
       steps[3].querySelector("h3").textContent = "Adım 4";
-      steps[3].querySelector("p").textContent = "Sipariş Bilgilerini Gir";
+      steps[3].querySelector("p").textContent = "Mesaj Kartını Seç";
     }
+
+    // Step 5 ve 6'yı yeniden numaralandır
     if (steps[4]) {
       steps[4].querySelector("h3").textContent = "Adım 5";
-      steps[4].querySelector("p").textContent = "Ödemeni Tamamla";
+      steps[4].querySelector("p").textContent = "Sipariş Bilgilerini Gir";
+    }
+    if (steps[5]) {
+      steps[5].querySelector("h3").textContent = "Adım 6";
+      steps[5].querySelector("p").textContent = "Ödemeni Tamamla";
     }
   } else {
-    // Hediye kartı HAYIR: 4 adım - Step 3'ü gizle
-    totalSteps = 4;
+    // Hediye kartı HAYIR: 5 adım
+    totalSteps = 5;
 
-    // Step 3'ü gizle (Mesaj Kartı)
-    if (steps[2]) {
-      steps[2].style.display = "none";
-    }
-
-    // Step 4'ü 3 olarak göster
+    // Step 4'ü gizle (Mesaj Kartı)
     if (steps[3]) {
-      steps[3].querySelector("h3").textContent = "Adım 3";
-      steps[3].querySelector("p").textContent = "Sipariş Bilgilerini Gir";
+      steps[3].style.display = "none";
     }
 
     // Step 5'i 4 olarak göster
     if (steps[4]) {
       steps[4].querySelector("h3").textContent = "Adım 4";
-      steps[4].querySelector("p").textContent = "Ödemeni Tamamla";
+      steps[4].querySelector("p").textContent = "Sipariş Bilgilerini Gir";
+    }
+
+    // Step 6'yı 5 olarak göster
+    if (steps[5]) {
+      steps[5].querySelector("h3").textContent = "Adım 5";
+      steps[5].querySelector("p").textContent = "Ödemeni Tamamla";
     }
   }
 
@@ -147,7 +153,6 @@ function handleGiftCardChange() {
   );
   const newGiftCardState = giftCardYes.checked;
 
-  // Eğer durum değiştiyse
   if (newGiftCardState !== giftCardEnabled) {
     giftCardEnabled = newGiftCardState;
     updateSidebarStructure();
@@ -206,110 +211,6 @@ function initializeMessageCards() {
   });
 }
 
-function initializeFileUpload() {
-  const uploadArea = document.getElementById("fileUploadArea");
-  if (!uploadArea) return;
-
-  ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-    uploadArea.addEventListener(eventName, preventDefaults, false);
-  });
-
-  function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  ["dragenter", "dragover"].forEach((eventName) => {
-    uploadArea.addEventListener(eventName, () => {
-      uploadArea.classList.add("dragover");
-    });
-  });
-
-  ["dragleave", "drop"].forEach((eventName) => {
-    uploadArea.addEventListener(eventName, () => {
-      uploadArea.classList.remove("dragover");
-    });
-  });
-
-  uploadArea.addEventListener("drop", handleDrop);
-}
-
-function handleDrop(e) {
-  const dt = e.dataTransfer;
-  const files = dt.files;
-  handleFiles(files);
-}
-
-function triggerFileInput() {
-  document.getElementById("fileInput").click();
-}
-
-function handleFileSelect(event) {
-  const files = event.target.files;
-  handleFiles(files);
-}
-
-function handleFiles(files) {
-  if (files.length === 0) return;
-
-  const file = files[0];
-  const maxSize = 50 * 1024 * 1024;
-
-  if (file.size > maxSize) {
-    alert("Dosya boyutu 50MB'dan küçük olmalıdır.");
-    return;
-  }
-
-  displayFile(file);
-}
-
-function displayFile(file) {
-  const preview = document.getElementById("filePreview");
-  preview.innerHTML = "";
-  preview.classList.add("active");
-
-  const fileItem = document.createElement("div");
-  fileItem.className = "file-item";
-
-  const fileSize = formatFileSize(file.size);
-
-  fileItem.innerHTML = `
-    <div class="file-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-        <polyline points="13 2 13 9 20 9"></polyline>
-      </svg>
-    </div>
-    <div class="file-info">
-      <div class="file-name">${file.name}</div>
-      <div class="file-size">${fileSize}</div>
-    </div>
-    <button type="button" class="file-remove" onclick="removeFile()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-  `;
-
-  preview.appendChild(fileItem);
-}
-
-function removeFile() {
-  const preview = document.getElementById("filePreview");
-  preview.innerHTML = "";
-  preview.classList.remove("active");
-  document.getElementById("fileInput").value = "";
-}
-
-function formatFileSize(bytes) {
-  if (bytes === 0) return "0 Bytes";
-  const k = 1024;
-  const sizes = ["Bytes", "KB", "MB"];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + " " + sizes[i];
-}
-
 function showStep(step) {
   document.querySelectorAll(".step-section").forEach((section) => {
     section.classList.remove("active");
@@ -338,9 +239,9 @@ function updateSidebar(step) {
 }
 
 function goToStep(step) {
-  if (step >= 1 && step <= 5) {
-    // Eğer Step 3'e gidilmek isteniyorsa ve hediye kartı kapalıysa, izin verme
-    if (step === 3 && !giftCardEnabled) {
+  if (step >= 1 && step <= 6) {
+    // Step 4'e gidilmek isteniyorsa ve hediye kartı kapalıysa, izin verme
+    if (step === 4 && !giftCardEnabled) {
       return;
     }
 
@@ -351,13 +252,12 @@ function goToStep(step) {
 
 function nextStep() {
   if (validateStep(currentStep)) {
-    if (currentStep < 5) {
+    if (currentStep < 6) {
       let nextStepNumber = currentStep + 1;
 
-      // Hediye kartı HAYIR ise step 3'ü (mesaj kartı) atla
-      if (currentStep === 2 && !giftCardEnabled) {
-        // Step 2'den sonra direkt Step 4'e git
-        nextStepNumber = 4;
+      // Step 3'ten sonra hediye kartı HAYIR ise Step 4'ü (mesaj kartı) atla
+      if (currentStep === 3 && !giftCardEnabled) {
+        nextStepNumber = 5; // Direkt Step 5'e git (Sipariş Bilgileri)
       }
 
       currentStep = nextStepNumber;
@@ -370,10 +270,9 @@ function prevStep() {
   if (currentStep > 1) {
     let prevStepNumber = currentStep - 1;
 
-    // Hediye kartı HAYIR ise step 3'ü (mesaj kartı) atla
-    if (currentStep === 4 && !giftCardEnabled) {
-      // Step 4'ten geriye giderken direkt Step 2'ye git
-      prevStepNumber = 2;
+    // Step 5'ten geriye giderken hediye kartı HAYIR ise Step 4'ü (mesaj kartı) atla
+    if (currentStep === 5 && !giftCardEnabled) {
+      prevStepNumber = 3; // Direkt Step 3'e git (AI Generation)
     }
 
     currentStep = prevStepNumber;
@@ -412,6 +311,36 @@ function validateStep(step) {
       return true;
 
     case 3:
+      const userPrompt = document.getElementById("userPrompt");
+      if (!userPrompt || !userPrompt.value.trim()) {
+        alert("Lütfen hayalinizdeki görseli açıklayın.");
+        if (userPrompt) userPrompt.focus();
+        return false;
+      }
+
+      // En az bir görsel oluşturulmuş mu kontrol et
+      const generatedSection = document.getElementById(
+        "generatedImagesSection"
+      );
+      if (!generatedSection || generatedSection.style.display === "none") {
+        alert(
+          "Lütfen önce 'Yeni görsel oluştur' butonuna tıklayarak görsel oluşturun."
+        );
+        return false;
+      }
+
+      // Bir görsel seçilmiş mi kontrol et
+      const selectedImage = document.querySelector(
+        ".ai-generated-item.selected"
+      );
+      if (!selectedImage) {
+        alert("Lütfen oluşturulan görsellerden birini seçin.");
+        return false;
+      }
+
+      return true;
+
+    case 4:
       if (giftCardEnabled) {
         const receiverName = document.getElementById("receiverName");
         const senderName = document.getElementById("senderName");
@@ -445,14 +374,95 @@ function validateStep(step) {
       }
       return true;
 
-    case 4:
     case 5:
+    case 6:
       return true;
 
     default:
       return true;
   }
 }
+
+// ==========================================
+// AI GENERATION FUNCTIONS
+// ==========================================
+
+function generateAIImages() {
+  const userPrompt = document.getElementById("userPrompt");
+
+  if (!userPrompt || !userPrompt.value.trim()) {
+    alert("Lütfen önce hayalinizdeki görseli açıklayın.");
+    if (userPrompt) userPrompt.focus();
+    return;
+  }
+
+  const generatedSection = document.getElementById("generatedImagesSection");
+  const generatedGrid = document.getElementById("generatedImagesGrid");
+
+  if (!generatedSection || !generatedGrid) return;
+
+  // Show loading state
+  generatedGrid.innerHTML = "";
+  generatedSection.style.display = "block";
+
+  // Create 3 loading placeholders
+  for (let i = 0; i < 3; i++) {
+    const loadingItem = document.createElement("div");
+    loadingItem.className = "ai-generated-item loading";
+    generatedGrid.appendChild(loadingItem);
+  }
+
+  // Simulate API call with timeout
+  setTimeout(() => {
+    generatedGrid.innerHTML = "";
+
+    // Create actual generated images
+    mockGeneratedImages.forEach((imageSrc, index) => {
+      const generatedItem = document.createElement("div");
+      generatedItem.className = "ai-generated-item";
+      generatedItem.setAttribute("data-index", index);
+
+      const img = document.createElement("img");
+      img.src = imageSrc;
+      img.alt = `AI Generated ${index + 1}`;
+
+      generatedItem.appendChild(img);
+
+      // Add click event
+      generatedItem.addEventListener("click", function () {
+        selectGeneratedImage(index);
+      });
+
+      generatedGrid.appendChild(generatedItem);
+    });
+
+    // Auto-select first image
+    selectGeneratedImage(0);
+  }, 2000); // 2 second loading simulation
+}
+
+function selectGeneratedImage(index) {
+  selectedImageIndex = index;
+
+  // Remove selected class from all items
+  document.querySelectorAll(".ai-generated-item").forEach((item) => {
+    item.classList.remove("selected");
+  });
+
+  // Add selected class to clicked item
+  const selectedItem = document.querySelector(
+    `.ai-generated-item[data-index="${index}"]`
+  );
+  if (selectedItem) {
+    selectedItem.classList.add("selected");
+  }
+
+  console.log("Selected image index:", index);
+}
+
+// ==========================================
+// BILLING & ADDRESS FUNCTIONS
+// ==========================================
 
 function toggleBillingAddress() {
   const checkbox = document.getElementById("sameBillingAddress");
@@ -482,7 +492,7 @@ function toggleBillingFields() {
 }
 
 // ==========================================
-// ADDRESS SELECTION MODAL FUNCTIONS
+// ADDRESS MODAL FUNCTIONS
 // ==========================================
 
 function loadAddresses() {
@@ -672,10 +682,6 @@ function deleteAddress(addressId) {
   }
 }
 
-// ==========================================
-// ADDRESS FORM MODAL FUNCTIONS
-// ==========================================
-
 function openAddressFormModal(address = null) {
   closeAddressModal();
 
@@ -858,6 +864,7 @@ function toggleAddressTypeFields() {
   }
 }
 
+// Modal close events
 document.addEventListener("click", function (e) {
   const addressModal = document.getElementById("addressModal");
   const formModal = document.getElementById("addressFormModal");
@@ -915,18 +922,6 @@ function formatCVV(input) {
   input.value = input.value.replace(/[^0-9]/g, "");
 }
 
-/*
-// Tarih formatı: AA/YY
-function formatExpiryDate(input) {
-  let value = input.value.replace(/\D/g, "");
-
-  if (value.length >= 2) {
-    value = value.slice(0, 2) + "/" + value.slice(2, 4);
-  }
-
-  input.value = value;
-}
-*/
 function submitPayment() {
   const form = document.getElementById("paymentForm");
 
@@ -965,9 +960,6 @@ window.nextStep = nextStep;
 window.prevStep = prevStep;
 window.goToStep = goToStep;
 window.handleGiftCardChange = handleGiftCardChange;
-window.triggerFileInput = triggerFileInput;
-window.handleFileSelect = handleFileSelect;
-window.removeFile = removeFile;
 window.toggleBillingAddress = toggleBillingAddress;
 window.toggleBillingFields = toggleBillingFields;
 window.openAddressModal = openAddressModal;
@@ -981,3 +973,5 @@ window.saveAddress = saveAddress;
 window.backToAddressList = backToAddressList;
 window.toggleAddressTypeFields = toggleAddressTypeFields;
 window.submitPayment = submitPayment;
+window.generateAIImages = generateAIImages;
+window.selectGeneratedImage = selectGeneratedImage;

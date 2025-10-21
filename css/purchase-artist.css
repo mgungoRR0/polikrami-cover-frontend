@@ -1,0 +1,399 @@
+/* ==========================================
+   PURCHASE ARTIST PAGE STYLES
+   purchase.css dosyasını extend eder
+   ========================================== */
+
+/* purchase.css'deki tüm stilleri import et */
+@import url("purchase.css");
+
+/* ==========================================
+   STEP 2 - LARGE TEXTAREA
+   ========================================== */
+
+.form-textarea-large {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: white;
+  resize: none;
+  min-height: 160px;
+  transition: all 0.3s ease;
+  line-height: 1.6;
+}
+
+.form-textarea-large::placeholder {
+  color: #bbb;
+}
+
+.form-textarea-large:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+}
+
+/* ==========================================
+   STEP 3 - ARTIST SELECTION STYLES
+   ========================================== */
+
+.step-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--text-gray);
+  margin: 0.75rem 0 0 0;
+  line-height: 1.6;
+}
+
+/* Artist Search */
+.artist-search-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.artist-search-box {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.artist-search-input {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.artist-search-input::placeholder {
+  color: #bbb;
+}
+
+.artist-search-input:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.1);
+}
+
+.artist-search-btn {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 153, 0, 0.3);
+}
+
+.artist-search-btn:hover {
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.4);
+}
+
+/* Artist Cards Grid - Always 3 columns */
+.artist-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Artist Card */
+.artist-card {
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.artist-card:hover {
+  border-color: var(--primary-orange);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(255, 153, 0, 0.2);
+}
+
+.artist-card.selected {
+  border-color: var(--primary-orange);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(255, 153, 0, 0.25);
+}
+
+/* Artist Card Image */
+.artist-card-image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--bg-light);
+  overflow: hidden;
+  position: relative;
+}
+
+.artist-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder for "Sanatçımız şu an uygun değil" */
+.artist-card-image.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+  position: relative;
+}
+
+.artist-card-image.placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d0d0d0' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.artist-placeholder-text {
+  position: relative;
+  z-index: 1;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-gray);
+  text-align: center;
+  padding: 2rem;
+  line-height: 1.5;
+}
+
+/* Artist Card Content */
+.artist-card-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.artist-card-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 0.75rem 0;
+  text-align: center;
+}
+
+.artist-card-bio {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: var(--text-gray);
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  text-align: center;
+  flex: 1;
+}
+
+/* Artist Card Status Link - Clickable with underline */
+.artist-card-status {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  user-select: none;
+  margin: 0 auto;
+}
+
+.artist-card-status:hover {
+  color: var(--primary-orange);
+}
+
+/* Artist Card Radio */
+.artist-card-radio {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background: #fafafa;
+}
+
+.artist-card-radio input[type="radio"] {
+  display: none;
+}
+
+.artist-card-radio label {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.artist-card-radio input[type="radio"]:checked + label {
+  border-color: var(--primary-orange);
+  background: var(--primary-orange);
+}
+
+.artist-card-radio input[type="radio"]:checked + label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* ==========================================
+   RESPONSIVE - ARTIST SECTION
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .artist-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .step-subtitle {
+    font-size: 14px;
+  }
+
+  .artist-search-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  .artist-search-box {
+    max-width: 100%;
+  }
+
+  .artist-search-input {
+    padding: 0.875rem 3.25rem 0.875rem 1rem;
+    font-size: 14px;
+  }
+
+  .artist-search-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .artist-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .artist-card-content {
+    padding: 1.25rem;
+  }
+
+  .artist-card-name {
+    font-size: 16px;
+  }
+
+  .artist-card-bio {
+    font-size: 12px;
+  }
+
+  .artist-card-status {
+    font-size: 12px;
+  }
+
+  .form-textarea-large {
+    min-height: 140px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .step-subtitle {
+    font-size: 13px;
+  }
+
+  .artist-search-wrapper {
+    margin-bottom: 1.5rem;
+  }
+
+  .artist-search-input {
+    padding: 0.75rem 3rem 0.75rem 0.875rem;
+    font-size: 13px;
+    border-radius: 40px;
+  }
+
+  .artist-search-btn {
+    width: 36px;
+    height: 36px;
+    right: 0.375rem;
+  }
+
+  .artist-search-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .artist-cards-grid {
+    gap: 1.25rem;
+  }
+
+  .artist-card {
+    border-width: 2px;
+  }
+
+  .artist-card.selected {
+    border-width: 2px;
+  }
+
+  .artist-card-content {
+    padding: 1rem;
+  }
+
+  .artist-card-name {
+    font-size: 15px;
+    margin-bottom: 0.5rem;
+  }
+
+  .artist-card-bio {
+    font-size: 12px;
+    margin-bottom: 0.75rem;
+  }
+
+  .artist-card-status {
+    font-size: 12px;
+  }
+
+  .artist-placeholder-text {
+    font-size: 13px;
+    padding: 1.5rem;
+  }
+
+  .form-textarea-large {
+    min-height: 120px;
+    padding: 0.875rem;
+    font-size: 13px;
+  }
+}

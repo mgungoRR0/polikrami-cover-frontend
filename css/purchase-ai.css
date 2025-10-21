@@ -1,0 +1,337 @@
+/* ==========================================
+   PURCHASE AI PAGE STYLES
+   purchase.css dosyasını extend eder
+   ========================================== */
+
+/* purchase.css'deki tüm stilleri import et */
+@import url("purchase.css");
+
+/* ==========================================
+   AI GENERATION SECTION - STEP 3 STYLES
+   ========================================== */
+
+.ai-generation-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Örnek Prompt */
+.ai-prompt-example {
+  background: #fff9f0;
+  border-left: 4px solid var(--primary-orange);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.ai-section-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 1rem 0;
+}
+
+.ai-prompt-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Örnek Görseller */
+.ai-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ai-examples-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.ai-example-item {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-light);
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.ai-example-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-orange);
+}
+
+.ai-example-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Kullanıcı Promptu */
+.ai-user-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ai-prompt-textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: white;
+  resize: none;
+  min-height: 140px;
+  transition: all 0.3s ease;
+}
+
+.ai-prompt-textarea::placeholder {
+  color: #bbb;
+}
+
+.ai-prompt-textarea:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+}
+
+/* Oluşturulan Görseller */
+.ai-generated-images {
+  margin-top: 1rem;
+  animation: fadeIn 0.4s ease;
+}
+
+.ai-generated-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.ai-generated-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-light);
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ai-generated-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-orange);
+}
+
+.ai-generated-item.selected {
+  border-color: var(--primary-orange);
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(255, 153, 0, 0.25);
+}
+
+.ai-generated-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Selection Radio */
+.ai-generated-item::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 24px;
+  height: 24px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.ai-generated-item.selected::before {
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
+}
+
+.ai-generated-item.selected::after {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+/* Yeni Görsel Oluştur Butonu */
+.ai-generate-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.btn-generate-ai {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+}
+
+.btn-generate-ai:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 153, 0, 0.4);
+}
+
+.btn-generate-ai:active {
+  transform: translateY(0);
+}
+
+.generate-icon {
+  font-size: 20px;
+}
+
+/* Loading State */
+.ai-generated-item.loading {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    var(--bg-light) 0%,
+    #e8e8e8 50%,
+    var(--bg-light) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.ai-generated-item.loading::before,
+.ai-generated-item.loading::after {
+  display: none;
+}
+
+/* ==========================================
+   RESPONSIVE - AI SECTION
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .ai-examples-grid,
+  .ai-generated-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-generation-section {
+    gap: 2rem;
+  }
+
+  .ai-prompt-example {
+    padding: 1.25rem;
+  }
+
+  .ai-section-title {
+    font-size: 16px;
+  }
+
+  .ai-prompt-text {
+    font-size: 14px;
+  }
+
+  .ai-examples-grid,
+  .ai-generated-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .ai-prompt-textarea {
+    min-height: 120px;
+    font-size: 14px;
+  }
+
+  .btn-generate-ai {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ai-generate-button-wrapper {
+    justify-content: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-generation-section {
+    gap: 1.5rem;
+  }
+
+  .ai-prompt-example {
+    padding: 1rem;
+  }
+
+  .ai-section-title {
+    font-size: 15px;
+    margin-bottom: 0.75rem;
+  }
+
+  .ai-prompt-text {
+    font-size: 13px;
+  }
+
+  .ai-examples-grid,
+  .ai-generated-grid {
+    gap: 1rem;
+  }
+
+  .ai-example-item,
+  .ai-generated-item {
+    border-radius: 12px;
+  }
+
+  .btn-generate-ai {
+    padding: 0.75rem 1.5rem;
+    font-size: 15px;
+  }
+
+  .generate-icon {
+    font-size: 18px;
+  }
+}
