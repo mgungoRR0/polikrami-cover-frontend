@@ -8,7 +8,7 @@
 
 .about-hero-section {
   padding: 5rem 0;
-  background: #ffffff;
+  background: #f3f3f3;
   margin-top: 80px;
 }
 
@@ -74,7 +74,7 @@
 }
 
 .content-bordered-box {
-  background: white;
+  background: #f3f3f3;
   border: 4px solid #659e36;
   border-radius: 15px;
   padding: 3rem;
@@ -116,7 +116,7 @@
 
 .why-us-section {
   padding: 5rem 0 4rem;
-  background: #ffffff;
+  background: #f3f3f3;
 }
 
 .why-us-container {
@@ -265,7 +265,7 @@
 
 .contact-section {
   padding: 4rem 0;
-  background: #ffffff; /* Arka plan beyaz yapıldı */
+  background: #f3f3f3; /* Arka plan beyaz yapıldı */
   display: flex;
   align-items: center;
   justify-content: center;

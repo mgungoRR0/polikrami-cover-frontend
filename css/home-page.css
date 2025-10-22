@@ -24,7 +24,7 @@ body {
   line-height: 1.6;
   color: var(--text);
   overflow-x: hidden;
-  background: #fff;
+  background: #f3f3f3;
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -44,7 +44,7 @@ button:focus-visible {
 }
 
 header {
-  background: #fff;
+  background: #f3f3f3;
   padding: 1rem 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -294,7 +294,7 @@ section {
 
 .gallery-section {
   padding: 4rem 2rem;
-  background: #f8f9fa;
+  background: #f3f3f3;
 }
 
 .gallery-section .section-container {
@@ -834,7 +834,7 @@ section {
 
 .testimonials-section {
   padding: 3rem 2rem;
-  background: #e8e8e8;
+  background: #e4e4e4;
   position: relative;
   margin-top: 64px;
   font-style: italic;
@@ -1040,7 +1040,7 @@ section {
 
 .process-section {
   padding: 4rem 2rem;
-  background: #fff;
+  background: #f3f3f3;
 }
 
 .process-container {
@@ -1148,7 +1148,7 @@ section {
    ================================ */
 
 .cta-section {
-  background: transparent;
+  background: #f3f3f3;
   padding: 2rem 0;
   display: flex;
   align-items: center;
