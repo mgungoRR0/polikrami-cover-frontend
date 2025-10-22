@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../css/home-page.css" />
     <link rel="stylesheet" href="../css/footer.css" />
     <link rel="stylesheet" href="../css/user-profil.css" />
+    <link rel="stylesheet" href="../css/artist-guide-modal.css" />
   </head>
 
   <body>
@@ -888,6 +889,7 @@
     </div>
 
     <!-- Footer -->
+
     <footer class="footer-new">
       <div class="footer-main">
         <div class="footer-content-grid">
@@ -964,17 +966,16 @@
             </div>
           </div>
 
-          <!-- Polikrami Cover -->
+          <!-- Hızlı Erişim -->
           <div class="footer-links-col">
-            <h3>Polikrami Cover</h3>
+            <h3>Hızlı Erişim</h3>
             <ul>
-              <li><a href="#">Kargo Bilgileri</a></li>
-              <li><a href="#">Gizlilik İlkesi</a></li>
-              <li><a href="#">Kullanım Şartları</a></li>
-              <li><a href="#">Sayfa Haritası</a></li>
-              <li><a href="#">Markalar</a></li>
-              <li><a href="#">Sık Sorulan Sorular</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><a href="home-page.html">Ana Sayfa</a></li>
+              <li><a href="portfolio.html">Çalışmalarımız</a></li>
+              <li><a href="artists.html">Sanatçılarımız</a></li>
+              <li><a href="about-us.html">Hakkımızda</a></li>
+              <li><a href="#">Oluşturmaya Başla</a></li>
+              <li><a href="#">Sipariş Takibi</a></li>
             </ul>
           </div>
 
@@ -982,11 +983,8 @@
           <div class="footer-links-col">
             <h3>Bağlantılar</h3>
             <ul>
-              <li><a href="user-profil.html">Hesabım</a></li>
-              <li><a href="user-orders.html">Siparişlerim</a></li>
-              <li><a href="#">İstek Listem</a></li>
-              <li><a href="#">Site Haritası</a></li>
-              <li><a href="#">E-Bülten</a></li>
+              <li><a href="#">Hesabım</a></li>
+              <li><a href="#">Siparişlerim</a></li>
               <li><a href="#">İade</a></li>
               <li>
                 <a href="#" onclick="openArtistGuideModal(); return false;"
@@ -996,16 +994,13 @@
             </ul>
           </div>
 
-          <!-- Hızlı Erişim -->
+          <!-- Polikrami Cover -->
           <div class="footer-links-col">
-            <h3>Hızlı Erişim</h3>
+            <h3>Polikrami Cover</h3>
             <ul>
-              <li><a href="#">Ana Sayfa</a></li>
-              <li><a href="#">Çalışmalarımız</a></li>
-              <li><a href="#">Sanatçılarımız</a></li>
-              <li><a href="#">Hakkımızda</a></li>
-              <li><a href="#">Oluşturmaya Başla</a></li>
-              <li><a href="#">Sipariş Takibi</a></li>
+              <li><a href="#">Kargo Bilgileri</a></li>
+              <li><a href="#">Gizlilik İlkesi</a></li>
+              <li><a href="#">Kullanım Şartları</a></li>
             </ul>
           </div>
         </div>
@@ -1020,5 +1015,85 @@
     <script src="../js/base.js"></script>
     <script src="../js/home-page.js"></script>
     <script src="../js/user-profil.js"></script>
+
+    <!-- Sanatçı Kullanım Rehberi Modal -->
+    <div id="artistGuideModal" class="artist-modal">
+      <div class="artist-modal-overlay"></div>
+      <div class="artist-modal-container">
+        <button class="artist-modal-close" aria-label="Kapat">&times;</button>
+
+        <div class="artist-modal-content">
+          <!-- Sol Panel - Adımlar -->
+          <div class="artist-modal-left">
+            <h2 class="artist-modal-title">Sanatçı Kullanım Rehberi</h2>
+            <div class="artist-steps">
+              <div class="artist-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h3>Hesap Oluştur</h3>
+                  <p>Sanatçı olarak hesabınızı oluşturun.</p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h3>Çalışmalarını Yükle</h3>
+                  <p>
+                    Gerekli bağlantıları ekleyerek, çalışmalarınızı yükleyin.
+                  </p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h3>Siparişleri Takip Et</h3>
+                  <p>
+                    Bir kullanıcı seçim yaptığında, "Siparişlerim" alanında yeni
+                    siparişinizi görünür.
+                  </p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h3>Tasarımlarını Yükle & Paylaş</h3>
+                  <p>
+                    Çalışman hazır olduğunda kullanıcı teslimleri üzerinden
+                    paylaş.
+                  </p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                  <h3>Revize Taleplerini Kontrol Et</h3>
+                  <p>Kullanıcı revize isterse, yorum kutusundan göreceksin.</p>
+                </div>
+              </div>
+
+              <div class="artist-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                  <h3>Teslimat & Değerlendirme Al</h3>
+                  <p>En son olarak çalışmanı yükle ve kullanıcı ile paylaş.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ Panel - Görsel -->
+          <div class="artist-modal-right">
+            <img
+              src="../assets/images/artist-guide-image.png"
+              alt="Sanatçı çalışırken"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

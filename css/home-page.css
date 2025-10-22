@@ -227,7 +227,7 @@ section {
 .hero {
   margin-top: 70px;
   background: linear-gradient(to top, #ff9900 5%, transparent 60%),
-    linear-gradient(to bottom, #ffffff 10%, transparent 25%),
+    linear-gradient(to bottom, #f3f3f3 10%, transparent 25%),
     linear-gradient(to bottom, #ffe5cc 0%, #fff5e6 100%);
   min-height: 542px;
   height: 542px;
@@ -637,8 +637,8 @@ section {
 }
 
 .team-member-card {
-  background: white;
-  border-radius: 20px;
+  background: #f3f3f3;
+  border-radius: 10px;
   padding: 2rem 1.5rem;
   text-align: center;
   width: 240px;
@@ -674,7 +674,7 @@ section {
 }
 
 .member-name-text {
-  color: #2c2c2c;
+  color: #5e5e5e;
   font-size: 1rem;
   font-weight: 700;
   margin: 0;
@@ -834,7 +834,7 @@ section {
 
 .testimonials-section {
   padding: 3rem 2rem;
-  background: #e4e4e4;
+  background: #e4e4e4a6;
   position: relative;
   margin-top: 64px;
   font-style: italic;
@@ -1066,7 +1066,7 @@ section {
 }
 
 .process-header p {
-  font-size: 19px;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #666;
   margin-top: 1rem;
@@ -1086,7 +1086,7 @@ section {
   width: 420px;
   height: 208px;
   padding: 1.5rem 2rem;
-  border-radius: 24px;
+  border-radius: 20px;
   text-align: center;
   transition: transform 0.3s;
   margin: 0 auto;
@@ -1116,7 +1116,7 @@ section {
 }
 
 .process-description {
-  font-size: 0.9rem;
+  font-size: 1rem;
   opacity: 0.95;
   line-height: 1.5;
   max-width: 320px;
@@ -1165,8 +1165,9 @@ section {
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  border-radius: 24px;
+  border-radius: 10px;
   padding: 0 2rem;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .cta-container h2 {
@@ -1183,7 +1184,7 @@ section {
   color: white;
   border: 2px solid white;
   padding: 1rem 3rem;
-  border-radius: 50px;
+  border-radius: 10px;
   font-family: "Poppins", sans-serif;
   font-size: 19px;
   font-weight: 800;
@@ -1229,7 +1230,7 @@ section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: #fff3e0;
+  background: #f7e5c9;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-family: "Poppins", sans-serif;

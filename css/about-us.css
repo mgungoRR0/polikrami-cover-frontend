@@ -143,6 +143,7 @@
   color: #659e36;
   margin-bottom: 1rem;
   font-family: "Poppins", sans-serif;
+  text-align: left;
 }
 
 .section-subtitle {
@@ -151,6 +152,7 @@
   color: #666;
   margin-bottom: 3rem;
   font-family: "Poppins", sans-serif;
+  text-align: left;
 }
 
 .book-image {
@@ -167,7 +169,7 @@
   height: 500px;
   object-fit: contain;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 .book-image p {
@@ -243,7 +245,7 @@
 
 /* Hover efektleri */
 .feature-item:hover {
-  background: #f8f9fa;
+  background: #eaeaea;
 }
 
 .feature-item:nth-child(1):hover,
@@ -287,7 +289,7 @@
   max-width: 100%; /* Full genişlik kullan */
   height: 550px;
   background: linear-gradient(135deg, #ff6b35, #f7931e);
-  border-radius: 24px;
+  border-radius: 10px;
   padding: 2rem 3rem;
   display: flex;
   flex-direction: column;
@@ -407,15 +409,15 @@
 }
 
 .contact-form .submit-btn {
-  width: 180px;
+  width: 370px;
   padding: 0.875rem 1.75rem;
   font-size: 1rem;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
-  color: #5e5e5e;
-  background: #c4bdbd;
-  border: none;
-  border-radius: 50px;
+  color: white;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: block;
@@ -424,8 +426,6 @@
 }
 
 .contact-form .submit-btn:hover {
-  background: #a8a1a1;
-  transform: translateY(-2px);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
 }
 
