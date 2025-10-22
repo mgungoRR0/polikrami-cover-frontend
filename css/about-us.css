@@ -416,7 +416,7 @@
   font-family: "Poppins", sans-serif;
   color: white;
   background: transparent;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
