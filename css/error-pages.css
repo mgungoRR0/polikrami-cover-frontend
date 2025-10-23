@@ -1,402 +1,401 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #74B63F;
+  background-color: #74b63f;
 }
 
 .navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: transparent;
-    z-index: 1000;
-    padding: 20px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 1000;
+  padding: 20px 0;
 }
 
 .nav-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-logo img {
-    height: 40px;
-    width: auto;
-    display: block;
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
 .nav-menu {
-    display: flex;
-    gap: 35px;
-    align-items: center;
+  display: flex;
+  gap: 35px;
+  align-items: center;
 }
 
 .nav-link {
-    color: #5E5E5E;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    transition: color 0.3s ease;
+  color: #5e5e5e;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #36ADCA;
+  color: #36adca;
 }
 
 .hero-section {
-    background-color: #66E0FD;
-    background-image: url('../assets/images/error-pages-cloud2.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 377px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  background-color: #66e0fd;
+  background-image: url("../assets/images/error-pages-cloud2.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 377px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    pointer-events: none;
-    z-index: 1;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .error-box {
-    background-color: #D7F7FF;
-    position: absolute;
-    top: 35%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    padding: 20px 50px;
-    border-radius: 10px;
-    z-index: 100;
+  background-color: #d7f7ff;
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  padding: 20px 50px;
+  border-radius: 20px;
+  z-index: 100;
 }
 
 .error-box h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 250px;
-    font-weight: 600;
-    color: #5E5E5E;
-    margin: 0;
-    line-height: 1;
+  font-family: "Poppins", sans-serif;
+  font-size: 250px;
+  font-weight: 600;
+  color: #5e5e5e;
+  margin: 0;
+  line-height: 1;
 }
 
 .figure-container {
-    position: absolute;
-    right: 0;
-    top: 377px;
+  position: absolute;
+  right: 0;
+  top: 377px;
 }
 
 .error-figure {
-    width: 528px;
-    height: 528px;
-    display: block;
+  width: 528px;
+  height: 528px;
+  display: block;
 }
 
 .speech-bubble {
-    width: 568px;
-    height: 329px;
-    position: absolute;
-    left: -570px;
-    top: 120px;
+  width: 568px;
+  height: 329px;
+  position: absolute;
+  left: -570px;
+  top: 120px;
 }
 
 .speech-bubble img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .speech-content {
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .speech-text {
-    font-family: 'Poppins', sans-serif;
-    font-size: 25px;
-    font-weight: 600;
-    color: #5E5E5E;
-    line-height: 53px;
-    text-align: left;
-    margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #5e5e5e;
+  line-height: 53px;
+  text-align: left;
+  margin: 0;
 }
 
 .home-button {
-    background: transparent;
-    color: #5E5E5E;
-    padding: 0;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    align-self: flex-start;
+  background: transparent;
+  color: #5e5e5e;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  align-self: flex-start;
 }
 
 .home-button:hover {
-    color: #36ADCA;
-    transform: translateX(-5px);
+  color: #36adca;
+  transform: translateX(-5px);
 }
 
 .arrow-icon {
-    width: 24px;
-    height: 24px;
-    color: currentColor;
-    transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+  transition: transform 0.3s ease;
 }
 
 .home-button:hover .arrow-icon {
-    transform: translateX(-3px);
+  transform: translateX(-3px);
 }
 
 .bottom-left-image {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 50;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
 }
 
 .bottom-left-image img {
-    display: block;
-    width: auto;
-    height: auto;
-    max-width: 300px;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 300px;
 }
 
 /* Tablet için responsive (768px - 1024px) */
 @media (max-width: 1024px) {
-    .nav-container {
-        padding: 0 50px;
-    }
-    
-    .hero-section {
-        height: 320px;
-    }
-    
-    .error-box {
-        top: 35%;
-        left: 30%;
-        padding: 15px 40px;
-    }
-    
-    .error-box h1 {
-        font-size: 200px;
-    }
-    
-    .figure-container {
-        right: 20px;
-        top: 420px;
-    }
-    
-    .error-figure {
-        width: 350px;
-        height: 350px;
-    }
-    
-    .speech-bubble {
-        width: 400px;
-        height: 230px;
-        left: -380px;
-        top: 60px;
-    }
-    
-    .speech-content {
-        width: 85%;
-        gap: 20px;
-    }
-    
-    .speech-text {
-        font-size: 18px;
-        line-height: 35px;
-    }
-    
-    .home-button {
-        font-size: 18px;
-        gap: 10px;
-    }
-    
-    .arrow-icon {
-        width: 20px;
-        height: 20px;
-    }
-    
-    .bottom-left-image img {
-        max-width: 220px;
-    }
+  .nav-container {
+    padding: 0 50px;
+  }
+
+  .hero-section {
+    height: 320px;
+  }
+
+  .error-box {
+    padding: 15px 40px;
+  }
+
+  .error-box h1 {
+    font-size: 200px;
+  }
+
+  .figure-container {
+    right: 20px;
+    top: 420px;
+  }
+
+  .error-figure {
+    width: 350px;
+    height: 350px;
+  }
+
+  .speech-bubble {
+    width: 400px;
+    height: 230px;
+    left: -380px;
+    top: 60px;
+  }
+
+  .speech-content {
+    width: 85%;
+    gap: 20px;
+  }
+
+  .speech-text {
+    font-size: 18px;
+    line-height: 35px;
+  }
+
+  .home-button {
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .bottom-left-image img {
+    max-width: 220px;
+  }
 }
 
 /* Mobil için responsive (maksimum 767px) */
 @media (max-width: 767px) {
-    body {
-        overflow-x: hidden;
-    }
-    
-    .navbar {
-        top: 15px;
-    }
-    
-    .nav-container {
-        padding: 0 15px;
-    }
-    
-    .nav-logo img {
-        height: 35px;
-    }
-    
-    .nav-menu {
-        gap: 20px;
-    }
-    
-    .nav-link {
-        font-size: 15px;
-        font-weight: 500;
-    }
-    
-    .hero-section {
-        height: 200px;
-        background-size: cover;
-    }
-    
-    .error-box {
-        position: relative;
-        top: -50px;
-        left: 0;
-        transform: none;
-        margin: 0 auto 30px;
-        width: fit-content;
-        padding: 10px 25px;
-    }
-    
-    .error-box h1 {
-        font-size: 100px;
-        line-height: 1;
-    }
-    
-    .figure-container {
-        position: static;
-        width: 100%;
-        padding: 0 20px;
-        margin-top: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .error-figure {
-        display: none;
-    }
-    
-    .speech-bubble {
-        position: static;
-        width: 90%;
-        max-width: 400px;
-        height: auto;
-        margin: 0 auto 20px;
-        min-height: 200px;
-    }
-    
-    .speech-bubble img {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-    }
-    
-    .speech-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        padding: 20px;
-        gap: 15px;
-    }
-    
-    .speech-text {
-        font-size: 14px;
-        line-height: 24px;
-        text-align: center;
-    }
-    
-    .home-button {
-        font-size: 16px;
-        align-self: center;
-        gap: 8px;
-    }
-    
-    .arrow-icon {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .bottom-left-image {
-        display: none;
-    }
+  body {
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    top: 15px;
+  }
+
+  .nav-container {
+    padding: 0 15px;
+  }
+
+  .nav-logo img {
+    height: 35px;
+  }
+
+  .nav-menu {
+    gap: 20px;
+  }
+
+  .nav-link {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .hero-section {
+    height: 200px;
+    background-size: cover;
+  }
+
+  .error-box {
+    position: relative;
+    top: -50px;
+    left: 0;
+    transform: none;
+    margin: 0 auto 30px;
+    width: fit-content;
+    padding: 10px 25px;
+  }
+
+  .error-box h1 {
+    font-size: 100px;
+    line-height: 1;
+  }
+
+  .figure-container {
+    position: static;
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .error-figure {
+    display: none;
+  }
+
+  .speech-bubble {
+    position: static;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto 20px;
+    min-height: 200px;
+  }
+
+  .speech-bubble img {
+    display: none;
+  }
+
+  .speech-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .speech-text {
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .home-button {
+    font-size: 16px;
+    align-self: center;
+    gap: 8px;
+  }
+
+  .arrow-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .bottom-left-image {
+    display: none;
+  }
 }
 
 /* Çok küçük ekranlar için (maksimum 480px) */
 @media (max-width: 480px) {
-    .nav-menu {
-        gap: 12px;
-    }
-    
-    .nav-link {
-        font-size: 13px;
-    }
-    
-    .error-box h1 {
-        font-size: 80px;
-    }
-    
-    .speech-content {
-        padding: 15px;
-        gap: 12px;
-    }
-    
-    .speech-text {
-        font-size: 13px;
-        line-height: 22px;
-    }
-    
-    .home-button {
-        font-size: 14px;
-    }
-    
-    .arrow-icon {
-        width: 16px;
-        height: 16px;
-    }
+  .nav-menu {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .error-box h1 {
+    font-size: 80px;
+  }
+
+  .speech-content {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .speech-text {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  .home-button {
+    font-size: 14px;
+  }
+
+  .arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .speech-bubble img {
+    display: none;
+  }
 }

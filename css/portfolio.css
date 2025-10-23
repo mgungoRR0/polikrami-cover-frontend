@@ -1,0 +1,312 @@
+/* ==========================================
+   PORTFOLIO PAGE - EK STILLER
+   (home-page.css'e EK olarak kullanılacak)
+   ========================================== */
+
+/* Hero Section - Çok Satırlı Başlık */
+#portfolio .hero-content h1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.1;
+}
+
+#portfolio .hero-line {
+  display: block;
+  line-height: 1.1;
+}
+
+/* Hero Section - Paragraph Düzeni */
+#portfolio .hero-content p {
+  max-width: 540px;
+  line-height: 1.6;
+}
+
+/* Hero Section - Turuncu Vurgu */
+.hero-orange-text {
+  color: #ff9900;
+}
+
+/* Çalışmalarımız Başlık Section */
+.portfolio-title-section {
+  padding: 3rem 2rem 2rem 2rem;
+  background: #f3f3f3;
+}
+
+.portfolio-title-container {
+  max-width: 1512px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.portfolio-main-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #ff9900;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Artist Work Section */
+.artist-work-section {
+  padding: 4rem 2rem;
+  background: #f3f3f3;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.artist-work-section:last-of-type {
+  border-bottom: none;
+}
+
+.artist-work-container {
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* Artist Profile Section */
+.artist-profile {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.artist-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #f0f0f0;
+  flex-shrink: 0;
+  grid-row: 1;
+}
+
+.artist-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-info {
+  flex: 1;
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.artist-info h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #5e5e5e;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.artist-info p {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #666;
+  margin: 0;
+  font-weight: 500;
+}
+
+.artist-profile-btn {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: #666;
+  text-decoration: underline;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.artist-profile-btn:hover {
+  color: #ff6b35;
+  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
+/* Carousel Container - Artist Profile İçinde */
+.artist-profile .carousel-container-3d {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .portfolio-main-title {
+    font-size: 36px;
+  }
+
+  .artist-work-container {
+    padding: 0 2rem;
+  }
+
+  .artist-profile {
+    grid-template-columns: 140px 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .artist-avatar {
+    width: 140px;
+    height: 140px;
+    grid-row: 1;
+  }
+
+  .artist-info {
+    grid-row: 1;
+  }
+
+  .artist-info h2 {
+    font-size: 1.75rem;
+  }
+
+  .artist-info p {
+    font-size: 0.95rem;
+  }
+
+  .artist-profile-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .artist-profile .carousel-container-3d {
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-title-section {
+    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  .portfolio-main-title {
+    font-size: 32px;
+  }
+
+  .artist-work-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .artist-work-container {
+    padding: 0 1rem;
+  }
+
+  .artist-profile {
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    padding: 1.25rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .artist-avatar {
+    width: 120px;
+    height: 120px;
+    border: 4px solid #f0f0f0;
+    grid-row: 1;
+  }
+
+  .artist-info {
+    grid-row: 1;
+  }
+
+  .artist-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .artist-info p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .artist-profile-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .artist-profile .carousel-container-3d {
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-title-section {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .portfolio-main-title {
+    font-size: 28px;
+  }
+
+  .artist-work-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .artist-profile {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  .artist-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .artist-info {
+    grid-row: 2;
+    grid-column: 1;
+  }
+
+  .artist-info h2 {
+    font-size: 1.35rem;
+  }
+
+  .artist-info p {
+    font-size: 0.85rem;
+  }
+
+  .artist-profile-btn {
+    position: static;
+    width: 100%;
+    margin-top: 0.5rem;
+    grid-row: 3;
+    grid-column: 1;
+  }
+
+  .artist-profile .carousel-container-3d {
+    grid-row: 4;
+    grid-column: 1;
+    padding-bottom: 0;
+  }
+}
